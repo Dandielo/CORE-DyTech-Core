@@ -5,13 +5,52 @@ require "scripts/gui"
 require "scripts/remote-calls"
 require "scripts/trees"
 
+require "scripts/base"
 
-script.on_configuration_changed(function(data)
-	for _,force in pairs(game.forces) do
+-- Global table stored in the save
+storage = { }
+
+
+-- DyTech Core mod object
+local dytech = { }
+local core = DyTechMod("Core")
+
+-- Add do the dytech mods table
+dytech.core = core
+
+-- Should we turn on debug logging?
+core.__debug = false
+
+function core.log(msg, ...)
+	if core.__debug then
+		log(("[dytech][core] %s"):format(msg:format(...)))
+	end
+end
+
+
+
+-- Core interfaces
+local iface = mod:interface("dytech-core-iface")
+
+function iface.set_enabled(name, iface)
+	dytech[name] = mod:import(iface)
+end
+
+
+-- Register DyTech Core interfaces
+core:register()
+
+
+
+-- Modding API 
+function core.configuration_changed(data)
+	-- On a configuration changes we want to reset all recipes and technologies to apply any changes made to them
+	for _, force in pairs(game.forces) do
 		force.reset_recipes()
 		force.reset_technologies()
 	end
-end)
+end
+
 
 
 -- --[[Debug Functions]]--
