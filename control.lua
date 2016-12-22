@@ -98,6 +98,16 @@ function core.setup_treefarm()
 	core.on_robot_built_entity = core.treefarm.on_built_entity
 end
 
+function core.setup_wind()
+	initialize_table(global, {
+		wind = { 
+			low = 600,
+			hight = 18000,
+			value = math.random(600, 18000),
+		}
+	})
+end
+
 
 -- Modding API 
 function core.load()
@@ -123,6 +133,7 @@ end
 function core.init()
 	-- setup the mod
 	core.setup()
+	core.setup_wind()
 
 	-- Check if we found the 'treefarm' mod 
 	local treefarm = core:import("treefarm_interface")
@@ -143,12 +154,12 @@ function core.init()
 
 	-- setups
 	fs.World_Call()
-	fs.Wind_Startup()
 end
 
 function core.configuration_changed()
 	-- setup the mod
 	core.setup()
+	core.setup_wind()
 	
 	-- On a configuration changes we want to reset all recipes and technologies to apply any changes made to them
 	for _, force in pairs(game.forces) do
@@ -174,10 +185,6 @@ function core.configuration_changed()
 		-- Enable build-in tree module
 		core.setup_treefarm()
 	end
-
-	if not global.Wind then 
-		fs.Wind_Startup() 
-	end
 end
 
 function core.on_tick(event)
@@ -194,23 +201,6 @@ function core.on_tick(event)
 		core.treefarm.on_tick(event)
 	end
 end
-
-function core.on_built_entity(event)
-	-- If the treefarm mod is not enabled
-	if not external.treefarm then
-		core.treefarm.on_built_entity(event)
-	end
-end
-
-function core.on_robot_built_entity(event)
-	-- If the treefarm mod is not enabled
-	if not external.treefarm then
-
-		-- We can use the same handler as if a player has placed the tree
-		core.treefarm.on_built_entity(event)
-	end
-end
-
 
 
 -- DyTech Core interface
