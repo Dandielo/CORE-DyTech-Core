@@ -9,9 +9,9 @@ function showCoreGUI(PlayerIndex)
 	adder = player.gui.top["mainDyTechCoreFlow"]["mainDyTechCoreFrame"]
 	adder1 = player.gui.top["mainDyTechCoreFlow"]["mainDyTechCoreFrame1"]
 	adder.add({type="button", name="DyTech-Core-Back-Button", caption={"back"}})
-	fs.Pollution_Check()
-	adder1.add({type="label", name="", caption={"pollution", math.floor(global.Pollution)}})
-	for name, table in pairs(global.LoggerCount) do
-		adder1.add({type="label", name="", caption={name, table}})
-	end
+	-- fs.Pollution_Check()
+	-- adder1.add({type="label", name="", caption={"pollution", math.floor(global.Pollution)}})
+	-- for name, table in pairs(global.LoggerCount) do
+	-- 	adder1.add({type="label", name="", caption={name, table}})
+	-- end
 end
