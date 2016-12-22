@@ -6,10 +6,13 @@ require "scripts/remote-calls"
 require "scripts/trees"
 
 require "scripts/base"
+require "scripts/helpers"
 
+-- Dytech and external mods
+local dytech = { }
+local external = { }
 
 -- DyTech Core mod object
-local dytech = { }
 local core = DyTechMod("Core")
 
 -- Should we turn on debug logging?
@@ -27,16 +30,57 @@ function core.print(message, ...)
 	end
 end
 
+function core.setup()
+	-- Initialize the global table if needed with the following data
+	initialize_table(global, {
+		-- Timer
+		timer = { 
+			seconds = 0,
+			minutes = 0,
+			hours = 0,
+		},
 
--- Core interface
-local iface = core:interface("dytech-core-iface")
+		-- Mod Loggers
+		Logger = { 
+			-- Item loggers
+			CraftedItems = { },
+			PickedItems = { },
+			MinedItems = { },
 
-function iface.set_enabled(name, iface)
-	dytech[name] = core:import(iface)
+			-- Entity loggers
+			EntityDied = { },
+			BuildEntity = { },
+			
+			-- Robot specific loggers 
+			RobotBuildEntity = { },
+			RobotMinedItems = { },
+
+			-- Construction loggers
+			MarkedForDeconstruction = { },
+			CanceledDeconstruction = { },
+		},
+
+		-- Mod Timestamps
+		TimeStamp = {
+			-- Item loggers
+			CraftedItems = { },
+			PickedItems = { },
+			MinedItems = { },
+
+			-- Entity loggers
+			EntityDied = { },
+			BuildEntity = { },
+			
+			-- Robot specific loggers 
+			RobotBuildEntity = { },
+			RobotMinedItems = { },
+
+			-- Construction loggers
+			MarkedForDeconstruction = { },
+			CanceledDeconstruction = { },
+		}
+	})
 end
-
-iface.register()
-
 
 
 -- Modding API 
@@ -86,31 +130,56 @@ end
 	-- end
 -- end
 
+
+
+
+-- DyTech Core interface
+local iface = core:interface("dytech-core-iface")
+
+function iface.set_enabled(name, iface)
+	dytech[name] = core:import(iface)
+end
+
+iface.register()
+
+
+
+
 -- Set the old name as the new function
 PlayerPrint = core.print
 
 --[[TreeFarm Stuff, for trees!]]--
 function populateSeedTypeLookUpTable()
-if seedTypeLookUpTable==nil then seedTypeLookUpTable = {} end
-  for seedTypeName, seedType in pairs(global.tf.seedPrototypes) do
-    for _, stateName in pairs(seedType.states) do
-      seedTypeLookUpTable[stateName] = seedTypeName
-    end
-  end
+	if seedTypeLookUpTable==nil then 
+		seedTypeLookUpTable = {} 
+	end
+	for seedTypeName, seedType in pairs(global.tf.seedPrototypes) do
+		for _, stateName in pairs(seedType.states) do
+			seedTypeLookUpTable[stateName] = seedTypeName
+		end
+	end
 end
 
-script.on_init(function()
-	if not remote.interfaces["treefarm_interface"] then 
-		-- -- debug("Treefarm not installed")
+function core.init()
+	-- Check if we found the 'treefarm' mod 
+	local treefarm = core:import("treefarm_interface")
+	if treefarm and treefarm.getSeedTypesData then
+		treefarm.addSeed(Trees.RubberTree)
+		treefarm.addSeed(Trees.SulfurTree)
+
+		-- Save the interface object
+		external.treefarm = treefarm
+
+	else 
+		-- Treefarm not found, initialize our own logic
 		Trees.OnInit()
-	elseif remote.interfaces.treefarm_interface and remote.interfaces.treefarm_interface.getSeedTypesData then
-		remote.call("treefarm_interface", "addSeed", Trees.RubberTree)
-		remote.call("treefarm_interface", "addSeed", Trees.SulfurTree)
 	end
-	fs.Startup()
+
+	-- setups
+	core.setup()
 	fs.World_Call()
 	fs.Wind_Startup()
-end)
+end
 
 script.on_configuration_changed(function()
 	if not remote.interfaces["treefarm_interface"] then 
