@@ -14,6 +14,9 @@ local external = { }
 -- DyTech Core mod object
 local core = DyTechMod("Core")
 
+-- Load the treefarm script info the core mod
+core.treefarm = require "scripts/treefarm"
+
 -- Should we turn on debug logging?
 core.__debug = true
 
@@ -80,9 +83,6 @@ function core.setup()
 			CanceledDeconstruction = { },
 		}
 	})
-
-	-- Load the treefarm script
-	core.treefarm = require "scripts/treefarm"
 end
 
 function core.setup_treefarm()
@@ -101,15 +101,23 @@ end
 
 -- Modding API 
 function core.load()
-	core.log "Loading DyTech mods..." 
+	external.treefarm = core:import("treefarm_interface")
 
-	-- For each enabled mod call it's 'load' interface
-	for mod in pairs(dytech) do
-		core.log("- " .. mod .. " is enabled")
+	-- Check if we found the 'treefarm' mod 
+	if not external.treefarm then
+		core.treefarm.init()
 	end
+	-- core.log "Loading DyTech mods..." 
 
-	-- Add core to the dytech mods table
-	dytech.core = core
+	-- -- For each enabled mod call it's 'load' interface
+	-- for mod in pairs(dytech) do
+	-- 	core.log("- " .. mod .. " is enabled")
+	-- end
+
+	-- -- Add core to the dytech mods table
+	-- dytech.core = core
+
+	-- -- 
 end
 
 function core.init()

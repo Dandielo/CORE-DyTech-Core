@@ -32,7 +32,7 @@ function treefarm.seeds()
                 ["sand"]            = 0.25,
                 ["sand-dark"]       = 0.25,
                 ["other"]           = 0.0 -- maybe just ommit this as it will be by default set anyway?
-            }
+            },
 
             growing_time = 5925,
             growing_delta = 3555,
@@ -64,7 +64,7 @@ function treefarm.seeds()
                 ["sand"]            = 0.25,
                 ["sand-dark"]       = 0.25,
                 ["other"]           = 0.0 -- maybe just ommit this as it will be by default set anyway?
-            }
+            },
 
             growing_time = 9000,
             growing_delta = 1500,
@@ -97,7 +97,7 @@ function treefarm.init()
     -- Initialize treefarm helper variables (seems to be an overkill, but i think its better to be consistent)
     initialize_table(treefarm, {
         -- Helps a lot during the 'on_tick' event
-        state_to_seed = { },
+        seed_from_state = { },
 
         -- Holds list functions
         list = {  }
@@ -120,6 +120,14 @@ function treefarm.init()
                 end
             end
             table.insert(list, 1, entry)
+        end
+    end
+
+    --
+    -- Load seed states from the global table
+    for _1, seed in pairs(global.treefarm.seeds) do
+        for _2, state_name in pairs(seed.states) do
+            treefarm.seed_from_state[state_name] = seed
         end
     end
 end
@@ -248,7 +256,7 @@ function treefarm.on_built_entity(event)
                 state = 1,
                 entity = event.created_entity,
                 efficiency = efficiency,
-                update_tick = event.tick + next_update_tick
+                update_tick = event.tick + update_tick
             }
 
             -- Find the node where we can fit in
