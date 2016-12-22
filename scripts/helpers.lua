@@ -24,4 +24,8 @@ function initialize_table(target, source)
 			set_if_null(target, key, value)
 		end
 	end
+
+	-- return the target table
+	return target
 end
+
