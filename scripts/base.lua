@@ -1,41 +1,3 @@
-local remote_mt = { }
-remote_mt.__index = remote_mt
-local global_interfaces = { }
-
-function remote_mt.add_interface(name, funcs)
-	global_interfaces[name] = funcs
-end
-
-function remote_mt.call(name, func, ...)
-	global_interfaces[name][func](...)
-end
-
-local remote = setmetatable({ }, remote_mt)
-remote.interfaces = global_interfaces
-
-
-local script = { }
-function script.on_init(callback)
-	print("OnInit: " .. tostring(callback))
-	callback("OnInit")
-end
-
-function script.on_load(callback)
-	print("OnLoad: " .. tostring(callback))
-	callback("OnLoad")
-end
-
-function script.on_configuration_changed(callback)
-	print("OnConfiguration: " .. tostring(callback))
-	callback("OnConfig")
-end
-
-function script.on_event(name, callback)
-	print(("OnEvent { name = %s, callback = %s }"):format(name, tostring(callback)))
-end
-
-
-
 -- Create the proxy object for the given destination info
 local CallbackProxy = function(func)
 	return setmetatable({ }, { 
@@ -56,18 +18,23 @@ end
 
 DyTechMod = function()
 	-- Mod interface fields
-	local interfaces = { }
+	-- local interfaces = { }
 
 	-- The mod Interface
 	return setmetatable({
 		-- Return a callback proxy to the 'remote' game object api
 		interface = function(self, name) 
+			local interface_name = name
 			local interface = { }
-			interfaces[name] = interface
+			-- interfaces[name] = interface
 
-			return CallbackProxy(function(name, callback) 
+			local proxy = CallbackProxy(function(name, callback) 
 				interface[name] = callback
 			end)
+			rawset(proxy, "register", function()
+				remote.add_interface(name, interface)
+			end)
+			return proxy
 		end,
 
 		-- Returns a call proxy to return interface functions 
@@ -85,14 +52,6 @@ DyTechMod = function()
 				return nil
 			end
 		end,
-
-		-- Registers the interface of this plugin
-		register = function(self) 
-			for interface, functions in pairs(interfaces) do
-				assert(remote.interfaces[interface] == nil, ("Interface '%s' exists, registration failed!"):format(interface))
-				remote.add_interface(interface, functions)
-			end
-		end
 	}, { 
 		__newindex = function(self, name, value)
 			if name == "init" then
@@ -105,12 +64,6 @@ DyTechMod = function()
 				script.on_configuration_changed(value)
 
 			elseif name:match("([a-zA-Z]+)_?.*") == "on" then
-				local defines = { events = setmetatable({}, { 
-					__index = function(_, key) 
-						return key
-					end 
-					}) 
-				}
 				script.on_event(defines.events[name], value)
 
 			else 
@@ -120,46 +73,3 @@ DyTechMod = function()
 		end
 	})
 end
-
--- Register the DyTechCore mod object
-remote.add_interface("DyTechCore", { 
-	createMod = DyTechMod
-})
-
--- local mod = DyTechMod("Core")
-
-
--- local remote = mod:interface("test")
-
--- function remote.my_func(a)
--- 	print("MyFunc" .. a)
--- end
-
--- mod:register()
-
--- local test = mod:import("test")
--- test.my_func(3)
-
--- mod:register()
-
-
--- local test = mod:import("test")
--- if test then
--- 	test.my_func()
--- end
-
-
--- example = function()
-
--- 	remote.add_interface("Trees", {
--- 		hello = function(msg) print("Trees say hello to " .. msg) end,
--- 		bye = function(msg) print("Trees say bye to " .. msg) end
--- 	})
-
--- 	remote.call("Trees", "hello", "cookie")
--- 	remote.call("Trees", "bye", "cookie")
-
--- end
-
-
-

@@ -13,7 +13,7 @@ local dytech = { }
 local core = DyTechMod("Core")
 
 -- Should we turn on debug logging?
-core.__debug = false
+core.__debug = true
 
 function core.log(msg, ...)
 	if core.__debug then
@@ -21,18 +21,21 @@ function core.log(msg, ...)
 	end
 end
 
-
-
--- Core interfaces
-local iface = mod:interface("dytech-core-iface")
-
-function iface.set_enabled(name, iface)
-	dytech[name] = mod:import(iface)
+function core.print(message, ...)
+	for _, player in pairs(game.players) do
+		player.print(message:format(...))
+	end
 end
 
 
--- Register DyTech Core interfaces
-core:register()
+-- Core interface
+local iface = core:interface("dytech-core-iface")
+
+function iface.set_enabled(name, iface)
+	dytech[name] = core:import(iface)
+end
+
+iface.register()
 
 
 
@@ -83,11 +86,8 @@ end
 	-- end
 -- end
 
-function PlayerPrint(message)
-	for _,player in pairs(game.players) do
-		player.print(message)
-	end
-end
+-- Set the old name as the new function
+PlayerPrint = core.print
 
 --[[TreeFarm Stuff, for trees!]]--
 function populateSeedTypeLookUpTable()
@@ -132,33 +132,45 @@ script.on_event(defines.events.on_tick, function(event)
 	if event.tick%600==1 then
 		GUI.CreateButton()
 	end
+
 	if not remote.interfaces["treefarm_interface"] then
-	while ((global.tf.growing[1] ~= nil) and (event.tick >= global.tf.growing[1].nextUpdate)) do
-    local removedEntity = table.remove(global.tf.growing, 1)
-    local seedTypeName
-    local newState
-	if seedTypeLookUpTable==nil then populateSeedTypeLookUpTable() end
-		if removedEntity.entity.valid then
-			seedTypeName = seedTypeLookUpTable[removedEntity.entity.name]
-			newState = removedEntity.state + 1
-			if newState <= #global.tf.seedPrototypes[seedTypeName].states then
-			local tmpPos = removedEntity.entity.position
-			local newEnt = game.surfaces.nauvis.create_entity{name = global.tf.seedPrototypes[seedTypeLookUpTable[removedEntity.entity.name]].states[newState], position = tmpPos}
-			removedEntity.entity.destroy()
-			-- debug("Old tree removed, new one placed")
-			local deltaTime = math.ceil((math.random() * global.tf.seedPrototypes[seedTypeName].randomGrowingTime + global.tf.seedPrototypes[seedTypeName].basicGrowingTime) / removedEntity.efficiency)
-			local updatedEntry =
-			{
-				entity = newEnt,
-				state = newState,
-				efficiency = removedEntity.efficiency,
-				nextUpdate = event.tick + deltaTime
-			}
-			Trees.placeSeedIntoList(updatedEntry)
-			-- debug("seed placed into list (ontick event")
+
+		while ((global.tf.growing[1] ~= nil) and (event.tick >= global.tf.growing[1].nextUpdate)) do
+   			
+   			local removedEntity = table.remove(global.tf.growing, 1)
+    		local seedTypeName
+    		local newState
+
+			if seedTypeLookUpTable==nil then 
+				populateSeedTypeLookUpTable() 
 			end
-		end
-	end end
+
+			if removedEntity.entity.valid then
+				seedTypeName = seedTypeLookUpTable[removedEntity.entity.name]
+				newState = removedEntity.state + 1
+
+				if newState <= #global.tf.seedPrototypes[seedTypeName].states then
+					local tmpPos = removedEntity.entity.position
+					local newEnt = game.surfaces.nauvis.create_entity{name = global.tf.seedPrototypes[seedTypeLookUpTable[removedEntity.entity.name]].states[newState], position = tmpPos}
+					removedEntity.entity.destroy()
+					
+					-- debug("Old tree removed, new one placed")
+					local deltaTime = math.ceil((math.random() * global.tf.seedPrototypes[seedTypeName].randomGrowingTime + global.tf.seedPrototypes[seedTypeName].basicGrowingTime) / removedEntity.efficiency)
+					local updatedEntry =
+					{
+						entity = newEnt,
+						state = newState,
+						efficiency = removedEntity.efficiency,
+						nextUpdate = event.tick + deltaTime
+					}
+					Trees.placeSeedIntoList(updatedEntry)
+					-- debug("seed placed into list (ontick event")
+				end
+			end
+			
+		end 
+
+	end
 end)
 
 -- script.on_event(defines.events.on_player_crafted_item, function(event)
