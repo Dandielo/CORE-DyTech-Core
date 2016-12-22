@@ -7,16 +7,10 @@ require "scripts/trees"
 
 require "scripts/base"
 
--- Global table stored in the save
-storage = { }
-
 
 -- DyTech Core mod object
 local dytech = { }
 local core = DyTechMod("Core")
-
--- Add do the dytech mods table
-dytech.core = core
 
 -- Should we turn on debug logging?
 core.__debug = false
@@ -43,6 +37,18 @@ core:register()
 
 
 -- Modding API 
+function core.load()
+	core.log "Loading DyTech mods..." 
+
+	-- For each enabled mod call it's 'load' interface
+	for mod in pairs(dytech) do
+		core.log("- " .. mod .. " is enabled")
+	end
+
+	-- Add core to the dytech mods table
+	dytech.core = core
+end
+
 function core.configuration_changed(data)
 	-- On a configuration changes we want to reset all recipes and technologies to apply any changes made to them
 	for _, force in pairs(game.forces) do
@@ -50,6 +56,8 @@ function core.configuration_changed(data)
 		force.reset_technologies()
 	end
 end
+
+
 
 
 
