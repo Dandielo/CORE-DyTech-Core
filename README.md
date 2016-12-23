@@ -3,7 +3,23 @@ DyTech
 
 DyTech is a mod for factorio, and a total conversion
 
-You can look into the code here, and if you see something unbalanced, or a bug (or seen 1 ingame) make a pull request or let me know in the forum.
+You can look into the code here, and if you see something unbalanced, or a bug (or seen 1 ingame) make a pull request or create an issue on git with a detailed description.
+
+
+
+Disclaimer from Dandielo
+=
+The following repository was created from [Valerates/CORE-DyTech-Core](https://github.com/Valerate/CORE-DyTech-Core) instead of [Dysoch/DyTech](https://github.com/Dysoch/DyTech), because the first repository was used to create the lastes 'zip' file on the mod portal. 
+
+The main goal of this repository is to refactor the mods source with the following changes:
+- Mainly reindenting the source code (indentation sucks at this moment...)
+- Fixing bugs that are going to appear during the refactoring process
+- Making the mod API more flexible and much easier to extend 
+- Ensure the same naming convention in all files and sub-mods
+- Improving the code itself 
+- Many more...
+
+
 
 Bug Reporting:
 =
@@ -19,6 +35,7 @@ WARNING:
 
 Credits for changes in this fork
 - TheSAguy modifications http://www.factorioforums.com/forum/viewtopic.php?f=43&t=7021
+
 
 
 License
