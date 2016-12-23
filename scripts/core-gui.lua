@@ -1,6 +1,7 @@
 module("Core_GUI", package.seeall)
 require "scripts/functions"
 
+
 function showCoreGUI(PlayerIndex)
 	local player = game.players[PlayerIndex]
 	player.gui.top.add({type="flow", direction="horizontal", name="mainDyTechCoreFlow"})
@@ -15,3 +16,10 @@ function showCoreGUI(PlayerIndex)
 	-- 	adder1.add({type="label", name="", caption={name, table}})
 	-- end
 end
+
+local gui = { }
+
+
+
+return gui 
+

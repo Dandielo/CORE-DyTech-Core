@@ -204,10 +204,17 @@ end
 
 
 -- DyTech Core interface
-local iface = core:interface("dytech-core-iface")
+local iface = core:interface("dytech-core-interface")
 
 function iface.set_enabled(name, iface)
 	dytech[name] = core:import(iface)
+end
+
+function iface.set_gui(gui)
+end
+
+function iface.is_debug()
+	return core.__debug
 end
 
 iface.register()
