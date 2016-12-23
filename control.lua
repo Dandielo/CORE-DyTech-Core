@@ -3,230 +3,235 @@ require "scripts/core-gui"
 require "scripts/functions"
 require "scripts/gui"
 require "scripts/remote-calls"
-require "scripts/trees"
+
+require "scripts/base"
+require "scripts/helpers"
+
+-- Dytech and external mods
+local dytech = { }
+local external = { }
+
+-- DyTech Core mod object
+local core = DyTechMod("Core")
+
+-- Load the treefarm script info the core mod
+core.treefarm = require "scripts/treefarm"
+
+-- Should we turn on debug logging?
+core.__debug = true
+
+function core.log(msg, ...)
+	if core.__debug then
+		log(("[dytech][core] %s"):format(msg:format(...)))
+	end
+end
+
+function core.print(message, ...)
+	for _, player in pairs(game.players) do
+		player.print(message:format(...))
+	end
+end
+
+function core.setup()
+	-- Initialize the global table if needed with the following data
+	initialize_table(global, 
+	{
+		-- Timer
+		timer = { 
+			seconds = 0,
+			minutes = 0,
+			hours = 0,
+		},
+
+		-- Mod Loggers
+		Logger = { 
+			-- Item loggers
+			CraftedItems = { },
+			PickedItems = { },
+			MinedItems = { },
+
+			-- Entity loggers
+			EntityDied = { },
+			BuildEntity = { },
+			
+			-- Robot specific loggers 
+			RobotBuildEntity = { },
+			RobotMinedItems = { },
+
+			-- Construction loggers
+			MarkedForDeconstruction = { },
+			CanceledDeconstruction = { },
+		},
+
+		-- Mod Timestamps
+		TimeStamp = {
+			-- Item loggers
+			CraftedItems = { },
+			PickedItems = { },
+			MinedItems = { },
+
+			-- Entity loggers
+			EntityDied = { },
+			BuildEntity = { },
+			
+			-- Robot specific loggers 
+			RobotBuildEntity = { },
+			RobotMinedItems = { },
+
+			-- Construction loggers
+			MarkedForDeconstruction = { },
+			CanceledDeconstruction = { },
+		}
+	})
+end
+
+function core.setup_treefarm()
+	core.treefarm.init()
+
+	-- Add all seeds to the list
+	for _, seed in pairs(core.treefarm.seeds()) do 
+		core.treefarm.add_seed(seed)
+	end
+
+	-- Setup callbacks
+	core.on_built_entity = core.treefarm.on_built_entity
+	core.on_robot_built_entity = core.treefarm.on_built_entity
+end
 
 
-script.on_configuration_changed(function(data)
-	for _,force in pairs(game.forces) do
+-- Modding API 
+function core.load()
+	external.treefarm = core:import("treefarm_interface")
+
+	-- Check if we found the 'treefarm' mod 
+	if not external.treefarm then
+		core.treefarm.init()
+	end
+	-- core.log "Loading DyTech mods..." 
+
+	-- -- For each enabled mod call it's 'load' interface
+	-- for mod in pairs(dytech) do
+	-- 	core.log("- " .. mod .. " is enabled")
+	-- end
+
+	-- -- Add core to the dytech mods table
+	-- dytech.core = core
+
+	-- -- 
+end
+
+function core.init()
+	-- setup the mod
+	core.setup()
+
+	-- Check if we found the 'treefarm' mod 
+	local treefarm = core:import("treefarm_interface")
+	if treefarm and treefarm.getSeedTypesData then
+		
+		-- Add all seeds to the 'treefarm' mod
+		for _, seed in pairs(core.treefarm.seeds()) do 
+			treefarm.addSeed(seed)
+		end
+
+		-- Save the interface object
+		external.treefarm = treefarm
+
+	else 
+		-- Enable build-in tree module
+		core.setup_treefarm()
+	end
+
+	-- setups
+	fs.World_Call()
+	fs.Wind_Startup()
+end
+
+function core.configuration_changed()
+	-- setup the mod
+	core.setup()
+	
+	-- On a configuration changes we want to reset all recipes and technologies to apply any changes made to them
+	for _, force in pairs(game.forces) do
 		force.reset_recipes()
 		force.reset_technologies()
 	end
-end)
 
+	-- Check if we found the 'treefarm' mod 
+	local treefarm = core:import("treefarm_interface")
+	if treefarm and treefarm.getSeedTypesData then
 
--- --[[Debug Functions]]--
--- -- debug_master = false -- Master switch for -- debugging, shows most things!
--- -- debug_for_GUI = true -- Adds a -- debug screen in the gui
--- -- debug_ontick = false -- Ontick switch for -- debugging, shows all ontick event -- debugs
--- -- debug_chunks = false -- shows the chunks generated with this on
--- function -- debug(str, statement)
-	-- if -- debug_master then
-		-- PlayerPrint(str)
-	-- end
-	-- if log_everything then log(str, statement) end
--- end
--- log_everything = true -- keep this true all times! only disable if the game lags. the info it generates is needed by the DyTech Team to -- debug your savegame if an bug or error happens!
--- function log(str, statement)
--- local seconds = math.floor(game.tick/60)
--- local minutes = math.floor(seconds/60)
--- local hours = math.floor(minutes/60)
-	-- if not global.Log then global.Log = {} end
-	-- if not statement then
-		-- global.Log[hours..":"..(minutes-(hours*60))..":"..(seconds-(minutes*60))] = str
-	-- end
--- end
-
-function PlayerPrint(message)
-	for _,player in pairs(game.players) do
-		player.print(message)
-	end
-end
-
---[[TreeFarm Stuff, for trees!]]--
-function populateSeedTypeLookUpTable()
-if seedTypeLookUpTable==nil then seedTypeLookUpTable = {} end
-  for seedTypeName, seedType in pairs(global.tf.seedPrototypes) do
-    for _, stateName in pairs(seedType.states) do
-      seedTypeLookUpTable[stateName] = seedTypeName
-    end
-  end
-end
-
-script.on_init(function()
-	if not remote.interfaces["treefarm_interface"] then 
-		-- -- debug("Treefarm not installed")
-		Trees.OnInit()
-	elseif remote.interfaces.treefarm_interface and remote.interfaces.treefarm_interface.getSeedTypesData then
-		remote.call("treefarm_interface", "addSeed", Trees.RubberTree)
-		remote.call("treefarm_interface", "addSeed", Trees.SulfurTree)
-	end
-	fs.Startup()
-	fs.World_Call()
-	fs.Wind_Startup()
-end)
-
-script.on_configuration_changed(function()
-	if not remote.interfaces["treefarm_interface"] then 
-		Trees.OnLoad()
-	elseif remote.interfaces["treefarm_interface"] and remote.interfaces.treefarm_interface.getSeedTypesData then
-		if not remote.call("treefarm_interface", "readSeed", "RubberTree") then
-			remote.call("treefarm_interface", "addSeed", Trees.RubberTree)
-		end
-		if not remote.call("treefarm_interface", "readSeed", "SulfurTree") then
-			remote.call("treefarm_interface", "addSeed", Trees.SulfurTree)
-		end
-	end
-	if not global.Wind then fs.Wind_Startup() end
-end)
-
-script.on_event(defines.events.on_tick, function(event)
-
-	fs.Timer(event)
-	if event.tick%600==1 then
-		GUI.CreateButton()
-	end
-	if not remote.interfaces["treefarm_interface"] then
-	while ((global.tf.growing[1] ~= nil) and (event.tick >= global.tf.growing[1].nextUpdate)) do
-    local removedEntity = table.remove(global.tf.growing, 1)
-    local seedTypeName
-    local newState
-	if seedTypeLookUpTable==nil then populateSeedTypeLookUpTable() end
-		if removedEntity.entity.valid then
-			seedTypeName = seedTypeLookUpTable[removedEntity.entity.name]
-			newState = removedEntity.state + 1
-			if newState <= #global.tf.seedPrototypes[seedTypeName].states then
-			local tmpPos = removedEntity.entity.position
-			local newEnt = game.surfaces.nauvis.create_entity{name = global.tf.seedPrototypes[seedTypeLookUpTable[removedEntity.entity.name]].states[newState], position = tmpPos}
-			removedEntity.entity.destroy()
-			-- debug("Old tree removed, new one placed")
-			local deltaTime = math.ceil((math.random() * global.tf.seedPrototypes[seedTypeName].randomGrowingTime + global.tf.seedPrototypes[seedTypeName].basicGrowingTime) / removedEntity.efficiency)
-			local updatedEntry =
-			{
-				entity = newEnt,
-				state = newState,
-				efficiency = removedEntity.efficiency,
-				nextUpdate = event.tick + deltaTime
-			}
-			Trees.placeSeedIntoList(updatedEntry)
-			-- debug("seed placed into list (ontick event")
+		-- Add all seeds that are not present in the 'treefarm' mod
+		for _, seed in pairs(core.treefarm.seeds()) do 
+			if not treefarm.readSeed(seed.name) then
+				treefarm.addSeed(seed)
 			end
 		end
-	end end
-end)
 
--- script.on_event(defines.events.on_player_crafted_item, function(event)
-	-- fs.CraftedItemsLogger(event.item_stack.name, event.item_stack.count)
-	-- fs.LoggerCount("PlayerCrafted", event.item_stack.count)
--- end)
+		-- Save the interface object
+		external.treefarm = treefarm
 
--- script.on_event(defines.events.on_player_mined_item, function(event)
-	-- fs.MinedItemsLogger(event.item_stack.name, event.item_stack.count)
-	-- fs.LoggerCount("PlayerMined", event.item_stack.count)
--- end)
+	else 
+		-- Enable build-in tree module
+		core.setup_treefarm()
+	end
 
--- script.on_event(defines.events.on_robot_mined, function(event)
-	-- fs.RobotMinedItemsLogger(event.item_stack.name, event.item_stack.count)
-	-- fs.LoggerCount("RobotMined", event.item_stack.count)
--- end)
+	if not global.Wind then 
+		fs.Wind_Startup() 
+	end
+end
 
--- script.on_event(defines.events.on_entity_died, function(event)
-	-- fs.EntityDiedLogger(event.entity.name)
-	-- fs.LoggerCount("EntityDied", 1)
--- end)
+function core.on_tick(event)
+	-- Update the timer
+	fs.Timer(event)
+	
+	-- (Re)Create/Update the gui every 10 seconds?
+	if event.tick % 600 == 1 then
+		GUI.CreateButton()
+	end
 
--- script.on_event(defines.events.on_sector_scanned, function(event)
-	-- fs.SectorScannedLogger()
-	-- fs.LoggerCount("SectorScanned", 1)
--- end)
+	-- If the treefarm mod is not enabled
+	if not external.treefarm then
+		core.treefarm.on_tick(event)
+	end
+end
 
--- script.on_event(defines.events.on_marked_for_deconstruction, function(event)
-	-- fs.MarkedForDeconstructionLogger(event.entity.name)
-	-- fs.LoggerCount("MarkedForDeconstruction", 1)
--- end)
+function core.on_built_entity(event)
+	-- If the treefarm mod is not enabled
+	if not external.treefarm then
+		core.treefarm.on_built_entity(event)
+	end
+end
 
--- script.on_event(defines.events.on_canceled_deconstruction, function(event)
-	-- fs.CanceledDeconstructionLogger(event.entity.name)
-	-- fs.LoggerCount("CanceledDeconstruction", 1)
--- end)
+function core.on_robot_built_entity(event)
+	-- If the treefarm mod is not enabled
+	if not external.treefarm then
 
--- script.on_event(defines.events.on_picked_up_item, function(event)
-	-- fs.PickedItemsLogger(event.item_stack.name, event.item_stack.count)
-	-- fs.LoggerCount("PickedUpItem", event.item_stack.count)
--- end)
+		-- We can use the same handler as if a player has placed the tree
+		core.treefarm.on_built_entity(event)
+	end
+end
 
-script.on_event(defines.events.on_built_entity, function(event)
-	-- fs.BuildEntityLogger(event.created_entity.name)
-	-- fs.LoggerCount("PlayerBuilt", 1)
-local player = game.players[event.player_index]
-	if not remote.interfaces["treefarm_interface"] then
-	if event.created_entity.type == "tree" then
-	if seedTypeLookUpTable==nil then populateSeedTypeLookUpTable() end
-	-- -- debug("tree created (player "..tostring(event.player_index)..")")
-    local currentSeedTypeName = seedTypeLookUpTable[event.created_entity.name]
-		if currentSeedTypeName ~= nil then
-		-- -- debug("currentSeedTypeName ~= nil")
-		local newEfficiency = Trees.calcEfficiency(event.created_entity, false)
-		local deltaTime = math.ceil((math.random() * global.tf.seedPrototypes[currentSeedTypeName].randomGrowingTime + global.tf.seedPrototypes[currentSeedTypeName].basicGrowingTime) / newEfficiency)
-		local nextUpdateIn = event.tick + deltaTime
-		local entInfo =
-		{
-			entity = event.created_entity,
-			state = 1,
-			efficiency = newEfficiency,
-			nextUpdate = nextUpdateIn
-		}
-		Trees.placeSeedIntoList(entInfo)
-		-- -- debug("seed placed into list (player "..tostring(event.player_index)..")")
-		return
-		-- -- debug("return")
-		end
-	end end
-end)
 
-script.on_event(defines.events.on_robot_built_entity, function(event)
-	-- fs.RobotBuildEntityLogger(event.created_entity.name)
-	-- fs.LoggerCount("RobotBuilt", 1)
-local player = game.players[1]
-	if not remote.interfaces["treefarm_interface"] then
-	if event.created_entity.type == "tree" then
-	if seedTypeLookUpTable==nil then populateSeedTypeLookUpTable() end
-	-- -- debug("tree created (Robot)")
-    local currentSeedTypeName = seedTypeLookUpTable[event.created_entity.name]
-		if currentSeedTypeName ~= nil then
-		-- -- debug("currentSeedTypeName ~= nil")
-		local newEfficiency = Trees.calcEfficiency(event.created_entity, false)
-		local deltaTime = math.ceil((math.random() * global.tf.seedPrototypes[currentSeedTypeName].randomGrowingTime + global.tf.seedPrototypes[currentSeedTypeName].basicGrowingTime) / newEfficiency)
-		local nextUpdateIn = event.tick + deltaTime
-		local entInfo =
-		{
-			entity = event.created_entity,
-			state = 1,
-			efficiency = newEfficiency,
-			nextUpdate = nextUpdateIn
-		}
-		Trees.placeSeedIntoList(entInfo)
-		-- -- debug("seed placed into list (Robot)")
-		return
-		-- -- debug("return")
-		end
-	end end
-end)
 
--- script.on_event(defines.events.on_chunk_generated, function(event)
-	-- fs.LoggerCount("Chunks", 1)
-	-- fs.Pollution_Add_Pos(event)
-	-- if not global.Logger then fs.Startup() end
-	-- if not global.Logger.ChunkGenerated then 
-		-- global.Logger.ChunkGenerated = 1
-	-- else
-		-- global.Logger.ChunkGenerated = global.Logger.ChunkGenerated + 1
-	-- end
-	-- if -- debug_chunks then -- debug("Chunk Generated, chunks counter is now "..tostring(global.Logger.ChunkGenerated)) end
--- end)
+-- DyTech Core interface
+local iface = core:interface("dytech-core-iface")
 
-script.on_event(defines.events.on_gui_click, function(event)
-local playerIndex = event.player_index
-local player = game.players[playerIndex]
+function iface.set_enabled(name, iface)
+	dytech[name] = core:import(iface)
+end
+
+iface.register()
+
+
+-- Set the old name as the new function
+PlayerPrint = core.print
+
+
+
+
+function core.on_gui_click(event)
+	local playerIndex = event.player_index
+	local player = game.players[playerIndex]
 	-- fs.LoggerCount("GUI", 1)
 	-- debug("GUI: Player "..playerIndex.." clicked "..event.element.name)
 	if event.element.name == "DyTech-Button" then
@@ -278,7 +283,7 @@ local player = game.players[playerIndex]
 		GUI.closeGUI("Core", playerIndex)
 		GUI.showDyTechGUI(playerIndex)
 	end
-end)
+end
 
 -- [[script.on_event(defines.events.on_gui_click, function(event)
 -- local playerIndex = event.player_index

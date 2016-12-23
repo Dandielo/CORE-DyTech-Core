@@ -1,29 +1,5 @@
 module("fs", package.seeall)
 
-function Startup()
-	if not global.Logger then global.Logger = {} end
-	if not global.timer then global.timer={seconds=0, minutes=0, hours=0} end
-	if not global.Logger.CraftedItems then global.Logger.CraftedItems = {} end
-	if not global.Logger.MinedItems then global.Logger.MinedItems = {} end
-	if not global.Logger.RobotMinedItems then global.Logger.RobotMinedItems = {} end
-	if not global.Logger.EntityDied then global.Logger.EntityDied = {} end
-	if not global.Logger.MarkedForDeconstruction then global.Logger.MarkedForDeconstruction = {} end
-	if not global.Logger.CanceledDeconstruction then global.Logger.CanceledDeconstruction = {} end
-	if not global.Logger.PickedItems then global.Logger.PickedItems = {} end
-	if not global.Logger.BuildEntity then global.Logger.BuildEntity = {} end
-	if not global.Logger.RobotBuildEntity then global.Logger.RobotBuildEntity = {} end
-	if not global.TimeStamp then global.TimeStamp = {} end
-	if not global.TimeStamp.CraftedItems then global.TimeStamp.CraftedItems = {} end
-	if not global.TimeStamp.MinedItems then global.TimeStamp.MinedItems = {} end
-	if not global.TimeStamp.RobotMinedItems then global.TimeStamp.RobotMinedItems = {} end
-	if not global.TimeStamp.EntityDied then global.TimeStamp.EntityDied = {} end
-	if not global.TimeStamp.MarkedForDeconstruction then global.TimeStamp.MarkedForDeconstruction = {} end
-	if not global.TimeStamp.CanceledDeconstruction then global.TimeStamp.CanceledDeconstruction = {} end
-	if not global.TimeStamp.PickedItems then global.TimeStamp.PickedItems = {} end
-	if not global.TimeStamp.BuildEntity then global.TimeStamp.BuildEntity = {} end
-	if not global.TimeStamp.RobotBuildEntity then global.TimeStamp.RobotBuildEntity = {} end
-end
-
 function World_Call()
 	if remote.interfaces["DyTech-World"] then
 	global.Normal_Loot = {"sand","rubber-seed","sulfur-seed","resin","sulfur-wood","crystal","raw-ruby","raw-emerald","raw-sapphire","raw-topaz","raw-diamond"}
