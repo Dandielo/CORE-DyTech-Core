@@ -52,7 +52,7 @@ data:extend
             },
         },
         result = "sulfur-wood",
-	    result_count = 10
+        result_count = 10
     },
     {
         type = "recipe",
