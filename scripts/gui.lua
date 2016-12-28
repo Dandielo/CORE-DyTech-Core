@@ -1,4 +1,24 @@
 module("GUI", package.seeall)
+require "scripts/base"
+
+local gui = { }
+local gui_handlers = { }
+
+gui.handler = CallbackProxy(function(name, callback)
+	-- Register the handler
+	gui_handlers[name] = callback
+end)
+
+
+-- Functions to create the dytech gui
+
+
+-- Handles all gui events and calls registered handlers
+function gui.handle_gui_event(event)
+end
+
+
+
 
 
 function CreateButton()
@@ -113,3 +133,6 @@ function closeGUI(statement, PlayerIndex)
 		end
 	end
 end
+
+
+return gui
