@@ -115,7 +115,7 @@ function gui.build_element(parent, data)
     }
 
     -- Call the 'load' event
-    gui.handle_gui_event("on_gui_load", { element = element, player_index = gui.player_index })
+    gui.handle_gui_event("on_gui_load", { element = element, player_index = gui.player_index, tick = game.tick })
 
     -- return the created element
     return element
