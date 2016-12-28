@@ -195,10 +195,8 @@ function gui.call_refresh_event()
 end
 
 function gui.handle_time_events(tick)
-    -- Check the 'idle' timeout
-    --if gui.idle_time >= 0 then
-    do -- we want here a new block?
-
+    -- The idle timeout block! FYeah!
+    do
         -- The gui struct needs to be defined!
         assert(gui.default_gui_struct ~= nil, "If you want to disable the 'gui timeout' set the 'idle_time' to '0'!")
 
