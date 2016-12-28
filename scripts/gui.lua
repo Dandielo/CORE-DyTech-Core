@@ -1,20 +1,89 @@
 module("GUI", package.seeall)
 require "scripts/base"
+require "scripts/helpers"
 
 local gui = { }
-local gui_handlers = { }
+gui.structs = { }
+gui.handlers = { }
+gui.callstack = { }
 
 gui.handler = CallbackProxy(function(name, callback)
 	-- Register the handler
-	gui_handlers[name] = callback
+	gui.handlers[name] = callback
 end)
 
 
 -- Functions to create the dytech gui
+function gui.create(struct)
+	-- Save the given gui struct
+	gui.structs[struct.name] = struct
+end
 
+function gui.close(name)
+	gui.flow.destroy()
+	gui.flow = nil
+end
+
+function gui.show(name)
+	-- Close the current gui
+	gui.close()
+
+	-- Create a new flow
+	gui.flow = gui.root.add 
+	{
+		type = "flow", 
+		name = "dytech-gui-flow"
+		direction = "vertical", 
+	}
+
+	-- Create a new frame
+	gui.frame = gui.flow.add
+	{
+		type = "frame", 
+		name = "dytech-gui-frame", 
+		direction = "vertical", 
+
+		caption = { "dytech-gui" }
+	}
+
+	-- Create the gui from the struct
+	gui.build_struct(gui.frame, gui.structs[name] or { })
+
+	-- Returns the new frame
+	return gui.frame
+end
+
+function gui.build_element(parent, data)
+	return parent.add {
+		type = data.type,
+		name = data.name,
+		direction = data.direction,
+
+		-- If nothing is set the this does nothing
+		caption = data.caption
+	}
+end
+
+function gui.build_struct(parent, struct)
+	for _, element_data in pairs(struct) do
+		local element = gui.build_element(parent, element_data)
+
+		-- If we got child elements build them to
+		if element_data.childs then
+			gui.build_struct(element, element_data.childs)
+		end
+	end
+
+	-- Add a 'back' button?
+end
 
 -- Handles all gui events and calls registered handlers
 function gui.handle_gui_event(event)
+	local player = game.players[event.player_index]
+
+	-- Check if the player is valid and connected
+	if player.valid and player.connected then
+    end
 end
 
 
@@ -93,19 +162,19 @@ adder.add({type="button", name="DyTech-Close-Button", caption={"close"}})
 end
 
 function showDyTechDebugGUI(PlayerIndex)
-local player = game.players[PlayerIndex]
-player.gui.top.add({type="flow", direction="vertical", name="mainDyTechDebugFlow"})
-player.gui.top["mainDyTechDebugFlow"].add({type="frame", direction="vertical", name="mainDyTechDebugFrame", caption={"dytech--- debug-gui"}})
-adder = player.gui.top["mainDyTechDebugFlow"]["mainDyTechDebugFrame"]
+	local player = game.players[PlayerIndex]
+	player.gui.top.add({type="flow", direction="vertical", name="mainDyTechDebugFlow"})
+	player.gui.top["mainDyTechDebugFlow"].add({type="frame", direction="vertical", name="mainDyTechDebugFrame", caption={"dytech--- debug-gui"}})
+	adder = player.gui.top["mainDyTechDebugFlow"]["mainDyTechDebugFrame"]
 
-adder.add({type="button", name="DyTech-Debug-Dump-Button", caption="Data Dump"})
-adder.add({type="button", name="DyTech-Debug-TestResource-Button", caption="Test Resources (500x500)"})
-adder.add({type="button", name="DyTech-Debug-TestItems-Button", caption="Give -- debug items"})
-adder.add({type="button", name="DyTech-Debug-Reset-Button", caption="Reset all"})
-adder.add({type="button", name="DyTech-Debug-Technology-Button", caption="Research All"})
-adder.add({type="button", name="DyTech-Debug-Evolution-0-Button", caption="Set Evolution to 0"})
-adder.add({type="button", name="DyTech-Debug-Evolution-1-Button", caption="Set Evolution to 1"})
-adder.add({type="button", name="DyTech-Close-Button", caption={"close"}})
+	adder.add({type="button", name="DyTech-Debug-Dump-Button", caption="Data Dump"})
+	adder.add({type="button", name="DyTech-Debug-TestResource-Button", caption="Test Resources (500x500)"})
+	adder.add({type="button", name="DyTech-Debug-TestItems-Button", caption="Give -- debug items"})
+	adder.add({type="button", name="DyTech-Debug-Reset-Button", caption="Reset all"})
+	adder.add({type="button", name="DyTech-Debug-Technology-Button", caption="Research All"})
+	adder.add({type="button", name="DyTech-Debug-Evolution-0-Button", caption="Set Evolution to 0"})
+	adder.add({type="button", name="DyTech-Debug-Evolution-1-Button", caption="Set Evolution to 1"})
+	adder.add({type="button", name="DyTech-Close-Button", caption={"close"}})
 end
 
 function closeGUI(statement, PlayerIndex)
