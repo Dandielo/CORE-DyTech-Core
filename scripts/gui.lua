@@ -17,11 +17,11 @@ gui.handlers = {
 
 -- Idle timeout (after which the gui will reset to the base state: control.lua@196) 
 -- * if you set '0' it will disable the gui reset
-gui.idle_time = 0
+gui.idle_time = 600
 gui.idle_timeout = { } -- Each player has it's own
 
 -- Refresh timeout (after what time should elements get a 'refresh' event)
-gui.refresh_time = 60
+gui.refresh_time = 180
 gui.refresh_timeout = 0
 
 
