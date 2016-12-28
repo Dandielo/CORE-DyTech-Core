@@ -1,6 +1,5 @@
 module("fs", package.seeall)
 
-
 function World_Call()
 	if remote.interfaces["DyTech-World"] then
 	global.Normal_Loot = {"sand","rubber-seed","sulfur-seed","resin","sulfur-wood","crystal","raw-ruby","raw-emerald","raw-sapphire","raw-topaz","raw-diamond"}

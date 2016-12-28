@@ -3,6 +3,7 @@ require "scripts/functions"
 
 
 function showCoreGUI(PlayerIndex)
+
 	local player = game.players[PlayerIndex]
 	player.gui.top.add({type="flow", direction="horizontal", name="mainDyTechCoreFlow"})
 	player.gui.top["mainDyTechCoreFlow"].add({type="frame", direction="vertical", name="mainDyTechCoreFrame", caption={"dytech-core"}})
@@ -22,4 +23,3 @@ local gui = { }
 
 
 return gui 
-
