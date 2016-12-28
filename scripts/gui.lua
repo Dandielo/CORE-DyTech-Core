@@ -6,7 +6,7 @@ require "scripts/helpers"
 local gui = { }
 gui.structs = { }
 gui.handlers = { }
-gui.callstack = { }
+
 
 gui.handle = CallbackProxy(function(name, callback)
 	-- Prepare the name 
@@ -87,7 +87,7 @@ function gui.build_struct(parent, struct)
 		end
 	end
 
-	-- Add a 'back' button?
+	-- Add a 'back' button by default?
 end
 
 
