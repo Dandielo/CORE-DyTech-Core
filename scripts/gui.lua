@@ -50,16 +50,6 @@ function gui.show(player, struct_name)
 		direction = "vertical", 
 	}
 
-	-- Create a new frame
-	-- gui.frame = gui.flow.add
-	-- {
-	-- 	type = "frame", 
-	-- 	name = "dytech-gui-frame", 
-	-- 	direction = "vertical", 
-
-	-- 	caption = { "dytech-gui" }
-	-- }
-
 	-- Create gui from a struct
 	gui.build_struct(gui.flow, gui.structs[struct_name] or { })
 

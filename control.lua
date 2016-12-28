@@ -200,7 +200,7 @@ function core.on_tick(event)
     
     -- (Re)Create/Update the gui every 10 seconds?
     if event.tick % 600 == 1 then
-        core.each_player(core.gui.show, "dytech-menu")
+        core.each_player(core.gui.show, "dytech-menu-button")
         -- GUI.CreateButton()
     end
 
@@ -445,8 +445,18 @@ iface.register()
 -- end)
 core.gui.create 
 {
+    type = "button",
+    name = "dytech-menu-button",
+    open = "dytech-menu",
+
+    caption = { "dytech-button" },
+}
+
+core.gui.create 
+{
     type = "frame",
     name = "dytech-menu",
+    direction = "vertical",
     caption = { "dytech-gui" },
 
     -- A frame can define child elements
@@ -455,7 +465,17 @@ core.gui.create
             type = "button",
             name = "dytech-debug-button",
             open = "dytech-debug",
-            caption = { "dytech-debug" }
+
+            caption = { "dytech-debug" },
+        },
+        
+        -- Back button
+        {
+            type = "button",
+            name = "dytech-back-button",
+            open = "dytech-menu-button",
+
+            caption = { "dytech-back" },
         }
     }
 }
@@ -464,6 +484,7 @@ core.gui.create
 {
     type = "frame",
     name = "dytech-debug",
+    direction = "vertical",
     caption = { "dytech-debug" },
 
     -- A frame can define child elements
@@ -471,7 +492,17 @@ core.gui.create
         {
             type = "button",
             name = "dytech-debug-dump",
-            caption = { "dytech-debug-dump" }
+            caption = { "dytech-debug-dump" },
+        },
+
+        -- Back button
+        {
+            type = "button",
+            name = "dytech-back-button",
+            open = "dytech-menu",
+
+            caption = { "dytech-back" },
         }
     }
 }
+
