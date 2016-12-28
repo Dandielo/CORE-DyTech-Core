@@ -191,10 +191,8 @@ function core.on_tick(event)
     -- Update the timer
     fs.Timer(event)
     
-    -- If the gui timeouts, reset it
-    if core.gui.check_timeout(event.tick) then
-        core.each_player_index(core.gui.show, "dytech-menu-button")
-    end
+    -- Gui timed events
+    core.gui.handle_time_events(event.tick)
 
     -- If the treefarm mod is not enabled
     if not external.treefarm then
