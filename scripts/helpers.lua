@@ -29,3 +29,13 @@ function initialize_table(target, source)
 	return target
 end
 
+function stack() 
+	return setmetatable({ list = { } }, {
+		push = function(self, value)
+			table.insert(self.list, value)
+		end,
+		pop = function(self)
+			return table.remove(self.list)
+		end
+	})
+end

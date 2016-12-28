@@ -2,12 +2,16 @@ module("GUI", package.seeall)
 require "scripts/base"
 require "scripts/helpers"
 
+
 local gui = { }
 gui.structs = { }
 gui.handlers = { }
 gui.callstack = { }
 
-gui.handler = CallbackProxy(function(name, callback)
+gui.handle = CallbackProxy(function(name, callback)
+	-- Prepare the name 
+	name = name:gsub("_", "-") 
+
 	-- Register the handler
 	gui.handlers[name] = callback
 end)
@@ -16,44 +20,63 @@ end)
 -- Functions to create the dytech gui
 function gui.create(struct)
 	-- Save the given gui struct
-	gui.structs[struct.name] = struct
+	gui.structs[struct.name] = { struct }
+end
+
+function gui.set_player(player)
+	if gui.player ~= player then
+		gui.root = player.gui.top
+		gui.player = player
+	end
 end
 
 function gui.close(name)
-	gui.flow.destroy()
-	gui.flow = nil
+	if gui.flow then
+		gui.flow.destroy()
+		gui.flow = nil
+	end
 end
 
-function gui.show(name)
-	-- Close the current gui
+function gui.show(player, struct_name)
+	-- Close the current gui and set the new receiver
+	gui.set_player(player)
 	gui.close()
 
 	-- Create a new flow
 	gui.flow = gui.root.add 
 	{
 		type = "flow", 
-		name = "dytech-gui-flow"
+		name = "dytech-gui-flow",
 		direction = "vertical", 
 	}
 
 	-- Create a new frame
-	gui.frame = gui.flow.add
-	{
-		type = "frame", 
-		name = "dytech-gui-frame", 
-		direction = "vertical", 
+	-- gui.frame = gui.flow.add
+	-- {
+	-- 	type = "frame", 
+	-- 	name = "dytech-gui-frame", 
+	-- 	direction = "vertical", 
 
-		caption = { "dytech-gui" }
-	}
+	-- 	caption = { "dytech-gui" }
+	-- }
 
-	-- Create the gui from the struct
-	gui.build_struct(gui.frame, gui.structs[name] or { })
+	-- Create gui from a struct
+	gui.build_struct(gui.flow, gui.structs[struct_name] or { })
 
-	-- Returns the new frame
-	return gui.frame
+	-- Returns the new flow
+	return gui.flow
 end
 
-function gui.build_element(parent, data)
+function gui.build_element(parent, data) 
+	if data.open and gui.structs[data.open] then
+		local gui_struct = data.open
+
+		-- Create a handler for the given element
+		gui.handle[data.name] = function(event)
+			gui.show(game.players[event.player_index], gui_struct)
+		end
+	end
+
 	return parent.add {
 		type = data.type,
 		name = data.name,
@@ -77,12 +100,18 @@ function gui.build_struct(parent, struct)
 	-- Add a 'back' button?
 end
 
+
 -- Handles all gui events and calls registered handlers
 function gui.handle_gui_event(event)
 	local player = game.players[event.player_index]
 
 	-- Check if the player is valid and connected
 	if player.valid and player.connected then
+		local handler = gui.handlers[event.element.name]
+		if handler then
+			-- Call the handler associated with the gui element
+			handler(event)
+		end
     end
 end
 

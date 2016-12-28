@@ -1,5 +1,5 @@
 -- Create the proxy object for the given destination info
-local CallbackProxy = function(func)
+CallbackProxy = function(func)
 	return setmetatable({ }, { 
 		__newindex = function(_, name, callback)
 			func(name, callback)
@@ -7,7 +7,7 @@ local CallbackProxy = function(func)
 	})
 end
 
-local CallProxy = function(func)
+CallProxy = function(func)
 	return setmetatable({ }, { 
 		__index = function(self, name)
 			self[name] = func(name)

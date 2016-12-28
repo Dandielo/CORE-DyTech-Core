@@ -27,6 +27,12 @@ function core.log(msg, ...)
     end
 end
 
+function core.each_player(func, ...)
+    for _, player in pairs(game.players) do
+        func(player, ...)
+    end
+end
+
 function core.print(message, ...)
     for _, player in pairs(game.players) do
         player.print(message:format(...))
@@ -194,7 +200,8 @@ function core.on_tick(event)
     
     -- (Re)Create/Update the gui every 10 seconds?
     if event.tick % 600 == 1 then
-        GUI.CreateButton()
+        core.each_player(core.gui.show, "dytech-menu")
+        -- GUI.CreateButton()
     end
 
     -- If the treefarm mod is not enabled
@@ -215,59 +222,59 @@ function core.on_gui_click(event)
     -- Handles all gui events of DyTech
     core.gui.handle_gui_event(event)
 
-    local playerIndex = event.player_index
-    local player = game.players[playerIndex]
-    -- fs.LoggerCount("GUI", 1)
-    -- debug("GUI: Player "..playerIndex.." clicked "..event.element.name)
-    if event.element.name == "DyTech-Button" then
-        player.gui.top["DyTech-Button"].destroy()
-        GUI.showDyTechGUI(playerIndex)
-    elseif event.element.name == "DyTech-Debug-Button" then
-        GUI.closeGUI("DyTech", playerIndex)
-        GUI.showDyTechDebugGUI(playerIndex)
-    elseif event.element.name == "DyTech-Debug-Dump-Button" then
-        GUI.closeGUI("All", playerIndex)
-        GUI.CreateButton()
-        -- remote.call("DyTech-Core", "Logger")
-        -- if remote.interfaces["DyTech-Dynamics"] then remote.call("DyTech-Dynamics", "DataDump") end
-        -- if remote.interfaces["DyTech-Machine"] then remote.call("DyTech-Machine", "DataDump") end
-        -- if remote.interfaces["DyTech-Power"] then remote.call("DyTech-Power", "DataDump") end
-        -- if remote.interfaces["DyTech-War"] then remote.call("DyTech-War", "DataDump") end
-        -- if remote.interfaces["DyTech-World"] then remote.call("DyTech-World", "Logger") end
-    elseif event.element.name == "DyTech-Debug-TestItems-Button" then
-        GUI.closeGUI("All", playerIndex)
-        GUI.CreateButton()
-        RemoteCalls.TestMapStart(playerIndex)
-    elseif event.element.name == "DyTech-Debug-TestResource-Button" then
-        GUI.closeGUI("All", playerIndex)
-        GUI.CreateButton()
-        RemoteCalls.CheckOreRatio(500, playerIndex)
-    elseif event.element.name == "DyTech-Debug-Reset-Button" then
-        GUI.closeGUI("All", playerIndex)
-        GUI.CreateButton()
-        remote.call("DyTech-Core", "ResetAll")
-    elseif event.element.name == "DyTech-Debug-Technology-Button" then
-        GUI.closeGUI("All", playerIndex)
-        GUI.CreateButton()
-        fs.ResearchAll()
-    elseif event.element.name == "DyTech-Debug-Evolution-0-Button" then
-        GUI.closeGUI("All", playerIndex)
-        GUI.CreateButton()
-        game.evolution_factor = 0
-    elseif event.element.name == "DyTech-Debug-Evolution-1-Button" then
-        GUI.closeGUI("All", playerIndex)
-        GUI.CreateButton()
-        game.evolution_factor = 1
-    elseif event.element.name == "DyTech-Close-Button" then
-        GUI.closeGUI("All", playerIndex)
-        GUI.CreateButton()
-    elseif event.element.name == "DyTech-Core-Button" then
-        GUI.closeGUI("All", playerIndex)
-        Core_GUI.showCoreGUI(playerIndex)
-    elseif event.element.name == "DyTech-Core-Back-Button" then
-        GUI.closeGUI("Core", playerIndex)
-        GUI.showDyTechGUI(playerIndex)
-    end
+    -- local playerIndex = event.player_index
+    -- local player = game.players[playerIndex]
+    -- -- fs.LoggerCount("GUI", 1)
+    -- -- debug("GUI: Player "..playerIndex.." clicked "..event.element.name)
+    -- if event.element.name == "DyTech-Button" then
+    --     player.gui.top["DyTech-Button"].destroy()
+    --     GUI.showDyTechGUI(playerIndex)
+    -- elseif event.element.name == "DyTech-Debug-Button" then
+    --     GUI.closeGUI("DyTech", playerIndex)
+    --     GUI.showDyTechDebugGUI(playerIndex)
+    -- elseif event.element.name == "DyTech-Debug-Dump-Button" then
+    --     GUI.closeGUI("All", playerIndex)
+    --     GUI.CreateButton()
+    --     -- remote.call("DyTech-Core", "Logger")
+    --     -- if remote.interfaces["DyTech-Dynamics"] then remote.call("DyTech-Dynamics", "DataDump") end
+    --     -- if remote.interfaces["DyTech-Machine"] then remote.call("DyTech-Machine", "DataDump") end
+    --     -- if remote.interfaces["DyTech-Power"] then remote.call("DyTech-Power", "DataDump") end
+    --     -- if remote.interfaces["DyTech-War"] then remote.call("DyTech-War", "DataDump") end
+    --     -- if remote.interfaces["DyTech-World"] then remote.call("DyTech-World", "Logger") end
+    -- elseif event.element.name == "DyTech-Debug-TestItems-Button" then
+    --     GUI.closeGUI("All", playerIndex)
+    --     GUI.CreateButton()
+    --     RemoteCalls.TestMapStart(playerIndex)
+    -- elseif event.element.name == "DyTech-Debug-TestResource-Button" then
+    --     GUI.closeGUI("All", playerIndex)
+    --     GUI.CreateButton()
+    --     RemoteCalls.CheckOreRatio(500, playerIndex)
+    -- elseif event.element.name == "DyTech-Debug-Reset-Button" then
+    --     GUI.closeGUI("All", playerIndex)
+    --     GUI.CreateButton()
+    --     remote.call("DyTech-Core", "ResetAll")
+    -- elseif event.element.name == "DyTech-Debug-Technology-Button" then
+    --     GUI.closeGUI("All", playerIndex)
+    --     GUI.CreateButton()
+    --     fs.ResearchAll()
+    -- elseif event.element.name == "DyTech-Debug-Evolution-0-Button" then
+    --     GUI.closeGUI("All", playerIndex)
+    --     GUI.CreateButton()
+    --     game.evolution_factor = 0
+    -- elseif event.element.name == "DyTech-Debug-Evolution-1-Button" then
+    --     GUI.closeGUI("All", playerIndex)
+    --     GUI.CreateButton()
+    --     game.evolution_factor = 1
+    -- elseif event.element.name == "DyTech-Close-Button" then
+    --     GUI.closeGUI("All", playerIndex)
+    --     GUI.CreateButton()
+    -- elseif event.element.name == "DyTech-Core-Button" then
+    --     GUI.closeGUI("All", playerIndex)
+    --     Core_GUI.showCoreGUI(playerIndex)
+    -- elseif event.element.name == "DyTech-Core-Back-Button" then
+    --     GUI.closeGUI("Core", playerIndex)
+    --     GUI.showDyTechGUI(playerIndex)
+    -- end
 end
 
 -- [[script.on_event(defines.events.on_gui_click, function(event)
@@ -436,4 +443,35 @@ iface.register()
     -- end
     
 -- end)
+core.gui.create 
+{
+    type = "frame",
+    name = "dytech-menu",
+    caption = { "dytech-gui" },
 
+    -- A frame can define child elements
+    childs = {
+        {
+            type = "button",
+            name = "dytech-debug-button",
+            open = "dytech-debug",
+            caption = { "dytech-debug" }
+        }
+    }
+}
+
+core.gui.create 
+{
+    type = "frame",
+    name = "dytech-debug",
+    caption = { "dytech-debug" },
+
+    -- A frame can define child elements
+    childs = {
+        {
+            type = "button",
+            name = "dytech-debug-dump",
+            caption = { "dytech-debug-dump" }
+        }
+    }
+}
