@@ -1,7 +1,5 @@
 require "config"
-require "scripts/core-gui"
 require "scripts/functions"
-require "scripts/gui"
 require "scripts/remote-calls"
 
 require "scripts/base"
@@ -12,7 +10,7 @@ local dytech = { }
 local external = { }
 
 -- DyTech Core mod object
-local core = DyTechMod("Core")
+core = DyTechMod("Core")
 
 -- Load the treefarm script info the core mod
 core.gui = require "scripts/gui"
@@ -30,6 +28,12 @@ end
 function core.each_player(func, ...)
     for _, player in pairs(game.players) do
         func(player, ...)
+    end
+end
+
+function core.each_player_index(func, ...)
+    for player_index in pairs(game.players) do
+        func(player_index, ...)
     end
 end
 
@@ -124,17 +128,6 @@ function core.load()
     if not external.treefarm then
         core.treefarm.init()
     end
-    -- core.log "Loading DyTech mods..." 
-
-    -- -- For each enabled mod call it's 'load' interface
-    -- for mod in pairs(dytech) do
-    --  core.log("- " .. mod .. " is enabled")
-    -- end
-
-    -- -- Add core to the dytech mods table
-    -- dytech.core = core
-
-    -- -- 
 end
 
 function core.init()
@@ -200,7 +193,7 @@ function core.on_tick(event)
     
     -- (Re)Create/Update the gui every 10 seconds?
     if event.tick % 600 == 1 then
-        core.each_player(core.gui.show, "dytech-menu-button")
+        core.each_player_index(core.gui.show, "dytech-menu-button")
         -- GUI.CreateButton()
     end
 
@@ -220,7 +213,7 @@ PlayerPrint = core.print
 
 function core.on_gui_click(event)
     -- Handles all gui events of DyTech
-    core.gui.handle_gui_event(event)
+    core.gui.handle_gui_event("on_gui_click", event)
 
     -- local playerIndex = event.player_index
     -- local player = game.players[playerIndex]
@@ -466,33 +459,8 @@ core.gui.create
 
     caption = { "dytech-gui.menu-title" },
 
-    -- A frame can define child elements
-    childs = {
-        {
-            type = "button",
-            name = "dytech-debug-button",
-            open = "dytech-debug",
-
-            caption = { "dytech-gui.debug-button" },
-        },
-    }
+    -- A frame can define child elements (or a gui can append childs to it)
+    childs = { }
 }
 
-core.gui.create 
-{
-    type = "frame",
-    name = "dytech-debug",
-    parent = "dytech-menu",
-    direction = "vertical",
-    caption = { "dytech-gui.debug-title" },
-
-    -- A frame can define child elements
-    childs = {
-        {
-            type = "button",
-            name = "dytech-debug-dump",
-            caption = { "dytech-gui.debug-dump-button" },
-        },
-    }
-}
-
+require "scripts.core-gui"

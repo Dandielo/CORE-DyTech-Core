@@ -1,25 +1,91 @@
-module("Core_GUI", package.seeall)
 require "scripts/functions"
 
 
-function showCoreGUI(PlayerIndex)
+-- for name, table in pairs(global.LoggerCount) do
+--  adder1.add({type="label", name="", caption={name, table}})
+-- end
 
-	local player = game.players[PlayerIndex]
-	player.gui.top.add({type="flow", direction="horizontal", name="mainDyTechCoreFlow"})
-	player.gui.top["mainDyTechCoreFlow"].add({type="frame", direction="vertical", name="mainDyTechCoreFrame", caption={"dytech-core"}})
-	player.gui.top["mainDyTechCoreFlow"].add({type="frame", direction="vertical", name="mainDyTechCoreFrame1", caption={"dytech-core-stats"}})
-	adder = player.gui.top["mainDyTechCoreFlow"]["mainDyTechCoreFrame"]
-	adder1 = player.gui.top["mainDyTechCoreFlow"]["mainDyTechCoreFrame1"]
-	adder.add({type="button", name="DyTech-Core-Back-Button", caption={"back"}})
-	-- fs.Pollution_Check()
-	-- adder1.add({type="label", name="", caption={"pollution", math.floor(global.Pollution)}})
-	-- for name, table in pairs(global.LoggerCount) do
-	-- 	adder1.add({type="label", name="", caption={name, table}})
-	-- end
+
+core.gui.append
+{
+    type = "button",
+    name = "dytech-core-button",
+    open = "dytech-core-flow",
+    parent = "dytech-menu",
+
+    caption = { "dytech-gui.core-button" },
+}
+
+core.gui.create 
+{
+    type = "flow",
+    name = "dytech-core-flow",
+    direction = "horizontal",
+
+    -- A frame can define child elements
+    childs = {
+        {
+            type = "frame",
+            name = "dytech-core-menu",
+            parent = "dytech-menu",
+            direction = "vertical",
+            
+            caption = { "dytech-gui.core-title" },
+            childs = { 
+                -- Child elements
+            }
+        },
+        {
+            type = "frame",
+            name = "dytech-core-stats",
+            direction = "vertical",
+            
+            caption = { "dytech-gui.core-stats" },
+            childs = { 
+                {
+                    type = "label",
+                    name = "dytech-core-stats-total-pollution",
+                },
+                {
+                    type = "label",
+                    name = "dytech-core-stats-chunk-pollution",
+                },
+            }
+        },
+    }
+}
+
+
+-- 
+-- Sets the caption on the total pollution label
+function core.gui.loaded.dytech_core_stats_total_pollution(event)
+    local pollution = 0
+
+    for chunk in game.surfaces.nauvis.get_chunks() do
+        local tile_x = chunk.x * 32 + 16
+        local tile_y = chunk.y * 32 + 16
+
+        pollution = pollution + game.surfaces.nauvis.get_pollution { tile_x, tile_y }
+    end
+    
+    -- Set the caption
+    event.element.caption = { "dytech-gui.core-stats-total-pollution", pollution }
 end
 
-local gui = { }
+-- 
+-- Sets the caption on the chunk pollution label
+function core.gui.loaded.dytech_core_stats_chunk_pollution(event)
+    local pollution = 0
+    local chunk_num = 0
 
+    for chunk in game.surfaces.nauvis.get_chunks() do
+        local tile_x = chunk.x * 32 + 16
+        local tile_y = chunk.y * 32 + 16
 
-
-return gui 
+        chunk_num = chunk_num + 1
+        pollution = pollution + game.surfaces.nauvis.get_pollution { tile_x, tile_y }
+    end
+    
+    -- Set the caption
+    event.element.caption = { "dytech-gui.core-stats-chunk-pollution", pollution / chunk_num }
+end
