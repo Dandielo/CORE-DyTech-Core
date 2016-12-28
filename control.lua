@@ -452,4 +452,5 @@ core.gui.create
 core.gui.default "dytech-menu-button"
 
 -- Add GUI scripts
-require "scripts.core-gui"
+require "scripts.gui-core"
+require "scripts.gui-debug"

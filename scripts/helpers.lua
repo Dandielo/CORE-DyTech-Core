@@ -1,5 +1,4 @@
 
-
 function set_if_null(table, field, value) 
     if not table[field] then 
         table[field] = value
