@@ -393,8 +393,12 @@ function iface.set_enabled(name, iface)
     dytech[name] = core:import(iface)
 end
 
+function iface.gui_append(struct)
+    core.gui.append(struct)
+end
+
 function iface.gui_create(struct)
-    -- core.gui.create(struct)
+    core.gui.create(struct)
 end
 
 function iface.is_debug()
@@ -457,7 +461,9 @@ core.gui.create
 {
     type = "frame",
     name = "dytech-menu",
+    parent = "dytech-menu-button",
     direction = "vertical",
+
     caption = { "dytech-gui.menu-title" },
 
     -- A frame can define child elements
@@ -469,15 +475,6 @@ core.gui.create
 
             caption = { "dytech-gui.debug-button" },
         },
-
-        -- Back button
-        {
-            type = "button",
-            name = "dytech-back-button",
-            open = "dytech-menu-button",
-
-            caption = { "dytech-gui.back-button" },
-        }
     }
 }
 
@@ -485,6 +482,7 @@ core.gui.create
 {
     type = "frame",
     name = "dytech-debug",
+    parent = "dytech-menu",
     direction = "vertical",
     caption = { "dytech-gui.debug-title" },
 
@@ -495,15 +493,6 @@ core.gui.create
             name = "dytech-debug-dump",
             caption = { "dytech-gui.debug-dump-button" },
         },
-
-        -- Back button
-        {
-            type = "button",
-            name = "dytech-back-button",
-            open = "dytech-menu",
-
-            caption = { "dytech-gui.back-button" },
-        }
     }
 }
 

@@ -16,11 +16,23 @@ gui.handle = CallbackProxy(function(name, callback)
 	gui.handlers[name] = callback
 end)
 
-
 -- Functions to create the dytech gui
 function gui.create(struct)
 	-- Save the given gui struct
 	gui.structs[struct.name] = { struct }
+end
+
+function gui.append(struct)
+	-- Get the parent (the parent declares the parent structure that will get this struct as a child)
+	local parent = struct.parent
+	struct.parent = nil
+
+	-- Get the childs
+	local childs = gui.structs[parent][1].childs or { }
+	table.insert(childs, struct)
+
+	-- Set the new childs
+	gui.structs[parent][1].childs = childs
 end
 
 function gui.set_player(player)
@@ -65,6 +77,14 @@ function gui.build_element(parent, data)
 		gui.handle[data.name] = function(event)
 			gui.show(game.players[event.player_index], gui_struct)
 		end
+
+	elseif data.proxy then
+		local proxy_data = data.proxy
+
+		-- Create a handler for the given element
+		gui.handle[data.name] = function(event)
+			remote.call(proxy_data[1], proxy_data[2], event)
+		end
 	end
 
 	return parent.add {
@@ -85,9 +105,18 @@ function gui.build_struct(parent, struct)
 		if element_data.childs then
 			gui.build_struct(element, element_data.childs)
 		end
-	end
 
-	-- Add a 'back' button by default?
+		-- This parent node tells the gui system to create a 'Back' button to the given parent
+		if element_data.parent then
+			gui.build_element(element, {
+				type = "button",
+				name = "dytech-back-button",
+				open = element_data.parent,
+
+	            caption = { "dytech-gui.back-button" }
+			})
+		end
+	end
 end
 
 
