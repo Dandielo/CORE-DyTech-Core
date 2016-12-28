@@ -44,11 +44,11 @@ core.gui.create
             childs = { 
                 {
                     type = "label",
-                    name = "dytech-core-stats-total-pollution",
+                    name = "total-pollution",
                 },
                 {
                     type = "label",
-                    name = "dytech-core-stats-chunk-pollution",
+                    name = "chunk-pollution",
                 },
             }
         },
@@ -58,7 +58,7 @@ core.gui.create
 
 -- 
 -- Sets the caption on the total pollution label
-function core.gui.loaded.dytech_core_stats_total_pollution(event)
+function core.gui.refresh.total_pollution(event)
     local pollution = 0
 
     for chunk in game.surfaces.nauvis.get_chunks() do
@@ -69,12 +69,12 @@ function core.gui.loaded.dytech_core_stats_total_pollution(event)
     end
     
     -- Set the caption
-    event.element.caption = { "dytech-gui.core-stats-total-pollution", pollution }
+    event.element.caption = { "dytech-gui.core-stats-total-pollution", string.format("%.2f", pollution) }
 end
 
 -- 
 -- Sets the caption on the chunk pollution label
-function core.gui.loaded.dytech_core_stats_chunk_pollution(event)
+function core.gui.refresh.chunk_pollution(event)
     local pollution = 0
     local chunk_num = 0
 
@@ -87,5 +87,5 @@ function core.gui.loaded.dytech_core_stats_chunk_pollution(event)
     end
     
     -- Set the caption
-    event.element.caption = { "dytech-gui.core-stats-chunk-pollution", pollution / chunk_num }
+    event.element.caption = { "dytech-gui.core-stats-chunk-pollution", string.format("%.2f", pollution / chunk_num) }
 end

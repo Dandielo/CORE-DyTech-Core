@@ -460,4 +460,7 @@ core.gui.create
     childs = { }
 }
 
+-- Set the default gui structure (DO NOT CHANGE THIS)
+core.gui.default "dytech-menu-button"
+
 require "scripts.core-gui"

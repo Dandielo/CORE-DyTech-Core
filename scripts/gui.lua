@@ -17,11 +17,11 @@ gui.handlers = {
 
 -- Idle timeout (after which the gui will reset to the base state: control.lua@196) 
 -- * if you set '0' it will disable the gui reset
-gui.idle_time = 600
+gui.idle_time = 0
 gui.idle_timeout = { } -- Each player has it's own
 
 -- Refresh timeout (after what time should elements get a 'refresh' event)
-gui.refresh_time = 300
+gui.refresh_time = 60
 gui.refresh_timeout = 0
 
 
@@ -41,6 +41,11 @@ gui.refresh = CallbackProxy(function(name, callback)
 
     -- Register the handler
     gui.handlers.on_gui_refresh[name] = callback
+
+    -- Additional register as a 'on_gui_load' handler if none other is set
+    if not gui.handlers.on_gui_load[name] then
+        gui.handlers.on_gui_load[name] = callback
+    end
 end)
 
 gui.loaded = CallbackProxy(function(name, callback)
@@ -162,7 +167,7 @@ function gui.build_struct(player_index, parent, struct)
 
         -- This parent node tells the gui system to create a 'Back' button to the given parent
         if element_data.parent then
-            gui.build_element(element, {
+            gui.build_element(player_index, element, {
                 type = "button",
                 name = "dytech-back-button",
                 open = element_data.parent,
@@ -173,8 +178,8 @@ function gui.build_struct(player_index, parent, struct)
     end
 end
 
-function gui.update_idle_timeout(tick)
-    gui.idle_timeout = tick + gui.idle_time
+function gui.update_idle_timeout(player_index, tick)
+    gui.idle_timeout[player_index] = tick + gui.idle_time
 end
 
 function gui.call_refresh_event()
@@ -191,15 +196,30 @@ end
 
 function gui.handle_time_events(tick)
     -- Check the 'idle' timeout
-    if gui.idle_time > 0 and tick >= gui.idle_timeout then
-        -- Update the idle_timeout
-        gui.update_idle_timeout(tick)
+    --if gui.idle_time >= 0 then
+    do -- we want here a new block?
 
-        -- Show the timeout gui struct to the 
+        -- The gui struct needs to be defined!
         assert(gui.default_gui_struct ~= nil, "If you want to disable the 'gui timeout' set the 'idle_time' to '0'!")
 
-        -- For each player index in the game
-        core.each_player_index(gui.show, gui.default_gui_struct)
+        -- For each player check the current idle_timeout and reset the gui if needed
+        core.each_player_index(function(player_index)
+
+            -- Check if we need to update the gui
+            if not gui.idle_timeout[player_index] or gui.idle_time > 0 then
+
+                -- Have we an timeout?
+                if tick >= (gui.idle_timeout[player_index] or 0) then
+                    -- Update the idle_timeout
+                    gui.update_idle_timeout(player_index, tick)
+
+                    -- Show the default gui struct
+                    gui.show(player_index, gui.default_gui_struct)
+                end
+
+            end
+
+        end)
     end
 
     -- Check the 'refresh' timeout
@@ -222,7 +242,7 @@ function gui.handle_gui_event(event_name, event)
         if handler then
             if not event.no_idle_update then
                 -- If a handlers was found update the timeout counter
-                gui.update_idle_timeout(event.tick)
+                gui.update_idle_timeout(event.player_index, event.tick)
             end
 
             -- Call the handler associated with the gui element
