@@ -1,11 +1,5 @@
 require "scripts/functions"
 
-
--- for name, table in pairs(global.LoggerCount) do
---  adder1.add({type="label", name="", caption={name, table}})
--- end
-
-
 core.gui.append
 {
     type = "button",

@@ -355,19 +355,7 @@ function iface.ChangeWind()
     game.wind_orientation = direction
     PlayerPrint(tostring(game.wind_orientation))
 end
-    
-function iface.OpenMainGUI(PlayerIndex)
-    GUI.showDyTechGUI(PlayerIndex)
-end
-    
-function iface.CloseMainGUI(PlayerIndex)
-    GUI.closeGUI("DyTech", PlayerIndex)
-end
-    
-function iface.ShowMainButton()
-    GUI.CreateButton()
-end
-    
+        
 function iface.RecipesIngredients()
     RemoteCalls.RecipesIngredients()
 end
@@ -463,4 +451,5 @@ core.gui.create
 -- Set the default gui structure (DO NOT CHANGE THIS)
 core.gui.default "dytech-menu-button"
 
+-- Add GUI scripts
 require "scripts.core-gui"
