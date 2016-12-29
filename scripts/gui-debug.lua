@@ -14,7 +14,6 @@ core.gui.create
     name = "dytech-debug-flow",
     direction = "horizontal",
 
-    -- A frame can define child elements
     childs = {
         {
             type = "frame",
