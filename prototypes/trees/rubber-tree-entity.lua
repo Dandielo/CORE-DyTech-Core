@@ -1,7 +1,6 @@
 data:extend
 { -- TODO: This files needs to get some love because of the weird way we are defining tree data here
     {
-        -- Basics 
         type = "tree",
         name = "rubber-seed",
         icon = "__CORE-DyTech-Core__/graphics/rubber-tree/stage-1.png",
@@ -50,7 +49,7 @@ data:extend
         icon = "__CORE-DyTech-Core__/graphics/rubber-tree/icon.png",
         order = "b-b-g",
         flags = { "placeable-neutral", "placeable-off-grid", "breaths-air" },
-        emissions_per_tick = -0.01,
+        emissions_per_tick = -0.01, -- 100 times greater than the first tier
         max_health = 20,
 
         -- Interactions 
@@ -95,7 +94,7 @@ data:extend
         icon = "__CORE-DyTech-Core__/graphics/rubber-tree/icon.png",
         order = "b-b-g",
         flags = { "placeable-neutral", "placeable-off-grid", "breaths-air" },
-        emissions_per_tick = -0.005, -- How the yuck is this lower than the smaller version of this tree? 
+        emissions_per_tick = -0.005, -- How the yuck is this lower than the smaller version of this tree? (2 times lower than tier 2)
         max_health = math.floor(50 * 0.75), 
 
         -- Interactions 
@@ -140,7 +139,7 @@ data:extend
         icon = "__CORE-DyTech-Core__/graphics/rubber-tree/icon.png",
         order = "b-b-h",
         flags = { "placeable-neutral", "placeable-off-grid", "breaths-air" },
-        emissions_per_tick = -0.002, -- This is still smaller than the second stage of this tree
+        emissions_per_tick = -0.002, -- This is still smaller than the second stage and third stage of this tree (5 times lower than tier 2)
         max_health = 50, -- Back to not using math at all, great!
 
         -- Interactions 
