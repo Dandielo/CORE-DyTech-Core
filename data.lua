@@ -1,4 +1,5 @@
 require "config"
+require "prototypes.dytech-prototypes"
 
 -- Mandatory Stuff!
 
@@ -64,3 +65,5 @@ if Config.Technologies then
 require("prototypes.researches.player")
 --require("prototypes.researches.bots")
 end
+
+dytech:apply()

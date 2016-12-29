@@ -83,7 +83,7 @@ table.insert(data.raw["assembling-machine"]["assembling-machine-3"].fluid_boxes,
 
 -------------- Load additional updates for items and recipes
 require "prototypes.update-base-items"
-require "prototypes.update-base-recipes"
+require "prototypes.update-base-recipe-ingredients"
 
 
 -------------- Factorio technology updates
