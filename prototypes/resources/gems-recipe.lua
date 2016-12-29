@@ -51,4 +51,4 @@ data:extend
     }, 
 }
 
-AddRecipeToTech("gems", "sort-gem-ore")
+tech.add_recipe("gems", "sort-gem-ore")

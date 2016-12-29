@@ -1,4 +1,5 @@
 -- require "prototypes.override-functions"
+-- assert(ingredients == nil, "We dont want to override anything existing")
 ingredients = { }
 
 function ingredients.clear(name)
@@ -23,13 +24,42 @@ function ingredients.replace(name, old_ingredient, new_ingredient, amount)
     ingredients.add(name, new_ingredient, amount)
 end
 
-function AddRecipeToTech(Name, Recipe)
-    table.insert(data.raw["technology"][Name].effects,{type = "unlock-recipe",recipe = Recipe})
+
+-- assert(tech == nil, "We dont want to override anything existing")
+tech = { }
+
+function tech.add_recipe(name, recipe)
+    table.insert(data.raw.technology[name].effects, { 
+        type = "unlock-recipe",
+        recipe = recipe
+    })
 end
 
-function AddRequirementToTech(Name, Requirement)
-    table.insert(data.raw["technology"][Name].prerequisites, Requirement)
+function tech.add_requirement(name, requirement)
+    table.insert(data.raw.technology[name].prerequisites, requirement)
 end
+
+function tech.set_requirements(name, requirements)
+    data.raw.technology[name].prerequisites = requirements
+end
+
+function tech.add_ingredient(name, ingredient, amount)
+    table.insert(data.raw.technology[name].unit.ingredients, { ingredient, amount })
+end
+
+
+-- assert(recipe == nil, "We dont want to override anything existing")
+recipe = { }
+
+function recipe.enable(name)
+    data.raw.recipe[name].enabled = true
+end
+
+function recipe.disable(name)
+    data.raw.recipe[name].enabled = false
+end
+
+
 
 function Add_To_Recipe_Looped(Data)
     for bla,name in pairs(Data.Ingredient) do
@@ -47,10 +77,6 @@ function Add_Recipe_To_Tech_Looped(Data)
     for bla,name in pairs(Data.Recipes) do
     table.insert(data.raw["technology"][Data.Name].effects,{type = "unlock-recipe",recipe = name})
     end
-end
-
-function AddIngredientToTech(Name, Ingredient, Amount)
-    table.insert(data.raw["technology"][Name].unit.ingredients,{Ingredient, Amount})
 end
 
 function Add_Ingredient_To_Tech_Smart(Data)

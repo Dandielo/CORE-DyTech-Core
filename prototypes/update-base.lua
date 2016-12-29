@@ -84,3 +84,17 @@ table.insert(data.raw["assembling-machine"]["assembling-machine-3"].fluid_boxes,
 -------------- Load additional updates for items and recipes
 require "prototypes.update-base-items"
 require "prototypes.update-base-recipes"
+
+
+-------------- Factorio technology updates
+tech.set_requirements("fluid-handling",             { "steel-processing" })
+tech.set_requirements("steel-processing",           { "automation" })
+
+tech.add_requirement("advanced-oil-processing",     "water-cleaning")
+tech.add_requirement("sulfur-processing",           "water-cleaning")
+
+tech.add_recipe("automation",                       "iron-gear-wheel")
+
+
+-------------- Factorio recipe changes
+recipe.disable "iron-gear-wheel"

@@ -17,4 +17,4 @@ data:extend(
 }
 )
 
-AddRecipeToTech("gems","compressor")
+tech.add_recipe("gems", "compressor")

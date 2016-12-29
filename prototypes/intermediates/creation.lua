@@ -77,11 +77,11 @@ for index,name in pairs(INTERMEDIATES) do
 				if data.raw.item["machines-active"] then
 					DyTech_Core_Create_Intermediates_Tech(name.Techstuff)
 					Add_Ingredient_To_Tech_Smart(name.Techstuff)
-					AddRecipeToTech(name.Techstuff.Name , name.Name)
+					tech.add_recipe(name.Techstuff.Name , name.Name)
 					if name.Tech_Metallurgy then 
 						if data.raw.item["metallurgy-active"] then
-							for i, tech in pairs(name.Tech_Metallurgy) do
-								AddRequirementToTech(name.Techstuff.Name, tech)
+							for i, t in pairs(name.Tech_Metallurgy) do
+								tech.add_requirement(name.Techstuff.Name, t)
 							end
 						end
 					end
@@ -90,11 +90,11 @@ for index,name in pairs(INTERMEDIATES) do
 				if data.raw.item["power-active"] then
 					DyTech_Core_Create_Intermediates_Tech(name.Techstuff)
 					Add_Ingredient_To_Tech_Smart(name.Techstuff)
-					AddRecipeToTech(name.Techstuff.Name , name.Name)
+					tech.add_recipe(name.Techstuff.Name , name.Name)
 					if name.Tech_Metallurgy then 
 						if data.raw.item["metallurgy-active"] then
-							for i, tech in pairs(name.Tech_Metallurgy) do
-								AddRequirementToTech(name.Techstuff.Name, tech)
+							for i, t in pairs(name.Tech_Metallurgy) do
+								tech.add_requirement(name.Techstuff.Name, t)
 							end
 						end
 					end
@@ -103,11 +103,11 @@ for index,name in pairs(INTERMEDIATES) do
 				if data.raw.item["war-active"] then
 					DyTech_Core_Create_Intermediates_Tech(name.Techstuff)
 					Add_Ingredient_To_Tech_Smart(name.Techstuff)
-					AddRecipeToTech(name.Techstuff.Name , name.Name)
+					tech.add_recipe(name.Techstuff.Name , name.Name)
 					if name.Tech_Metallurgy then 
 						if data.raw.item["metallurgy-active"] then
-							for i, tech in pairs(name.Tech_Metallurgy) do
-								AddRequirementToTech(name.Techstuff.Name, tech)
+							for i, t in pairs(name.Tech_Metallurgy) do
+								tech.add_requirement(name.Techstuff.Name, t)
 							end
 						end
 					end
@@ -115,11 +115,11 @@ for index,name in pairs(INTERMEDIATES) do
 			else
 				DyTech_Core_Create_Intermediates_Tech(name.Techstuff)
 				Add_Ingredient_To_Tech_Smart(name.Techstuff)
-				AddRecipeToTech(name.Techstuff.Name , name.Name)
+				tech.add_recipe(name.Techstuff.Name , name.Name)
 				if name.Tech_Metallurgy then 
 					if data.raw.item["metallurgy-active"] then
-						for i, tech in pairs(name.Tech_Metallurgy) do
-							AddRequirementToTech(name.Techstuff.Name, tech)
+						for i, t in pairs(name.Tech_Metallurgy) do
+							tech.add_requirement(name.Techstuff.Name, t)
 						end
 					end
 				end		
@@ -128,18 +128,18 @@ for index,name in pairs(INTERMEDIATES) do
 		if name.AddToTech ~= nil then
 			if name.Obsolete_Without_Machine then
 				if data.raw.item["machines-active"] then
-					AddRecipeToTech(name.AddToTech , name.Name)
+					tech.add_recipe(name.AddToTech , name.Name)
 				end
 			elseif name.Obsolete_Without_Power then
 				if data.raw.item["power-active"] then
-					AddRecipeToTech(name.AddToTech , name.Name)
+					tech.add_recipe(name.AddToTech , name.Name)
 				end
 			elseif name.Obsolete_Without_War then
 				if data.raw.item["war-active"] then	
-					AddRecipeToTech(name.AddToTech , name.Name)
+					tech.add_recipe(name.AddToTech , name.Name)
 				end
 			else
-				AddRecipeToTech(name.AddToTech , name.Name)
+				tech.add_recipe(name.AddToTech , name.Name)
 			end
 		end
 	end
