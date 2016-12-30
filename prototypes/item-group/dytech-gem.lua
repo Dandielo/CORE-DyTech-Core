@@ -1,6 +1,6 @@
 data:extend
 {
-        {
+    {
         type = "item-group",
         name = "dytech-gem",
         order = "z-7-dytech-gem",
