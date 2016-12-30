@@ -20,3 +20,5 @@ end
 
 -- Tiles
 require("prototypes.tile.tiles")
+
+dytech:apply()

@@ -193,3 +193,5 @@ if Fast_Replace_Fix then
 		v.selection_box = {{-0.4, -0.35}, {0.4, 0.45}}
 	end
 end
+
+dytech:apply()

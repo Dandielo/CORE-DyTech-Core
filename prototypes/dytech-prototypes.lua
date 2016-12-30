@@ -7,6 +7,7 @@ dytech.config_values = { }
 
 -- dytech items, recipes and groups
 dytech.raw = { }
+dytech.raw.tile = { }
 dytech.raw.items = { }
 dytech.raw.fluid = { }
 dytech.raw.recipes = { }
@@ -35,5 +36,8 @@ function dytech.apply(dytech)
         for name, proto in pairs(values) do
             data.raw[type][name] = initialize_table(proto, data.raw[proto.type][proto.name] or { }) -- merge the dytech prototype with the base game type
         end
+
+        -- Reset dytech prototypes
+        dytech.raw[type] = { }
     end
 end
