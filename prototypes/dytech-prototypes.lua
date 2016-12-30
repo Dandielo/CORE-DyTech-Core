@@ -28,7 +28,7 @@ function dytech.apply(dytech)
     -- Copy all 'dytech' prototypes to the 'data' table
     for type, values in pairs(dytech.raw) do
         for name, proto in pairs(values) do
-            data.raw[type][name] = initialize_table(proto, data.raw[proto.type][proto.name] or { }) -- Merge the dytech prototype with the base game type
+            data.raw[type][name] = initialize_table(proto, data.raw[proto.type][proto.name] or { }) -- merge the dytech prototype with the base game type
         end
     end
 end
