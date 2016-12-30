@@ -3,7 +3,7 @@ require "scripts.helpers"
 -- 
 --- The global dytech prototype handler (allows for easier adding and changing of existing prototype data)
 dytech = { }
-dytech.config = { }
+dytech.config_values = { }
 
 -- dytech items, recipes and groups
 dytech.raw = { }
@@ -12,6 +12,11 @@ dytech.raw.fluid = { }
 dytech.raw.recipes = { }
 dytech.raw.technologies = { }
 
+
+-- dytech config functions to override and create config values
+function dytech.config(dytech, values)
+    dytech.config_values = initialize_table(values, dytech.config_values)
+end
 
 -- dytech extend function to easily replace existing prototypes
 function dytech.extend(dytech, values)
