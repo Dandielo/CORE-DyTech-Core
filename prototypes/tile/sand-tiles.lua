@@ -129,7 +129,8 @@ data:extend
 
         -- Speed modifiers
         walking_speed_modifier = 0.7,
-        vehicle_friction_modifier = 1.1, -- does quicksand accelerate vehicles? 
+        -- vehicle_friction_modifier = 1.1, -- does quicksand accelerate vehicles? 
+        vehicle_friction_modifier = 0.7, -- I would go with this value
 
         -- Interactions
         minable = { 
