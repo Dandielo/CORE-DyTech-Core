@@ -20,7 +20,7 @@ function dytech.extend(dytech, values)
         assert(type_values ~= nil, "Unknown data type")
 
         -- Save a new prototype based on the 'registered' prototype 
-        type_values[proto.name] = initialize_table(proto, data.raw[proto.type][proto.name])
+        type_values[proto.name] = initialize_table(proto, type_values[proto.name] or { }) -- allow merging the same prototype with the last saved value
     end
 end
 
@@ -28,7 +28,7 @@ function dytech.apply(dytech)
     -- Copy all 'dytech' prototypes to the 'data' table
     for type, values in pairs(dytech.raw) do
         for name, proto in pairs(values) do
-            data.raw[type][name] = proto
+            data.raw[type][name] = initialize_table(proto, data.raw[proto.type][proto.name] or { }) -- Merge the dytech prototype with the base game type
         end
     end
 end
