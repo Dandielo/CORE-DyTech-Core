@@ -19,6 +19,6 @@ if Config.Greenhouse then
 end
 
 -- Tiles
-require("prototypes.tile.tiles")
+require("prototypes.tile.sand-tiles")
 
 dytech:apply()
