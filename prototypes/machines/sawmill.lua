@@ -38,7 +38,7 @@ data:extend
         type = "item",
         name = "sawmill", 
         icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png", 
-        flags = {"goes-to-main-inventory"},
+        flags = { "goes-to-quickbar" },
         order = "seed-rubber",
         subgroup = "dytech-machines-assembling",
         stack_size = 50,
@@ -71,6 +71,8 @@ data:extend
         icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png",
         order = "c-k-f-e",
         prerequisites = { "automation" },
+
+        -- Recipes to unlock
         effects = 
         {
             {
@@ -82,6 +84,8 @@ data:extend
                 recipe = "raw-wood-processing"
             },
         },
+
+        -- Units needed
         unit = {
             time = 10,
             count = 10,

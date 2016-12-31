@@ -11,10 +11,10 @@ dytech.templates.resolved = { }
 -- dytech items, recipes and groups
 dytech.raw = { }
 dytech.raw.tile = { }
-dytech.raw.items = { }
+dytech.raw.item = { }
 dytech.raw.fluid = { }
-dytech.raw.recipes = { }
-dytech.raw.technologies = { }
+dytech.raw.recipe = { }
+dytech.raw.technology = { }
 dytech.raw["assembling-machine"] = { }
 
 
@@ -74,7 +74,7 @@ function dytech.extend(dytech, values)
     for _, proto in pairs(values) do
 
         local type_values = dytech.raw[proto.type]
-        assert(type_values ~= nil, "Unknown data type")
+        assert(type_values ~= nil, "Unknown data type: '" .. proto.type .. "'")
 
         -- check if the prototype uses a dytech template 
         -- if proto.template then
