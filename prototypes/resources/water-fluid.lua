@@ -25,11 +25,9 @@ data:extend
             r = 0.7, g = 0.7, b = 0.7
         },
         icon = "__base__/graphics/icons/fluid/water.png",
-        
         order = "clean-water",
-        subgroup = "metallurgy-fluid-intermediate",
-
         pressure_to_speed_ratio = 0.6,
         flow_to_energy_ratio = 0.885,
+        subgroup = "metallurgy-fluid-intermediate",
     },
 }
