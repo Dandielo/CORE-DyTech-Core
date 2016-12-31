@@ -122,22 +122,6 @@ function ReplaceAllIngredientFluidWithFluid(Fluid1 , Fluid2)
         end
     end
 end 
-------------------------------------------------------------------------------------
-
--- function ReplaceAllIngredientItemWithFluid(Item , Fluid)
-    -- for i, recipe in pairs(data.raw.recipe) do
-        -- for v, ingredient in pairs(data.raw.recipe[recipe.name].ingredients) do
-            -- if ingredient.type == "item" then
-                -- if ingredient.name == Item then
-                    -- ingredient.type = "fluid"
-                    -- ingredient.name = Fluid
-                    -- ingredient.amount = round(ingredient.amount * 1)
-                    -- data.raw.recipe[recipe.name].category = "crafting-with-fluid"
-                -- end
-            -- end
-        -- end
-    -- end
--- end  
 
 
 function ReplaceAllIngredientItemWithItem(Item1 , Item2)
@@ -154,36 +138,3 @@ function ReplaceAllIngredientItemWithItem(Item1 , Item2)
     end
 end 
 
-
-
-
--- function ChangeRecipeFluid(Name, Ingredient1, Ingredient2, Amount)
-    -- for k, v in pairs(data.raw["recipe"][Name].ingredients) do
-        -- if v[1] == Ingredient1 then table.remove(data.raw["recipe"][Name].ingredients, k) end
-    -- end
--- data.raw.recipe[Name].category = "crafting-with-fluid"
--- table.insert(data.raw["recipe"][Name].ingredients,{name= Ingredient2, type= "fluid", amount=  Amount})
--- end
-
--- function ReplaceAllIngredientItemWithFluid(Item , Fluid)
-    -- for i, recipe in pairs(data.raw.recipe) do
-        -- for v, ingredient in pairs(data.raw.recipe[recipe.name].ingredients) do
-                -- if ingredient.name == Item then
-                    -- ChangeRecipeFluid(recipe.name, Item1 , Fluid , ingredient.amount)
-                -- end
-
-        -- end
-    -- end
--- end  
-
--- ---------------------------------------------------------------------------------------
-
--- function ReplaceAllIngredientItemWithItem(Before , After)
-    -- for i, recipe in pairs(data.raw.recipe) do
-        -- for v, ingredient in pairs(data.raw.recipe[recipe.name].ingredients) do
-            -- if ingredient.name == Before then
-                -- ChangeRecipe(recipe.name, Before, After, ingredient.amount)
-            -- end
-        -- end
-    -- end
--- end  
