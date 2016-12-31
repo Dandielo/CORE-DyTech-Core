@@ -76,13 +76,7 @@ function dytech.extend(dytech, values)
         local type_values = dytech.raw[proto.type]
         assert(type_values ~= nil, "Unknown data type: '" .. proto.type .. "'")
 
-        -- check if the prototype uses a dytech template 
-        -- if proto.template then
-        --     assert(dytech.templates[proto.template] ~= nil, "Unknown dytech prototype template: '" .. proto.template .. "'")
-        --     type_values[proto.name] = initialize_table(proto, dytech.templates[proto.template])
-
-        --     -- we dont want the template values to be saved
-        --     proto.template = nil 
+        -- Apply all listed templates
         if proto.templates then
             local merged = { }
 
