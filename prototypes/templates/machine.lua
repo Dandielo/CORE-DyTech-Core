@@ -1,5 +1,6 @@
 dytech:template
 {
+    -- Defines a assembling-machine template 
     {
         name = "machine",
 
@@ -10,7 +11,6 @@ dytech:template
         minable = { 
             hardness = 0.2, 
             mining_time = 0.5, 
-            -- result = "" 
         },
 
         -- Sounds
@@ -45,6 +45,8 @@ dytech:template
         -- Modules
         allowed_effects = { "consumption", "speed", "pollution" },
     },
+
+    -- Defines default machine tier1 values
     {
         name = "machine-mk1",
 
@@ -59,6 +61,8 @@ dytech:template
             module_slots = 2
         },
     },
+
+    -- Defines default machine tier1 values
     {
         name = "machine-mk2",
 
@@ -73,6 +77,8 @@ dytech:template
             module_slots = 3
         },
     },
+
+    -- Defines default machine tier1 values
     {
         name = "machine-mk3",
 
@@ -87,6 +93,8 @@ dytech:template
             module_slots = 5
         },
     },
+
+    -- Defines big machines
     {
         name = "machine-big",
         corpse = "big-remnants",
