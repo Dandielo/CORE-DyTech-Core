@@ -50,8 +50,6 @@ dytech:extend
     {
         type = "recipe",
         name = "liquid-handler",
-        icon = "__CORE-DyTech-Core__/graphics/machines/liquid-handler.png",
-        subgroup = "dytech-machines-cleaning",
         enabled = false,
         energy_required = 10,
         ingredients =

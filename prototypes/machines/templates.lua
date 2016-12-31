@@ -77,6 +77,90 @@ dytech:template
         },
     },
 
+    -- Greenhouse template 
+    {
+        name = "greenhouse",
+        icon = "__CORE-DyTech-Core__/graphics/machines/greenhouse.png",
+
+        -- A greenhouse may have up to 15 ingredients!?
+        -- ingredient_count = 15, -- lets scrap this value!
+        ingredient_count = 3,
+
+        -- Fluid boxes
+        fluid_boxes =
+        {
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                base_area = 100,
+                base_level = 1,
+                pipe_connections = 
+                {
+                    { 
+                        type = "output",
+                        position = { 0, -2 } 
+                    }
+                }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                base_area = 100,
+                base_level = 1,
+                pipe_connections = 
+                {
+                    { 
+                        type = "output", 
+                        position = { 0, 2 } 
+                    }
+                }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                base_area = 100,
+                base_level = -1,
+                pipe_connections = 
+                {
+                    { 
+                        type = "input", 
+                        position = { -2, 0 } 
+                    }
+                }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                base_area = 100,
+                base_level = -1,
+                pipe_connections = 
+                {
+                    { 
+                        type = "input", 
+                        position = { 2, 0 } 
+                    }
+                }
+            },
+            off_when_no_fluid_recipe = true
+        },
+
+        -- Animations
+        animation =
+        {
+            filename = "__CORE-DyTech-Core__/graphics/machines/greenhouse.png",
+            priority = "high",
+            width = 113,
+            height = 91,
+            frame_count = 1,
+            shift = { 0.2, 0.15 }
+        },
+    },
+
+
     -- Liquid-handler template
     {
         name = "liquid-handler",
@@ -192,5 +276,5 @@ dytech:template
             },
             -- off_when_no_fluid_recipe = true
         }
-    },
+    }
 }
