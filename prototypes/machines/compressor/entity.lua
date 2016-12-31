@@ -1,9 +1,7 @@
-require "prototypes.internal-config"
-
 dytech:extend
 {
     {
-        template = "big-machine-mk3",
+        templates = { "machine", "machine-mk1", "machine-big", "compressor" },
 
         type = "assembling-machine",
         name = "compressor", 
@@ -11,7 +9,7 @@ dytech:extend
         icon = "__CORE-DyTech-Core__/graphics/machines/dytech-compressor-icon.png",
         
 
-        -- Interactions 
+        -- Interactions
         minable = { 
             result = "compressor"
         },

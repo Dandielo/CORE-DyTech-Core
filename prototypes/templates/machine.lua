@@ -47,6 +47,8 @@ dytech:template
     },
     {
         name = "machine-mk1",
+        templates = { "energy" },
+        
         max_health = Health.Tier2,
         resistances = Resistances.Tier1,
         
@@ -57,18 +59,11 @@ dytech:template
         module_specification = {
             module_slots = 2
         },
-
-        -- Energy
-        energy_usage = "5000kW",
-        energy_source =
-        {
-            type = "electric",
-            usage_priority = "secondary-input",
-            emissions = 0.07 / 7.5
-        },
     },
     {
         name = "machine-mk2",
+        templates = { "energy" },
+
         max_health = Health.Tier3,
         resistances = Resistances.Tier2,
         
@@ -79,18 +74,11 @@ dytech:template
         module_specification = {
             module_slots = 3
         },
-
-        -- Energy
-        energy_usage = "5000kW",
-        energy_source =
-        {
-            type = "electric",
-            usage_priority = "secondary-input",
-            emissions = 0.07 / 7.5
-        },
     },
     {
         name = "machine-mk3",
+        templates = { "energy" },
+
         max_health = Health.Tier4,
         resistances = Resistances.Tier3,
 
@@ -100,15 +88,6 @@ dytech:template
         -- Modules
         module_specification = {
             module_slots = 4
-        },
-
-        -- Energy
-        energy_usage = "5000kW",
-        energy_source =
-        {
-            type = "electric",
-            usage_priority = "secondary-input",
-            emissions = 0.07 / 7.5
         },
     },
     {
@@ -127,24 +106,24 @@ dytech:template
     }
 }
 
-dytech:template
-{
-    {
-        templates = { "machine", "machine-mk1", "machine-big" },
+-- dytech:template
+-- {
+--     {
+--         templates = { "machine", "machine-mk1", "machine-big" },
 
-        -- Entity values
-        name = "big-machine-mk1",
-    },
-    {
-        templates = { "machine", "machine-mk2", "machine-big" },
+--         -- Entity values
+--         name = "big-machine-mk1",
+--     },
+--     {
+--         templates = { "machine", "machine-mk2", "machine-big" },
 
-        -- Entity values
-        name = "big-machine-mk2",
-    },
-    {
-        templates = { "machine", "machine-mk3", "machine-big" },
+--         -- Entity values
+--         name = "big-machine-mk2",
+--     },
+--     {
+--         templates = { "machine", "machine-mk3", "machine-big" },
 
-        -- Entity values
-        name = "big-machine-mk3",
-    }
-}
+--         -- Entity values
+--         name = "big-machine-mk3",
+--     }
+-- }

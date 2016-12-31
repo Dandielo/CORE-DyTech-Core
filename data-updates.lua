@@ -1,9 +1,12 @@
 require "config"
 
+dytech:resolve_templates()
+
 require("prototypes.intermediates.creation")
 require("prototypes.resources.gems-recipe")
 require("prototypes.intermediates.inter")
 
+require("prototypes.machines.compressor.entity")
 require("prototypes.machines.compressor.item")
 require("prototypes.machines.compressor.recipe")
 require("prototypes.machines.sawmill")

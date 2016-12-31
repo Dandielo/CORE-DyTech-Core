@@ -5,6 +5,8 @@ require "scripts.helpers"
 dytech = { }
 dytech.config_values = { }
 dytech.templates = { }
+dytech.templates.raw = { }
+dytech.templates.resolved = { }
 
 -- dytech items, recipes and groups
 dytech.raw = { }
@@ -23,37 +25,48 @@ end
 
 -- creates a new template for new dytech prototypes
 function dytech.template(dytech, values) 
-    for _, proto in pairs(values) do
+    for _, template in pairs(values) do
 
-        -- check if the template uses other dytech templates
-        if proto.templates then
-
-            -- We can specify more than one template
-            local merged = { }
-
-            -- For each template name
-            for _, template_name in pairs(proto.templates) do
-                -- Check if the given template exists
-                assert(dytech.templates[template_name] ~= nil, "Unknown dytech prototype template: '" .. template_name .. "'")
-
-                -- apply the template on the current merged table
-                initialize_table(merged, dytech.templates[template_name])
-            end
-
-            -- apply merged templates to the template prototype
-            dytech.templates[proto.name] = initialize_table(proto, merged)
-
-            -- we dont want the template value to be saved 
-            proto.template = nil 
-
-        else 
-            dytech.templates[proto.name] = proto
-
-        end
+        -- Save the template to resolve it later
+        dytech.templates.raw[template.name] = template
 
         -- Do we need to forget about the template name?
-        proto.name = nil 
+        template.name = nil 
     end
+end
+
+-- resolves all templates 
+function dytech.resolve_templates(dytech)
+    for name, template in pairs(dytech.templates.raw) do
+        -- Only resolve a template if it needs to be resolved
+        if not dytech.templates.resolved[name] then
+            dytech:resolve_template(name, template)
+        end
+    end
+end
+
+function dytech.resolve_template(dytech, name, template)
+    local merged = { }
+
+    if template.templates then
+        -- for each template used
+        for i = #template.templates, 1, -1 do -- We are applying from right to left (to make sure that the most specific values are taken first)
+            local template_name = template.templates[i]
+
+            -- We can resolve sub templates 
+            if not dytech.templates.resolved[template_name] then
+                assert(dytech.templates.raw[template_name] ~= nil, "Unknown dytech prototype template: '" .. template_name .. "'")
+                dytech:resolve_template(template_name, dytech.templates.raw[template_name])
+            end
+
+            -- Apply each template
+            initialize_table(merged, dytech.templates.resolved[template_name])
+        end
+    end
+
+    -- Merge templates later try to merge the last version of the prototype (if any exists)
+    dytech.templates.resolved[name] = initialize_table(template, merged)
+    template.templates = nil
 end
 
 -- creates a new prototype entry (may use dytech templates) or updates an existing prototype
@@ -64,13 +77,26 @@ function dytech.extend(dytech, values)
         assert(type_values ~= nil, "Unknown data type")
 
         -- check if the prototype uses a dytech template 
-        if proto.template then
-            assert(dytech.templates[proto.template] ~= nil, "Unknown dytech prototype template: '" .. proto.template .. "'")
-            type_values[proto.name] = initialize_table(proto, dytech.templates[proto.template])
+        -- if proto.template then
+        --     assert(dytech.templates[proto.template] ~= nil, "Unknown dytech prototype template: '" .. proto.template .. "'")
+        --     type_values[proto.name] = initialize_table(proto, dytech.templates[proto.template])
 
-            -- we dont want the template values to be saved
-            proto.template = nil 
+        --     -- we dont want the template values to be saved
+        --     proto.template = nil 
+        if proto.templates then
+            local merged = { }
 
+            -- for each template used
+            for i = #proto.templates, 1, -1 do -- We are applying from right to left (to make sure that the most specific values are taken first)
+                local template_name = proto.templates[i]
+                assert(dytech.templates.resolved[template_name] ~= nil, "Unknown dytech prototype template: '" .. template_name .. "'")
+
+                -- Apply each template
+                initialize_table(merged, dytech.templates.resolved[template_name])
+            end
+
+            -- Merge templates later try to merge the last version of the prototype (if any exists)
+            type_values[proto.name] = initialize_table(initialize_table(proto, merged), type_values[proto.name] or { })
         else 
             -- Save a new prototype based on the 'registered' prototype 
             type_values[proto.name] = initialize_table(proto, type_values[proto.name] or { }) -- allow merging the same prototype with the last saved value
