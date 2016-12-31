@@ -32,62 +32,64 @@ dytech:extend
     }
 }
 
-data:extend(
+data:extend
 {
-	{
-	type = "item",
-	name = "sawmill", 
-	icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png", 
-	flags = {"goes-to-main-inventory"},
-	order = "seed-rubber",
-	subgroup = "dytech-machines-assembling",
-	stack_size = 50,
-	enabled = false,
-	place_result = "sawmill",
-	},
-	
-	{
-	type = "recipe",
-	name = "sawmill", 
-	icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png", 
-	subgroup = "dytech-machines-assembling",
-	energy_required = 7.5,
-	enabled = false,
-	ingredients = {
-			{"iron-plate", 25},
-			{"steel-plate", 10},
-			{"iron-gear-wheel", 25},
-			{"copper-cable", 10}
-		},
-	result = "sawmill"
-	},
-})
+    -- Sawmill items
+    {
+        type = "item",
+        name = "sawmill", 
+        icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png", 
+        flags = {"goes-to-main-inventory"},
+        order = "seed-rubber",
+        subgroup = "dytech-machines-assembling",
+        stack_size = 50,
+        enabled = false,
+        place_result = "sawmill",
+    },
 
-data:extend(
-{
-	{
-    type = "technology",
-    name = "sawmill",
-    icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png",
-    effects = {
-      {
-        type = "unlock-recipe",
-        recipe = "sawmill"
-      },
-	  {
-        type = "unlock-recipe",
-        recipe = "raw-wood-processing"
-      },
+    -- Sawmill recipes
+    {
+        type = "recipe",
+        name = "sawmill", 
+        icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png", 
+        subgroup = "dytech-machines-assembling",
+        enabled = false,
+        energy_required = 7.5,
+        ingredients = 
+        {
+            { "iron-plate", 25 },
+            { "steel-plate", 10 },
+            { "iron-gear-wheel", 25 },
+            { "copper-cable", 10 }
+        },
+        result = "sawmill"
     },
-    prerequisites = {"automation"},
-    unit = {
-      count = 10,
-      ingredients = 
-	  {
-        {"science-pack-1", 1},
-      },
-      time = 10
+    
+    -- Sawmill technologies
+    {
+        type = "technology",
+        name = "sawmill",
+        icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png",
+        order = "c-k-f-e",
+        prerequisites = { "automation" },
+        effects = 
+        {
+            {
+                type = "unlock-recipe",
+                recipe = "sawmill"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "raw-wood-processing"
+            },
+        },
+        unit = {
+            time = 10,
+            count = 10,
+            ingredients = 
+            {
+                { "science-pack-1", 1 },
+            },
+        },
     },
-    order = "c-k-f-e"
-  },
-})
+}

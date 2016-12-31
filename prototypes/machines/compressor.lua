@@ -27,7 +27,7 @@ dytech:extend
 
 data:extend
 {
-    -- The compressor item
+    -- Compressor items
     {
         type = "item",
         name = "compressor",
@@ -39,7 +39,7 @@ data:extend
         stack_size = 50,
     },
 
-    -- The compressor recipe
+    -- Compressor recipes
     {
         type = "recipe",
         name = "compressor",
