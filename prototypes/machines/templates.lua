@@ -76,4 +76,121 @@ dytech:template
             shift = { 0.21875, 0.05 }
         },
     },
+
+    -- Liquid-handler template
+    {
+        name = "liquid-handler",
+        icon = "__CORE-DyTech-Core__/graphics/machines/liquid-handler.png",
+
+        -- Animations 
+        animation =
+        {
+            north = {
+                filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-up.png",
+                width = 46,
+                height = 56,
+                frame_count = 1,
+                shift = { 0.09375, 0.03125 }
+            },
+            west = {
+                filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-left.png",
+                width = 56,
+                height = 44,
+                frame_count = 1,
+                shift = { 0.3125, 0.0625 }
+            },
+            south = {
+                filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-down.png",
+                width = 61,
+                height = 58,
+                frame_count = 1,
+                shift = { 0.421875, -0.125 },
+            },
+            east = {
+                filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-right.png",
+                width = 51,
+                height = 56,
+                frame_count = 1,
+                shift = { 0.265625, -0.21875 }
+            }
+        },
+
+        -- Visualizations
+        working_visualisations =
+        {
+            {
+                north_position = { 0, 0 },
+                east_position = { 0, 0 },
+                south_position = { 0, 0 },
+                west_position = { 0, 0 },
+                north_animation = {
+                    filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-up.png",
+                    width = 46,
+                    height = 56,
+                    frame_count = 8,
+                    shift = {0.09375, 0.03125},
+                    animation_speed = 0.5,
+                    run_mode = "backward"
+                },
+                west_animation = {
+                    filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-left.png",
+                    width = 56,
+                    height = 44,
+                    frame_count = 8,
+                    shift = {0.3125, 0.0625},
+                    animation_speed = 0.5,
+                    run_mode = "backward"
+                },
+                south_animation = {
+                    filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-down.png",
+                    width = 61,
+                    height = 58,
+                    frame_count = 8,
+                    shift = {0.421875, -0.125},
+                    animation_speed = 0.5,
+                    run_mode = "backward"
+                },
+                east_animation = {
+                    filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-right.png",
+                    width = 51,
+                    height = 56,
+                    frame_count = 8,
+                    shift = {0.265625, -0.21875},
+                    animation_speed = 0.5,
+                    run_mode = "backward"
+                }
+            }
+        },
+
+        -- Fluid boxes
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                base_area = 100,
+                base_level = -1,
+                pipe_connections = 
+                {
+                    { 
+                        type = "input", 
+                        position = { 0, 1 } 
+                    }
+                }
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                base_level = 100,
+                pipe_connections = 
+                {
+                    { 
+                        type = "output",
+                        position = { 0, -1 } 
+                    }
+                },
+            },
+            -- off_when_no_fluid_recipe = true
+        }
+    },
 }

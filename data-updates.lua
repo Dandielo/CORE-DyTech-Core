@@ -8,6 +8,7 @@ require("prototypes.intermediates.inter")
 
 require("prototypes.machines.sawmill")
 require("prototypes.machines.compressor")
+require("prototypes.machines.liquid-handler")
 
 require("prototypes.machines.liquid-handler.item")
 require("prototypes.machines.liquid-handler.recipe")

@@ -100,13 +100,33 @@ dytech:template
         corpse = "big-remnants",
 
         -- AABB
-        collision_box = {
+        collision_box = 
+        {
             { -1.2, -1.2 }, 
             {  1.2,  1.2 }
         },
-        selection_box = {
+        selection_box = 
+        {
             { -1.5, -1.5 }, 
             {  1.5,  1.5 }
+        },
+    },
+
+    -- Defines small machines
+    {
+        name = "machine-small",
+        corpse = "small-remnants",
+
+        -- AABB
+        collision_box = 
+        {
+            { -0.3, -0.3 }, 
+            {  0.3,  0.3 }
+        },
+        selection_box = 
+        {
+            { -0.5, -0.5 }, 
+            {  0.5,  0.5 }
         },
     }
 }
