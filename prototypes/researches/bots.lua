@@ -4,7 +4,8 @@ data:extend
         type = "technology",
         name = "workers-robots-speed-6",
         icon = "__base__/graphics/technology/worker-robots-speed.png",
-        effects = {
+        effects =
+        {
             {
                 type = "worker-robot-speed",
                 modifier = "0.75"
@@ -30,7 +31,8 @@ data:extend
         type = "technology",
         name = "workers-robots-speed-7",
         icon = "__base__/graphics/technology/worker-robots-speed.png",
-        effects = {
+        effects = 
+        {
             {
                 type = "worker-robot-speed",
                 modifier = "0.85"
@@ -56,7 +58,8 @@ data:extend
         type = "technology",
         name = "workers-robot-speed-8",
         icon = "__base__/graphics/technology/worker-robots-speed.png",
-        effects = {
+        effects = 
+        {
             {
                 type = "worker-robot-speed",
                 modifier = "1.05"
@@ -82,7 +85,8 @@ data:extend
         type = "technology",
         name = "workers-robots-storage-4",
         icon = "__base__/graphics/technology/worker-robots-storage.png",
-        effects = {
+        effects = 
+        {
             {
                 type = "worker-robot-storage",
                 modifier = "1"
@@ -108,7 +112,8 @@ data:extend
         type = "technology",
         name = "worker-robots-storage-5",
         icon = "__base__/graphics/technology/worker-robots-storage.png",
-        effects = {
+        effects = 
+        {
             {
                 type = "worker-robot-storage",
                 modifier = "1"
@@ -134,7 +139,8 @@ data:extend
         type = "technology",
         name = "worker-robots-storage-6",
         icon = "__base__/graphics/technology/worker-robots-storage.png",
-        effects = {
+        effects = 
+        {
             {
                 type = "worker-robot-storage",
                 modifier = "1"
@@ -160,7 +166,8 @@ data:extend
         type = "technology",
         name = "worker-robots-storage-7",
         icon = "__base__/graphics/technology/worker-robots-storage.png",
-        effects = {
+        effects = 
+        {
             {
                 type = "worker-robot-storage",
                 modifier = "1"
@@ -186,7 +193,8 @@ data:extend
         type = "technology",
         name = "worker-robots-storage-8",
         icon = "__base__/graphics/technology/worker-robots-storage.png",
-        effects = {
+        effects =
+        {
             {
                 type = "worker-robot-storage",
                 modifier = "1"
