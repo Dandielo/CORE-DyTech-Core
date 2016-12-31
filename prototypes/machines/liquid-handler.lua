@@ -33,7 +33,7 @@ dytech:extend
         -- Crafting
         crafting_categories = { "liquid-handler" },
     },
-    
+
     -- Liquid handler items
     {
         type = "item",
@@ -64,7 +64,7 @@ dytech:extend
 
     -- Liquid handler technologies
     {
-        templates = { "science-vfast" },
+        templates = { "science-vfast", "science-red" },
 
         type = "technology",
         name = "water-cleaning",
@@ -98,12 +98,7 @@ dytech:extend
 
         -- Units needed
         unit = {
-            time = 10,
             count = 50,
-            ingredients = 
-            {
-                { "science-pack-1", 1 },
-            },
         },
     }
 }

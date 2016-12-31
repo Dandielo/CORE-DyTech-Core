@@ -38,5 +38,45 @@ dytech:template
 		unit = {
             time = 60,
 		}
+	},
+}
+
+dytech:template
+{
+	{
+		name = "science-red",
+		unit = {
+            ingredients = 
+            {
+                [1] = { "science-pack-1", 1 },
+            },
+		}
+	},
+	{
+		name = "science-green",
+		unit = {
+            ingredients = 
+            {
+                [2] = { "science-pack-2", 1 },
+            },
+		}
+	},
+	{
+		name = "science-blue",
+		unit = {
+            ingredients = 
+            {
+                [3] = { "science-pack-3", 1 },
+            },
+		}
+	},
+	{
+		name = "science-alien",
+		unit = {
+            ingredients = 
+            {
+                [4] = { "science-pack-4", 1 },
+            },
+		}
 	}
 }

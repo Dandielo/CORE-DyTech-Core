@@ -63,6 +63,8 @@ dytech:extend
 
     -- Sawmill technologies
     {
+        templates = { "science-vfast", "science-red" },
+        
         type = "technology",
         name = "sawmill",
         icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png",
@@ -84,12 +86,7 @@ dytech:extend
 
         -- Units needed
         unit = {
-            time = 10,
             count = 10,
-            ingredients = 
-            {
-                { "science-pack-1", 1 },
-            },
         },
     },
 }
