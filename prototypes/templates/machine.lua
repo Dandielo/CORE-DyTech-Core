@@ -62,7 +62,7 @@ dytech:template
         },
     },
 
-    -- Defines default machine tier1 values
+    -- Defines default machine tier2 values
     {
         name = "machine-mk2",
 
@@ -78,7 +78,7 @@ dytech:template
         },
     },
 
-    -- Defines default machine tier1 values
+    -- Defines default machine tier3 values
     {
         name = "machine-mk3",
 
