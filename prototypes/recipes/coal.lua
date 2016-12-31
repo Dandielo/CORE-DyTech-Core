@@ -1,6 +1,3 @@
-require "prototypes.prototype-creation"
-require "prototypes.override-functions"
-
 data:extend
 {
     {

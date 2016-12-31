@@ -58,7 +58,7 @@ require("prototypes.damage-type")
 require("prototypes.autoplace-controls")
 
 if Config.BaseOverride then
-require("prototypes.base-override")
+require "prototypes.update-base"
 end
 
 if Config.Technologies then
