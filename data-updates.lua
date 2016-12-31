@@ -10,10 +10,6 @@ require("prototypes.machines.sawmill")
 require("prototypes.machines.compressor")
 require("prototypes.machines.liquid-handler")
 
-require("prototypes.machines.liquid-handler.item")
-require("prototypes.machines.liquid-handler.recipe")
-require("prototypes.machines.liquid-handler.tech")
-
 if Config.Greenhouse then
 	require("prototypes.machines.greenhouse")
 	require("prototypes.intermediates.greenhouse")
