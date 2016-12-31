@@ -184,7 +184,7 @@ dytech:template
                     width = 46,
                     height = 56,
                     frame_count = 8,
-                    shift = {0.09375, 0.03125},
+                    shift = { 0.09375, 0.03125 },
                     animation_speed = 0.5,
                     run_mode = "backward"
                 },
@@ -193,7 +193,7 @@ dytech:template
                     width = 56,
                     height = 44,
                     frame_count = 8,
-                    shift = {0.3125, 0.0625},
+                    shift = { 0.3125, 0.0625 },
                     animation_speed = 0.5,
                     run_mode = "backward"
                 },
@@ -202,7 +202,7 @@ dytech:template
                     width = 61,
                     height = 58,
                     frame_count = 8,
-                    shift = {0.421875, -0.125},
+                    shift = { 0.421875, -0.125 },
                     animation_speed = 0.5,
                     run_mode = "backward"
                 },
@@ -211,7 +211,7 @@ dytech:template
                     width = 51,
                     height = 56,
                     frame_count = 8,
-                    shift = {0.265625, -0.21875},
+                    shift = { 0.265625, -0.21875 },
                     animation_speed = 0.5,
                     run_mode = "backward"
                 }
