@@ -28,7 +28,7 @@ function dytech.template(dytech, values)
     for _, template in pairs(values) do
 
         -- Save the template to resolve it later
-        dytech.templates.raw[template.name] = template
+        dytech.templates.raw[template.name] = initialize_table(template, dytech.templates.raw[template.name] or { })
 
         -- Do we need to forget about the template name?
         template.name = nil 
