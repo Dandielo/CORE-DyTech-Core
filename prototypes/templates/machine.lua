@@ -47,7 +47,6 @@ dytech:template
     },
     {
         name = "machine-mk1",
-        templates = { "energy" },
 
         max_health = Health.Tier2,
         resistances = Resistances.Tier1,
@@ -62,7 +61,6 @@ dytech:template
     },
     {
         name = "machine-mk2",
-        templates = { "energy" },
 
         max_health = Health.Tier3,
         resistances = Resistances.Tier2,
@@ -77,7 +75,6 @@ dytech:template
     },
     {
         name = "machine-mk3",
-        templates = { "energy" },
 
         max_health = Health.Tier4,
         resistances = Resistances.Tier3,
@@ -87,7 +84,7 @@ dytech:template
 
         -- Modules
         module_specification = {
-            module_slots = 4
+            module_slots = 5
         },
     },
     {
