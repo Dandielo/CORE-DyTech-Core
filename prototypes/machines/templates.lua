@@ -13,8 +13,8 @@ dytech:template
         {
             {
                 production_type = "input",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
+                pipe_picture = dytech_assembler3pipepictures(),
+                pipe_covers = dytech_pipecoverspictures(),
                 base_area = 10,
                 base_level = -1,
                 pipe_connections = 
@@ -27,8 +27,8 @@ dytech:template
             },
             {
                 production_type = "output",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
+                pipe_picture = dytech_assembler3pipepictures(),
+                pipe_covers = dytech_pipecoverspictures(),
                 base_area = 10,
                 base_level = 1,
                 pipe_connections = 
@@ -91,8 +91,8 @@ dytech:template
         {
             {
                 production_type = "input",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
+                pipe_picture = dytech_assembler3pipepictures(),
+                pipe_covers = dytech_pipecoverspictures(),
                 base_area = 100,
                 base_level = -1,
                 pipe_connections = 
@@ -105,8 +105,8 @@ dytech:template
             },
             {
                 production_type = "input",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
+                pipe_picture = dytech_assembler3pipepictures(),
+                pipe_covers = dytech_pipecoverspictures(),
                 base_area = 100,
                 base_level = -1,
                 pipe_connections = 

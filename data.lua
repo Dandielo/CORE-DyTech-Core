@@ -1,4 +1,6 @@
 require "config"
+
+require "prototypes.machines.functions"
 require "prototypes.dytech-prototypes"
 
 -- Mandatory Stuff!

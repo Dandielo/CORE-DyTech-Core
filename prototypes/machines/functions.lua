@@ -1,4 +1,4 @@
-function pipecoverspictures()
+function dytech_pipecoverspictures(shifts)
     return {
         north =
         {
@@ -35,7 +35,7 @@ function pipecoverspictures()
     }
 end
 
-function assembler3pipepictures(shifts)
+function dytech_assembler3pipepictures(shifts)
     return {
         north =
         {
