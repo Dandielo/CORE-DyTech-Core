@@ -33,10 +33,7 @@ dytech:extend
         -- Crafting
         crafting_categories = { "liquid-handler" },
     },
-}
-
-dytech:extend
-{
+    
     -- Liquid handler items
     {
         type = "item",

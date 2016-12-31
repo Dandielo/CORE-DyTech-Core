@@ -28,11 +28,8 @@ dytech:extend
 
         -- Crafting
         crafting_categories = { "sawmill" },
-    }
-}
+    },
 
-data:extend
-{
     -- Sawmill items
     {
         type = "item",

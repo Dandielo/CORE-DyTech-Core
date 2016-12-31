@@ -21,11 +21,8 @@ dytech:extend
 
         -- Crafting
         crafting_categories = { "polishing" },
-    }
-}
-
-data:extend
-{
+    },
+    
     -- Compressor items
     {
         type = "item",
