@@ -1,6 +1,5 @@
 function pipecoverspictures()
-    return 
-    {
+    return {
         north =
         {
             filename = "__base__/graphics/entity/pipe-covers/pipe-cover-north.png",
@@ -33,8 +32,7 @@ function pipecoverspictures()
 end
 
 function assembler3pipepictures()
-    return
-    {
+    return {
         north =
         {
             filename = "__base__/graphics/entity/assembling-machine-3/pipe-north.png",
