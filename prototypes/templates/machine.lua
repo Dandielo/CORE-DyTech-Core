@@ -48,12 +48,12 @@ dytech:template
     {
         name = "machine-mk1",
         templates = { "energy" },
-        
+
         max_health = Health.Tier2,
         resistances = Resistances.Tier1,
         
         ingredient_count = 2,
-        crafting_speed = 1,
+        crafting_speed = 0.5,
 
         -- Modules
         module_specification = {
@@ -67,8 +67,8 @@ dytech:template
         max_health = Health.Tier3,
         resistances = Resistances.Tier2,
         
-        ingredient_count = 2,
-        crafting_speed = 1,
+        ingredient_count = 3,
+        crafting_speed = 0.75,
 
         -- Modules
         module_specification = {
@@ -82,7 +82,7 @@ dytech:template
         max_health = Health.Tier4,
         resistances = Resistances.Tier3,
 
-        ingredient_count = 2,
+        ingredient_count = 5,
         crafting_speed = 1,
 
         -- Modules
@@ -105,25 +105,3 @@ dytech:template
         },
     }
 }
-
--- dytech:template
--- {
---     {
---         templates = { "machine", "machine-mk1", "machine-big" },
-
---         -- Entity values
---         name = "big-machine-mk1",
---     },
---     {
---         templates = { "machine", "machine-mk2", "machine-big" },
-
---         -- Entity values
---         name = "big-machine-mk2",
---     },
---     {
---         templates = { "machine", "machine-mk3", "machine-big" },
-
---         -- Entity values
---         name = "big-machine-mk3",
---     }
--- }

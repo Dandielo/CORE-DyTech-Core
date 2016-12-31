@@ -6,7 +6,6 @@ require "prototypes.dytech-prototypes"
 require("prototypes.resources.gems-resources")
 require("prototypes.override-functions")
 require("prototypes.prototype-creation")
--- require("prototypes.machines.compressor.entity")
 require("prototypes.machines.liquid-handler.entity")
 -- require("prototypes.recipes.coal")
 -- require("prototypes.recipes.crystals")

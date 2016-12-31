@@ -4,7 +4,6 @@ dytech:template
         name = "energy",
 
         -- Just define the energy source 
-        energy_usage = nil,  -- needs to be defined by inheriting prototypes
         energy_source =
         {
             type = "electric",
