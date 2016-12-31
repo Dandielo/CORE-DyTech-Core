@@ -1,6 +1,3 @@
-require ("prototypes.machines.functions")
-require "prototypes.internal-config"
-
 dytech:extend 
 {
     {
