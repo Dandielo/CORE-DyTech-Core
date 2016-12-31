@@ -8,14 +8,16 @@ data:extend
         energy_required = 7.5,
         subgroup = "dytech-intermediates-processing",
         enabled = false,
-        ingredients = {
+        ingredients = 
+        {
             {
                 type = "item", 
                 name = "raw-wood", 
                 amount = 1
             },
         },
-        results = {
+        results = 
+        {
             {
                 type = "item", 
                 name = "wood", 
