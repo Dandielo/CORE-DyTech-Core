@@ -75,7 +75,7 @@ dytech:template
 		unit = {
             ingredients = 
             {
-                [4] = { "science-pack-4", 1 },
+                [4] = { "alien-science-pack", 1 },
             },
 		}
 	}
