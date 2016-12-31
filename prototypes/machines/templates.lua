@@ -84,7 +84,7 @@ dytech:template
 
         -- A greenhouse may have up to 15 ingredients!?
         -- ingredient_count = 15, -- lets scrap this value!
-        ingredient_count = 3,
+        ingredient_count = 2,
 
         -- Fluid boxes
         fluid_boxes =
