@@ -88,12 +88,16 @@ dytech:extend
             },
             {
                 type = "unlock-recipe",
-                recipe = "dirty-water-to-water"
+                recipe = "dirty-water-stone-sand-random"
             },
             {
                 type = "unlock-recipe",
-                recipe = "dirty-water-stone-sand-random"
+                recipe = "dirty-water-to-water"
             },
+            -- {
+            --     type = "unlock-recipe",
+            --     recipe = "dirty-water-to-water-2"
+            -- },
         },
 
         -- Units needed
