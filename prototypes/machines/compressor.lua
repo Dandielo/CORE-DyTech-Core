@@ -8,8 +8,7 @@ dytech:extend
 
         -- Energy usage
         energy_usage = "5000kW",
-        energy_source =
-        {
+        energy_source = {
             type = "electric",
             usage_priority = "secondary-input",
             emissions = 0.07 / 7.5
