@@ -6,32 +6,36 @@ function pipecoverspictures()
             priority = "extra-high",
             width = 44,
             height = 32,
+            shift = (shifts and shifts.north) or { 0, 0 }
         },
         east =
         {
             filename = "__base__/graphics/entity/pipe-covers/pipe-cover-east.png",
             priority = "extra-high",
             width = 32,
-            height = 32
+            height = 32,
+            shift = (shifts and shifts.east) or { 0, 0 }
         },
         south =
         {
             filename = "__base__/graphics/entity/pipe-covers/pipe-cover-south.png",
             priority = "extra-high",
             width = 46,
-            height = 52
+            height = 52,
+            shift = (shifts and shifts.south) or { 0, 0 }
         },
         west =
         {
             filename = "__base__/graphics/entity/pipe-covers/pipe-cover-west.png",
             priority = "extra-high",
             width = 32,
-            height = 32
+            height = 32,
+            shift = (shifts and shifts.west) or { 0, 0 }
         }
     }
 end
 
-function assembler3pipepictures()
+function assembler3pipepictures(shifts)
     return {
         north =
         {
@@ -39,7 +43,7 @@ function assembler3pipepictures()
             priority = "extra-high",
             width = 40,
             height = 45,
-            shift = { 0.03125, 0.3125 }
+            shift = (shifts and shifts.north) or { 0.03125, 0.3125 }
         },
         east =
         {
@@ -48,7 +52,7 @@ function assembler3pipepictures()
             width = 40,
             height = 45,
             --shift = {-0.78125, 0.15625}
-            shift = { -0.53125, 0.15625 }
+            shift = (shifts and shifts.east) or { -0.53125, 0.15625 }
         },
         south =
         {
@@ -56,7 +60,7 @@ function assembler3pipepictures()
             priority = "extra-high",
             width = 40,
             height = 45,
-            shift = { 0.03125, -1.0625 }
+            shift = (shifts and shifts.south) or { 0.03125, -1.0625 }
         },
         west =
         {
@@ -65,7 +69,7 @@ function assembler3pipepictures()
             width = 40,
             height = 45,
             --shift = {0.8125, 0}
-            shift = { 0.5625, -0.03125 }
+            shift = (shifts and shifts.west) or { 0.5625, -0.03125 }
         }
     }
 end
