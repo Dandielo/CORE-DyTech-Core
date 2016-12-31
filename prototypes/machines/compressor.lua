@@ -52,7 +52,7 @@ data:extend
             { "pipe", 2 },
             { "frame-1", 1 },
         },
-        result= "compressor"
+        result = "compressor"
     },
 }
 
