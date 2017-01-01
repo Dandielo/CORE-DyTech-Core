@@ -573,16 +573,6 @@ INTERMEDIATES = {
 	},
 	---------------------------------------------------- Mining Drill heads--------------------------------------------------------
 	{
-		Name = "mininghead-0",
-		Subgroup = "mining",
-		Enabled = true,
-		Productivity = false,
-		Recipe = true,
-		Time = 2,
-		Recipe_Metallurgy = {{type = "item", name="steel-plate", amount=2}},
-		Recipe_Normal = {{type = "item", name="steel-plate", amount=2}},
-	},
-	{
 		Name = "mininghead-1",
 		Subgroup = "mining",
 		Enabled = false,
@@ -1056,7 +1046,7 @@ INTERMEDIATES = {
 		Recipe_Normal = {{type = "item", name="assemblebot-2", amount=1},{type = "item", name="fast-inserter", amount=5},{type = "item", name="advanced-circuit", amount=5},{type = "item", name="steel-gear-wheel", amount=15}},
 		Tech = true,
 		Techstuff = { Name = "assemblebot-3", Prerequisites = "assemblebot-2", Count = 125, Time = 100, Ingredients ={ Science1=true,Science2=true,Science3=true } },
-		Obsolete_Without_Machine = true,
+		-- Obsolete_Without_Machine = true,
 	},
 	{
 		Name = "assemblebot-4",

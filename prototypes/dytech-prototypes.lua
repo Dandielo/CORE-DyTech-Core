@@ -25,7 +25,7 @@ end
 
 -- creates a new template for new dytech prototypes
 function dytech.template(dytech, values) 
-    for _, template in pairs(values) do
+    for _, template in ipairs(values) do
 
         -- Save the template to resolve it later
         dytech.templates.raw[template.name] = initialize_table(template, dytech.templates.raw[template.name] or { })
@@ -33,6 +33,40 @@ function dytech.template(dytech, values)
         -- Do we need to forget about the template name?
         template.name = nil 
     end
+end
+
+function dytech.intermediate(dytech, values)
+    local results = { }
+
+    -- For each intermediate 
+    for _, inter in ipairs(values) do
+
+        -- Get the templates and remove them from the base table
+        local templates = inter.templates
+        inter.templates = nil
+
+        -- Create a new prototype with each template
+        for _, base_table in pairs(templates) do
+            local template_name = base_table.template
+            assert(dytech.templates.raw[template_name] ~= nil, "Unknown dytech prototype template: '" .. template_name .. "'")
+
+            -- Add values to the base table
+            base_table.name = base_table.name or inter.name
+
+            -- Create a prototype from a given template
+            local result = initialize_table_with_replacements(base_table, dytech.templates.resolved[template_name], {
+                name = inter.name,
+                inter_name = inter.name,
+                subgroup = inter.subgroup,
+            })
+
+            -- insert the resolved template to the results list
+            table.insert(results, result)
+        end
+    end
+
+    -- Apply all results
+    dytech:extend(results)
 end
 
 -- resolves all templates 
@@ -68,6 +102,8 @@ function dytech.resolve_template(dytech, name, template)
     dytech.templates.resolved[name] = initialize_table(template, merged)
     template.templates = nil
 end
+
+
 
 -- creates a new prototype entry (may use dytech templates) or updates an existing prototype
 function dytech.extend(dytech, values)

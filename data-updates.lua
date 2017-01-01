@@ -2,6 +2,8 @@ require "config"
 
 dytech:resolve_templates()
 
+require("prototypes.intermediates.new.simple")
+
 require("prototypes.intermediates.creation")
 require("prototypes.resources.gems-recipe")
 require("prototypes.intermediates.inter")

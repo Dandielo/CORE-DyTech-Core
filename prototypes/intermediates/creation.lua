@@ -58,26 +58,41 @@ end
 
 for index,name in pairs(INTERMEDIATES) do
 	if name ~= nil then
+		-- First create an item
 		DyTech_Core_Create_Intermediates_Item(name.Name, name.Subgroup, name.Fuel_Value, name.Gem, name.Order)
+
+		-- Then a recipe (if there should be one)
 		if name.Recipe then
 			DyTech_Core_Create_Intermediates_Recipe(name.Name, name.Subgroup, name.Enabled, name.RecipeType, name.ResultAmount, name.Time, name.Gem)
+
 			if data.raw.item["metallurgy-active"] and name.Recipe_Metallurgy then
+				-- If we found the 'mettalurgy' mod we use the mettalrugy recipe
 				for _,v in pairs(name.Recipe_Metallurgy) do
 					table.insert(data.raw.recipe[name.Name].ingredients,v)
 				end
 			else
+				-- else use the non-metalurgy recipe
 				for _,v in pairs(name.Recipe_Normal) do
 					table.insert(data.raw.recipe[name.Name].ingredients,v)
 				end
 			end
 		end
+
+		-- If we should have a tech for it? 
 		if name.Tech then
 			----------------------------------------------------------------
+			-- Should be only added when Dytech Machine is present
 			if name.Obsolete_Without_Machine then
 				if data.raw.item["machines-active"] then
+					-- Create tech from tech stuff
 					DyTech_Core_Create_Intermediates_Tech(name.Techstuff)
+					-- Add ingredient to tech 
 					Add_Ingredient_To_Tech_Smart(name.Techstuff)
+
+					-- add this recipe to the tech 
 					tech.add_recipe(name.Techstuff.Name , name.Name)
+
+					-- if we got additional requirements for metallurgy tech 
 					if name.Tech_Metallurgy then 
 						if data.raw.item["metallurgy-active"] then
 							for i, t in pairs(name.Tech_Metallurgy) do
@@ -125,6 +140,7 @@ for index,name in pairs(INTERMEDIATES) do
 				end		
 			end
 		end
+		-- Just add the recipe to a existing tech
 		if name.AddToTech ~= nil then
 			if name.Obsolete_Without_Machine then
 				if data.raw.item["machines-active"] then
