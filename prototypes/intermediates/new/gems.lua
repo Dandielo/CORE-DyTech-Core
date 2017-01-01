@@ -1,35 +1,3 @@
- dytech:intermediate
-{
-    -- Raw gems 
-    {
-        name = "raw-gems",
-        subgroup = "crystal",
-        templates = 
-        {
-            {
-                template = "raw-gem",
-                name = "raw-sapphire"
-            },
-            { 
-                template = "raw-gem",
-                name = "raw-ruby",
-            },
-            { 
-                template = "raw-gem",
-                name = "raw-emerald",
-            },
-            { 
-                template = "raw-gem",
-                name = "raw-topaz",
-            },
-            { 
-                template = "raw-gem",
-                name = "raw-diamond",
-            },
-        },
-    },
-}
-
 dytech:intermediate
 {
     -- Gems technology
@@ -55,11 +23,23 @@ dytech:intermediate
         subgroup = "cut",
         templates = 
         {
-            { "gem-item" },
-            { "gem-tech" },
+            -- Raw
+            { "raw-gem-item" },
+
+            -- Cut
+            { "cut-gem-item" },
+            { "cut-gem-tech" },
             {
                 template = "cut-gem-recipe",
                 energy_required = 30,
+            },
+
+            -- Compressed
+            { "compressed-gem-item" },
+            { "compressed-gem-tech" },
+            {
+                template = "compressed-gem-recipe",
+                energy_required = 60,
             }
         }
     },
@@ -68,11 +48,23 @@ dytech:intermediate
         subgroup = "cut",
         templates = 
         {
-            { "gem-item" },
-            { "gem-tech" },
+            -- Raw
+            { "raw-gem-item" },
+
+            -- Cut
+            { "cut-gem-item" },
+            { "cut-gem-tech" },
             {
                 template = "cut-gem-recipe",
                 energy_required = 60,
+            },
+
+            -- Compressed
+            { "compressed-gem-item" },
+            { "compressed-gem-tech" },
+            {
+                template = "compressed-gem-recipe",
+                energy_required = 120,
             }
         }
     },
@@ -81,105 +73,74 @@ dytech:intermediate
         subgroup = "cut",
         templates = 
         {
-            { "gem-item" },
-            { "gem-tech" },
+            -- Raw
+            { "raw-gem-item" },
+
+            -- Cut
+            { "cut-gem-item" },
+            { "cut-gem-tech" },
             {
                 template = "cut-gem-recipe",
                 energy_required = 90,
-            }
-        }
-    },
-    {
-        name = "topaz",
-        subgroup = "cut",
-        templates = 
-        {
-            { "gem-item" },
-            { "gem-tech" },
-            {
-                template = "cut-gem-recipe",
-                energy_required = 120,
-            }
-        }
-    },
-    {
-        name = "diamond",
-        subgroup = "cut",
-        templates = 
-        {
-            { "gem-item" },
-            { "gem-tech" },
-            {
-                template = "cut-gem-recipe",
-                energy_required = 150,
-            }
-        }
-    },
+            },
 
-    -- Compressed gems
-    {
-        name = "ruby",
-        subgroup = "compressed",
-        templates = 
-        {
-            { "gem-item" },
-            { "gem-tech" },
+            -- Compressed
+            { "compressed-gem-item" },
+            { "compressed-gem-tech" },
             {
-                template = "polish-gem-recipe",
-                energy_required = 60,
-            }
-        }
-    },
-    {
-        name = "sapphire",
-        subgroup = "compressed",
-        templates = 
-        {
-            { "gem-item" },
-            { "gem-tech" },
-            {
-                template = "polish-gem-recipe",
-                energy_required = 120,
-            }
-        }
-    },
-    {
-        name = "emerald",
-        subgroup = "compressed",
-        templates = 
-        {
-            { "gem-item" },
-            { "gem-tech" },
-            {
-                template = "polish-gem-recipe",
+                template = "compressed-gem-recipe",
                 energy_required = 180,
             }
         }
     },
     {
         name = "topaz",
-        subgroup = "compressed",
+        subgroup = "cut",
         templates = 
         {
-            { "gem-item" },
-            { "gem-tech" },
+            -- Raw
+            { "raw-gem-item" },
+
+            -- Cut
+            { "cut-gem-item" },
+            { "cut-gem-tech" },
             {
-                template = "polish-gem-recipe",
+                template = "cut-gem-recipe",
+                energy_required = 120,
+            },
+
+            -- Compressed
+            { "compressed-gem-item" },
+            { "compressed-gem-tech" },
+            {
+                template = "compressed-gem-recipe",
                 energy_required = 240,
             }
         }
     },
     {
         name = "diamond",
-        subgroup = "compressed",
+        subgroup = "cut",
         templates = 
         {
-            { "gem-item" },
-            { "gem-tech" },
+            -- Raw
+            { "raw-gem-item" },
+
+            -- Cut
+            { "cut-gem-item" },
+            { "cut-gem-tech" },
             {
-                template = "polish-gem-recipe",
+                template = "cut-gem-recipe",
+                energy_required = 150,
+            },
+
+            -- Compressed
+            { "compressed-gem-item" },
+            { "compressed-gem-tech" },
+            {
+                template = "compressed-gem-recipe",
                 energy_required = 320,
             }
         }
-    }
+    },
 }

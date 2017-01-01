@@ -61,37 +61,48 @@ dytech:template
 -- Gem specific templates
 dytech:itemplate
 {
-    -- Override for each base template
-    {
-        tname = "gem",
-
-        icon = "__CORE-DyTech-Core__/graphics/gems/{subgroup}-{inter_name}.png",
-        subgroup = "dytech-gem-{subgroup}",
-    },
-
-    -- Gem specific templates
+    -- Base gem types
     {
         tname = "raw-gem",
-        templates = { "item" },
 
-        icon = "__CORE-DyTech-Core__/graphics/gems/{name}.png",
-        subgroup = "dytech-gem-{subgroup}",
+        name = "raw-{inter_name}",
+        icon = "__CORE-DyTech-Core__/graphics/gems/raw-{inter_name}.png",
+        subgroup = "dytech-gem-crystal",
     },
     {
-        tname = "gem-item",
-        templates = { "item", "gem" },
+        tname = "cut-gem",
 
-        -- The desired name 
-        name = "{subgroup}-{inter_name}",
+        name = "cut-{inter_name}",
+        icon = "__CORE-DyTech-Core__/graphics/gems/cut-{inter_name}.png",
+        subgroup = "dytech-gem-cut",
+    },
+    {
+        tname = "compressed-gem",
+
+        name = "compressed-{inter_name}",
+        icon = "__CORE-DyTech-Core__/graphics/gems/compressed-{inter_name}.png",
+        subgroup = "dytech-gem-compressed",
     },
 
-    -- Cut recipe
+    -- Gem items
+    {
+        tname = "raw-gem-item",
+        templates = { "item", "raw-gem" },
+    },
+    {
+        tname = "cut-gem-item",
+        templates = { "item", "cut-gem" },
+    },
+    {
+        tname = "compressed-gem-item",
+        templates = { "item", "compressed-gem" },
+    },
+
+    -- Gem recipes
     {
         tname = "cut-gem-recipe",
-        templates = { "recipe", "gem" },
+        templates = { "recipe", "cut-gem" },
 
-        -- The desired name 
-        name = "{subgroup}-{inter_name}",
         category = "polishing",
         ingredients = 
         {
@@ -106,16 +117,12 @@ dytech:itemplate
                 amount = 50
             }
         },
-        result = "{subgroup}-{inter_name}"
+        result = "cut-{inter_name}"
     },
-
-    -- Polish recipe
     {
-        tname = "polish-gem-recipe",
-        templates = { "recipe", "gem" },
+        tname = "compressed-gem-recipe",
+        templates = { "recipe", "compressed-gem" },
 
-        -- The desired name 
-        name = "{subgroup}-{inter_name}",
         category = "polishing",
         ingredients = 
         {
@@ -130,13 +137,13 @@ dytech:itemplate
                 amount = 50
             }
         },
-        result = "{subgroup}-{inter_name}"
+        result = "compressed-{inter_name}"
     },
 
     -- Gem technologies,
     { 
         -- Doesnt change anythig, so can be used to alter existing technology recipes
-        tname = "gem-tech",
+        tname = "cut-gem-tech",
         type = "technology",
         name = "gems",
 
@@ -144,8 +151,22 @@ dytech:itemplate
         effects = { 
             ["{__next__}"] = { 
                 type = "unlock-recipe",
-                recipe = "{subgroup}-{inter_name}" 
-            }
+                recipe = "cut-{inter_name}" 
+            },
+        }
+    },
+    { 
+        -- Doesnt change anythig, so can be used to alter existing technology recipes
+        tname = "compressed-gem-tech",
+        type = "technology",
+        name = "gems",
+
+        -- Unlocks the recipe with the exact name of the 'intermediate'
+        effects = { 
+            ["{__next__}"] = { 
+                type = "unlock-recipe",
+                recipe = "compressed-{inter_name}" 
+            },
         }
     }
 }
