@@ -20,7 +20,6 @@ dytech:intermediate
     -- Cut gems
     {
         name = "ruby",
-        subgroup = "cut",
         templates = 
         {
             -- Raw
@@ -45,7 +44,6 @@ dytech:intermediate
     },
     {
         name = "sapphire",
-        subgroup = "cut",
         templates = 
         {
             -- Raw
@@ -70,7 +68,6 @@ dytech:intermediate
     },
     {
         name = "emerald",
-        subgroup = "cut",
         templates = 
         {
             -- Raw
@@ -95,7 +92,6 @@ dytech:intermediate
     },
     {
         name = "topaz",
-        subgroup = "cut",
         templates = 
         {
             -- Raw
@@ -120,7 +116,6 @@ dytech:intermediate
     },
     {
         name = "diamond",
-        subgroup = "cut",
         templates = 
         {
             -- Raw
