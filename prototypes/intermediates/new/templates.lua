@@ -59,23 +59,93 @@ dytech:template
 }
 
 -- Gem specific templates
-dytech:template
+dytech:itemplate
 {
     -- Override for each base template
     {
-        name = "gem",
+        tname = "gem",
 
-        icon = "__CORE-DyTech-Core__/graphics/gems/{name}.png",
+        icon = "__CORE-DyTech-Core__/graphics/gems/{subgroup}-{inter_name}.png",
         subgroup = "dytech-gem-{subgroup}",
     },
 
     -- Gem specific templates
     {
-        name = "gem-item",
-        templates = { "item", "gem" }
+        tname = "raw-gem",
+        templates = { "item" },
+
+        icon = "__CORE-DyTech-Core__/graphics/gems/{name}.png",
+        subgroup = "dytech-gem-{subgroup}",
     },
     {
-        name = "gem-recipe",
-        templates = { "recipe", "gem" }
+        tname = "gem-item",
+        templates = { "item", "gem" },
+
+        -- The desired name 
+        name = "{subgroup}-{inter_name}",
     },
+
+    -- Cut recipe
+    {
+        tname = "cut-gem-recipe",
+        templates = { "recipe", "gem" },
+
+        -- The desired name 
+        name = "{subgroup}-{inter_name}",
+        category = "polishing",
+        ingredients = 
+        {
+            { 
+                type = "item",
+                name = "raw-{inter_name}",
+                amount = 1,
+            },
+            {
+                type = "fluid",
+                name = "clean-water",
+                amount = 50
+            }
+        },
+        result = "{subgroup}-{inter_name}"
+    },
+
+    -- Polish recipe
+    {
+        tname = "polish-gem-recipe",
+        templates = { "recipe", "gem" },
+
+        -- The desired name 
+        name = "{subgroup}-{inter_name}",
+        category = "polishing",
+        ingredients = 
+        {
+            { 
+                type = "item",
+                name = "cut-{inter_name}",
+                amount = 1,
+            },
+            {
+                type = "fluid",
+                name = "clean-water",
+                amount = 50
+            }
+        },
+        result = "{subgroup}-{inter_name}"
+    },
+
+    -- Gem technologies,
+    { 
+        -- Doesnt change anythig, so can be used to alter existing technology recipes
+        tname = "gem-tech",
+        type = "technology",
+        name = "gems",
+
+        -- Unlocks the recipe with the exact name of the 'intermediate'
+        effects = { 
+            ["{__next__}"] = { 
+                type = "unlock-recipe",
+                recipe = "{subgroup}-{inter_name}" 
+            }
+        }
+    }
 }

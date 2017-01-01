@@ -2,7 +2,7 @@
 -- Helps replacing string values in-place
 function string_replace(str, replacements)
     if type(str) == "string" then
-        return str:gsub("%{(.+)%}", function(token)
+        return str:gsub("%{([a-zA-Z0-9_-]+)%}", function(token)
             return replacements[token]
         end)
     else 

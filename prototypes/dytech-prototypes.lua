@@ -35,6 +35,17 @@ function dytech.template(dytech, values)
     end
 end
 
+function dytech.itemplate(dytech, values) 
+    for _, template in ipairs(values) do
+
+        -- Save the template to resolve it later
+        dytech.templates.raw[template.tname] = initialize_table(template, dytech.templates.raw[template.tname] or { })
+
+        -- Do we need to forget about the template name?
+        template.tname = nil 
+    end
+end
+
 function dytech.intermediate(dytech, values)
     local results = { }
 
@@ -54,17 +65,18 @@ function dytech.intermediate(dytech, values)
             base_table.template = nil
             base_table[1] = nil
 
-            -- Add values to the base table
-            base_table.name = base_table.name or inter.name
             -- base_table.subgroup = base_table.subgroup or inter.subgroup
 
             -- Create a prototype from a given template
             local result = initialize_table_with_replacements(base_table, dytech.templates.resolved[template_name], {
-                name = base_table.name,
+                name = base_table.name or inter.name,
                 subgroup = base_table.subgroup or inter.subgroup,
                 inter_name = inter.name,
                 __next__ = "{__next__}", -- we want this to be preserved into a later stage
             })
+
+            -- set the name if none is present
+            result.name = result.name or inter.name
 
             -- insert the resolved template to the results list
             table.insert(results, result)
