@@ -12,12 +12,16 @@ dytech:intermediate
             },
             {
                 template = "recipe",
-                enabled = true,
+                enabled = false,
                 ingredients = 
                 { 
                     { "steel-plate", 2 }
                 },
             },
+            { 
+                template = "tech-add",
+                name = "steel-processing"
+            }
         }
     }
 }

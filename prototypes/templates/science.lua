@@ -36,7 +36,7 @@ dytech:template
 	{
 		name = "science-vlong", 
 		unit = {
-            time = 60,
+            time = 120,
 		}
 	},
 }

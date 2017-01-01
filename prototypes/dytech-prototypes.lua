@@ -47,17 +47,23 @@ function dytech.intermediate(dytech, values)
 
         -- Create a new prototype with each template
         for _, base_table in pairs(templates) do
-            local template_name = base_table.template
-            assert(dytech.templates.raw[template_name] ~= nil, "Unknown dytech prototype template: '" .. template_name .. "'")
+            local template_name = base_table.template or base_table[1]
+            assert(dytech.templates.resolved[template_name] ~= nil, "Unknown dytech prototype template: '" .. template_name .. "'")
+
+            -- Remove values we dont want
+            base_table.template = nil
+            base_table[1] = nil
 
             -- Add values to the base table
             base_table.name = base_table.name or inter.name
+            -- base_table.subgroup = base_table.subgroup or inter.subgroup
 
             -- Create a prototype from a given template
             local result = initialize_table_with_replacements(base_table, dytech.templates.resolved[template_name], {
-                name = inter.name,
+                name = base_table.name,
+                subgroup = base_table.subgroup or inter.subgroup,
                 inter_name = inter.name,
-                subgroup = inter.subgroup,
+                __next__ = "{__next__}", -- we want this to be preserved into a later stage
             })
 
             -- insert the resolved template to the results list

@@ -1,3 +1,22 @@
+-- 
+-- Helps replacing string values in-place
+function string_replace(str, replacements)
+    if type(str) == "string" then
+        return str:gsub("%{(.+)%}", function(token)
+            return replacements[token]
+        end)
+    else 
+        return str
+    end
+end
+
+function special_replace(str, replacements, table)
+    if str == "{__next__}" then
+        return #table + 1
+    end
+    return string_replace(str, replacements)
+end
+
 --
 -- Set a table field with the given value 
 function set_if_null(table, field, value) 
@@ -18,7 +37,7 @@ function initialize_table(target, source)
         -- We are going to do this recursive for subtables 
         if type(value) == "table" then
             -- initialize the subtable or creat a new one and initialize that
-            initialize_table(set_if_null(target, key, { }), value)
+            initialize_table(set_if_null(target, special_replace(key, { }, target), { }), value)
         else
             -- set the values if needed
             set_if_null(target, key, value)
@@ -27,14 +46,6 @@ function initialize_table(target, source)
 
     -- return the target table
     return target
-end
-
--- 
--- Helps replacing string values in-place
-function string_replace(str, replacements)
-    return str:gsub("%{(.+)%}", function(token)
-        return replacements[token] or "unknown"
-    end)
 end
 
 -- 

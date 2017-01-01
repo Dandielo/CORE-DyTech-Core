@@ -2,7 +2,10 @@ require "config"
 
 dytech:resolve_templates()
 
+require("prototypes.intermediates.new.gems")
 require("prototypes.intermediates.new.simple")
+
+dytech:apply()
 
 require("prototypes.intermediates.creation")
 require("prototypes.resources.gems-recipe")

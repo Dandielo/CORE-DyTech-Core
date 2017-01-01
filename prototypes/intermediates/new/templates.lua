@@ -37,6 +37,12 @@ dytech:template
     },
 
     -- Default tech templates
+    {
+        name = "tech",
+        type = "technology",
+
+        icon = "__CORE-DyTech-Core__/graphics/intermediates/tech/{name}.png",
+    },
     { 
         -- Doesnt change anythig, so can be used to alter existing technology recipes
         name = "tech-add",
@@ -44,7 +50,7 @@ dytech:template
 
         -- Unlocks the recipe with the exact name of the 'intermediate'
         effects = { 
-            ["{inter_name}"] = { 
+            ["{__next__}"] = { 
                 type = "unlock-recipe",
                 recipe = "{inter_name}" 
             }
