@@ -3,7 +3,8 @@ require "config"
 dytech:resolve_templates()
 
 require("prototypes.intermediates.new.gems")
-require("prototypes.intermediates.new.simple")
+require("prototypes.intermediates.new.lenses")
+require("prototypes.intermediates.new.miningheads")
 
 dytech:apply()
 

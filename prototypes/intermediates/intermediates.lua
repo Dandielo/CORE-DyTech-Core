@@ -143,17 +143,7 @@ INTERMEDIATES = {
 	---------------------------------------------------- Gems --------------------------------------------------------
 	-----
 	---
-	---------------------------------------------------- Lenses --------------------------------------------------------
-	{
-		Name = "basic-lens",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "1",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="glass", amount=2},{type="item", name="electronic-circuit", amount=5}},
-		AddToTech = "optics",
-	},	
+	---------------------------------------------------- Lenses --------------------------------------------------------	
 	{
 		Name = "ruby-lens-1",
 		Subgroup = "turret-2",

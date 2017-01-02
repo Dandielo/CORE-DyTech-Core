@@ -1,9 +1,10 @@
-dytech:template
+dytech:itemplate
 {
     -- A default item template
     {
-        name = "item",
+        tname = "item",
         type = "item",
+        name = "{inter_name}",
         order = "{name}",
 
         icon = "__CORE-DyTech-Core__/graphics/intermediates/{name}.png",
@@ -17,7 +18,7 @@ dytech:template
 
     -- A default recipe template
     {
-        name = "recipe",
+        tname = "recipe",
         type = "recipe",
         enabled = false,
 
@@ -38,14 +39,14 @@ dytech:template
 
     -- Default tech templates
     {
-        name = "tech",
+        tname = "tech",
         type = "technology",
 
         icon = "__CORE-DyTech-Core__/graphics/intermediates/tech/{name}.png",
     },
     { 
         -- Doesnt change anythig, so can be used to alter existing technology recipes
-        name = "tech-add",
+        tname = "tech-add",
         type = "technology",
 
         -- Unlocks the recipe with the exact name of the 'intermediate'

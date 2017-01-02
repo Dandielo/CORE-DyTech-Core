@@ -65,7 +65,8 @@ function dytech.intermediate(dytech, values)
             base_table.template = nil
             base_table[1] = nil
 
-            -- base_table.subgroup = base_table.subgroup or inter.subgroup
+            -- Set values from the inter table
+            base_table.order = base_table.order or inter.order
 
             -- Create a prototype from a given template
             local result = initialize_table_with_replacements(base_table, dytech.templates.resolved[template_name], {
