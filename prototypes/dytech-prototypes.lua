@@ -46,6 +46,22 @@ function dytech.itemplate(dytech, values)
     end
 end
 
+function dytech.resolved_template(dytech, values)
+    for _, template in ipairs(values) do
+        local template_name = template.tname
+
+        -- Save the raw version just to keep it around
+        assert(not dytech.templates.raw[template_name], "Resolved templates cannot override existing templates!")
+        dytech.templates.raw[template_name] = template
+
+        -- Forget about the template name
+        template.tname = nil
+
+        -- Resolve the template
+        dytech:resolve_template(template_name, template)
+    end
+end
+
 function dytech.intermediate(dytech, values)
     local results = { }
 

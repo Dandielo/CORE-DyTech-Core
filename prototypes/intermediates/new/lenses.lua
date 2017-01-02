@@ -1,180 +1,261 @@
+dytech:resolved_template
+{
+    {
+        tname = "lens-1",
+        name = "{inter_name}-lens-1",
+        icon = "__CORE-DyTech-Core__/graphics/intermediates/{inter_name}-lens-1.png",
+    },
+    {
+        tname = "lens-2",
+        name = "{inter_name}-lens-2",
+        icon = "__CORE-DyTech-Core__/graphics/intermediates/{inter_name}-lens-2.png",
+    },
+    {
+        tname = "lens-3",
+        name = "{inter_name}-lens-3",
+        icon = "__CORE-DyTech-Core__/graphics/intermediates/{inter_name}-lens-3.png",
+    },
+
+    -- Lens items
+    {
+        tname = "lens-item-1",
+        templates = { "item", "lens-1" },
+    },
+    {
+        tname = "lens-item-2",
+        templates = { "item", "lens-2" },
+    },
+    {
+        tname = "lens-item-3",
+        templates = { "item", "lens-3" },
+    },
+
+    -- Lens recipes
+    {
+        tname = "lens-recipe-1",
+        templates = { "recipe", "lens-1" },
+
+        result = "{inter_name}-lens-1",
+        ingredients = {
+            { "basic-lens", 1 },
+            { "raw-{inter_name}", 1 }
+        }
+    },
+    {
+        tname = "lens-recipe-2",
+        templates = { "recipe", "lens-2" },
+
+        result = "{inter_name}-lens-2",
+        ingredients = {
+            { "{inter_name}-lens-1", 1 },
+            { "cut-{inter_name}", 2 }
+        }
+    },
+    {
+        tname = "lens-recipe-3",
+        templates = { "recipe", "lens-3" },
+
+        result = "{inter_name}-lens-3",
+        ingredients = {
+            { "{inter_name}-lens-2", 1 },
+            { "compressed-{inter_name}", 4 }
+        }
+    }
+}
+
 dytech:intermediate
 {
-	{
-		name = "basic-lens",
-		subgroup = "turret-2",
-		order = "1",
+    {
+        name = "basic-lens",
+        subgroup = "turret-2",
+        order = "0.1",
 
-		templates = 
-		{
-			{ "item" },
-			{
-				template = "recipe",
-				ingredients = {
-					{ "glass", 2 },
-					{ "electronic-circuit", 5 }
-				}
-			},
-			{
-				template = "tech-add",
-				name = "optics"
-			}
-		}
-	}
-}
-t = {	
-	{
-		Name = "ruby-lens-1",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "2",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="basic-lens", amount=1},{type="item", name="cut-ruby", amount=2}},
-		AddToTech = "laser-turrets",
-		Obsolete_Without_War = true,
-	},	
-	{
-		Name = "ruby-lens-2",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "3",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="ruby-lens-1", amount=1},{type="item", name="compressed-ruby", amount=4}},
-		AddToTech = "laser-turrets",
-		Obsolete_Without_War = true,
-	},	
-	{
-		Name = "sapphire-lens-1",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "3",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="basic-lens", amount=1},{type="item", name="raw-sapphire", amount=1}},
-		AddToTech = "laser-turrets-1",
-		Obsolete_Without_War = true,
-	},
-	{
-		Name = "sapphire-lens-2",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "4",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="sapphire-lens-1", amount=1},{type="item", name="cut-sapphire", amount=2}},
-		AddToTech = "laser-turrets-1",
-		Obsolete_Without_War = true,
-	},
-	{
-		Name = "sapphire-lens-3",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "5",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="sapphire-lens-2", amount=1},{type="item", name="compressed-sapphire", amount=4}},
-		AddToTech = "laser-turrets-1",
-		Obsolete_Without_War = true,
-	},
-	{
-		Name = "emerald-lens-1",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "6",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="basic-lens", amount=1},{type="item", name="raw-emerald", amount=1}},
-		AddToTech = "laser-turrets-2",
-		Obsolete_Without_War = true,
-	},
-	{
-		Name = "emerald-lens-2",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "7",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="emerald-lens-1", amount=1},{type="item", name="cut-emerald", amount=2}},
-		AddToTech = "laser-turrets-2",
-		Obsolete_Without_War = true,
-	},
-	{
-		Name = "emerald-lens-3",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "8",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="emerald-lens-2", amount=1},{type="item", name="compressed-emerald", amount=4}},
-		AddToTech = "laser-turrets-2",
-		Obsolete_Without_War = true,
-	},
-	{
-		Name = "topaz-lens-1",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "9",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="basic-lens", amount=1},{type="item", name="raw-topaz", amount=4}},
-		AddToTech = "laser-turrets-3",
-		Obsolete_Without_War = true,
-	},
-	{
-		Name = "topaz-lens-2",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "91",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="topaz-lens-1", amount=1},{type="item", name="cut-topaz", amount=8}},
-		AddToTech = "laser-turrets-3",
-		Obsolete_Without_War = true,
-	},
-	{
-		Name = "topaz-lens-3",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "92",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="topaz-lens-2", amount=1},{type="item", name="compressed-topaz", amount=12}},
-		AddToTech = "laser-turrets-3",
-		Obsolete_Without_War = true,
-	},
-	{
-		Name = "diamond-lens-1",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "93",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="basic-lens", amount=1},{type="item", name="raw-diamond", amount=200}},
-		AddToTech = "laser-turrets-4",
-		Obsolete_Without_War = true,
-	},
-	{
-		Name = "diamond-lens-2",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Recipe = true,
-		Order = "94",
-		Time = 2,
-		Recipe_Normal = {{type="item", name="diamond-lens-1", amount=1},{type="item", name="cut-diamond", amount=200}},
-		AddToTech = "laser-turrets-4",
-		Obsolete_Without_War = true,
-	},
-	{
-		Name = "diamond-lens-3",
-		Subgroup = "turret-2",
-		Enabled = false,
-		Order = "95",
-		Recipe = true,
-		Time = 2,
-		Recipe_Normal = {{type="item", name="diamond-lens-2", amount=1},{type="item", name="compressed-diamond", amount=200}},
-		AddToTech = "laser-turrets-4",
-		Obsolete_Without_War = true,
-	},
+        templates = 
+        {
+            { "item" },
+            {
+                template = "recipe",
+                ingredients = {
+                    { "glass", 2 },
+                    { "electronic-circuit", 5 }
+                }
+            },
+            {
+                template = "tech-add",
+                name = "optics"
+            }
+        }
+    },
+
+    -- Special lenses (DyTech - war needed)
+    {
+        name = "ruby",
+        subgroup = "turret-2",
+
+        templates = 
+        {
+            { 
+                template = "lens-item-1",
+                order = "1.1",
+            },
+            { 
+                template = "lens-item-2",
+                order = "1.2",
+            },
+            { 
+                template = "lens-recipe-1",
+                ingredients = { 
+                    [2] = { "cut-ruby", 2 }
+                }
+            },
+            { 
+                template = "lens-recipe-2",
+                ingredients = { 
+                    [2] = { "compressed-ruby", 4 }
+                }
+            },
+            -- { This is going to be added by dytech - war?
+            --     template = "tech-add",
+            --     name = "lasser-turrets",
+            -- }
+        }
+    },
+    {
+        name = "sapphire",
+        subgroup = "turret-2",
+
+        templates = 
+        {
+            { 
+                template = "lens-item-1",
+                order = "2.1",
+            },
+            { 
+                template = "lens-item-2",
+                order = "2.2",
+            },
+            { 
+                template = "lens-item-3",
+                order = "2.3",
+            },
+            { "lens-recipe-1" },
+            { "lens-recipe-2" },
+            { "lens-recipe-3" },
+            -- { This is going to be added by dytech - war?
+            --     template = "tech-add",
+            --     name = "lasser-turrets-1",
+            -- }
+        }
+    },
+    {
+        name = "emerald",
+        subgroup = "turret-2",
+
+        templates = 
+        {
+            { 
+                template = "lens-item-1",
+                order = "3.1",
+            },
+            { 
+                template = "lens-item-2",
+                order = "3.2",
+            },
+            { 
+                template = "lens-item-3",
+                order = "3.3",
+            },
+            { "lens-recipe-1" },
+            { "lens-recipe-2" },
+            { "lens-recipe-3" },
+            -- { This is going to be added by dytech - war?
+            --     template = "tech-add",
+            --     name = "lasser-turrets-2",
+            -- }
+        }
+    },
+    {
+        name = "topaz",
+        subgroup = "turret-2",
+
+        templates = 
+        {
+            { 
+                template = "lens-item-1",
+                order = "4.1",
+            },
+            { 
+                template = "lens-item-2",
+                order = "4.2",
+            },
+            { 
+                template = "lens-item-3",
+                order = "4.3",
+            },
+            { 
+                template = "lens-recipe-1",
+                ingredients = { 
+                    [2] = { "raw-topaz", 4 }
+                }
+            },
+            { 
+                template = "lens-recipe-2",
+                ingredients = { 
+                    [2] = { "cut-topaz", 8 }
+                }
+            },
+            { 
+                template = "lens-recipe-3",
+                ingredients = { 
+                    [2] = { "compressed-topaz", 12 }
+                }
+            },
+            -- { This is going to be added by dytech - war?
+            --     template = "tech-add",
+            --     name = "lasser-turrets-3",
+            -- }
+        }
+    },
+    {
+        name = "diamond",
+        subgroup = "turret-2",
+
+        templates = 
+        {
+            { 
+                template = "lens-item-1",
+                order = "5.1",
+            },
+            { 
+                template = "lens-item-2",
+                order = "5.2",
+            },
+            { 
+                template = "lens-item-3",
+                order = "5.3",
+            },
+            { 
+                template = "lens-recipe-1",
+                ingredients = { 
+                    [2] = { "raw-diamond", 200 }
+                }
+            },
+            { 
+                template = "lens-recipe-2",
+                ingredients = { 
+                    [2] = { "cut-diamond", 200 }
+                }
+            },
+            { 
+                template = "lens-recipe-3",
+                ingredients = { 
+                    [2] = { "compressed-diamond", 200 }
+                }
+            },
+            -- { This is going to be added by dytech - war?
+            --     template = "tech-add",
+            --     name = "lasser-turrets-4",
+            -- }
+        }
+    }
 }
