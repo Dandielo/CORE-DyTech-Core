@@ -7,7 +7,7 @@ dytech:itemplate
         name = "{inter_name}",
         order = "{name}",
 
-        icon = "__CORE-DyTech-Core__/graphics/intermediates/{name}.png",
+        icon = "__CORE-DyTech-Core__/graphics/intermediates/{inter_name}.png",
         subgroup = "dytech-intermediates-{subgroup}",
         flags = { "goes-to-main-inventory" },
 
@@ -20,9 +20,10 @@ dytech:itemplate
     {
         tname = "recipe",
         type = "recipe",
+        name = "{inter_name}",
         enabled = false,
 
-        icon = "__CORE-DyTech-Core__/graphics/intermediates/{name}.png",
+        icon = "__CORE-DyTech-Core__/graphics/intermediates/{inter_name}.png",
         subgroup = "dytech-intermediates-{subgroup}",
 
         -- Ingredients and time
