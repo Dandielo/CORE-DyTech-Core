@@ -163,6 +163,13 @@ function dytech.update_modules(dytech)
 end
 
 -- creates a new prototype entry (may use dytech templates) or updates an existing prototype
+function dytech.load(dytech, values)
+    for _, prototype in pairs(values) do
+        assert(data.raw[prototype.type][prototype.name], "Tried to load unknown prototype: '" .. prototype.type .. "', '" .. prototype.name .. "'")
+        dytech.raw[prototype.type][prototype.name] = data.raw[prototype.type][prototype.name]
+    end
+end
+
 function dytech.extend(dytech, values)
     for _, proto in pairs(values) do
 

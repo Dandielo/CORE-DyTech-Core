@@ -8,6 +8,7 @@ require("prototypes.intermediates.new.battery-packs")
 require("prototypes.intermediates.new.electronics")
 require("prototypes.intermediates.new.frames")
 require("prototypes.intermediates.new.miningheads")
+require("prototypes.intermediates.new.turrets")
 
 dytech:apply()
 
