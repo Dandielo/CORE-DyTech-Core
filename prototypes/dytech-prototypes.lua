@@ -8,11 +8,16 @@ dytech.templates = { }
 dytech.templates.raw = { }
 dytech.templates.resolved = { }
 
+-- dytech helper values
+dytech.temp = { }
+dytech.temp.productivity = { }
+
 -- dytech items, recipes and groups
 dytech.raw = { }
 dytech.raw.tile = { }
 dytech.raw.item = { }
 dytech.raw.fluid = { }
+dytech.raw.module = { }
 dytech.raw.recipe = { }
 dytech.raw.technology = { }
 dytech.raw["assembling-machine"] = { }
@@ -138,7 +143,24 @@ function dytech.resolve_template(dytech, name, template)
     template.templates = nil
 end
 
+-- provides a easy way to add more items to the productivity module limitation 
+function dytech.productivity(dytech, item)
+    table.insert(dytech.temp.productivity, item)
+    -- for _, item in pairs(items) do
+    --     table.insert(dytech.temp.productivity, item)
+    -- end
+end
 
+function dytech.update_modules(dytech)
+    for name, module in pairs(data.raw.module) do
+        if string.find(module.name, "productivity") then
+            -- Add all items to the limitation list
+            for _, item in pairs(dytech.temp.productivity) do
+                table.insert(module.limitation, item)
+            end
+        end
+    end
+end
 
 -- creates a new prototype entry (may use dytech templates) or updates an existing prototype
 function dytech.extend(dytech, values)
@@ -168,6 +190,11 @@ function dytech.extend(dytech, values)
 
         end
 
+        -- in the end check if we got the 'productivity' flag and remove it afterwards
+        if type_values[proto.name].productivity then
+            type_values[proto.name].productivity = nil
+            dytech:productivity(proto.name)
+        end
     end
 end
 
@@ -175,7 +202,7 @@ function dytech.apply(dytech)
     -- Copy all 'dytech' prototypes to the 'data' table
     for type, values in pairs(dytech.raw) do
         for name, proto in pairs(values) do
-            data.raw[type][name] = initialize_table(proto, data.raw[proto.type][proto.name] or { }) -- merge the dytech prototype with the base game type
+            data.raw[type][name] = initialize_table(proto, data.raw[type][name] or { }) -- merge the dytech prototype with the base game type
         end
 
         -- Reset dytech prototypes

@@ -148,6 +148,8 @@ for k, v in pairs(data.raw.module) do
 	end
 end
 
+dytech:update_modules()
+
 if TechFix then
 	for k, v in pairs(data.raw.technology) do
 		if not v.upgrade then
