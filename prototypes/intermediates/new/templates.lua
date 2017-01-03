@@ -57,6 +57,21 @@ dytech:itemplate
                 recipe = "{inter_name}" 
             }
         }
+    },
+    { 
+        -- Creates a new technology and adds a recipe of the name of the intermediate
+        tname = "tech-and-add",
+        type = "technology",
+
+        icon = "__CORE-DyTech-Core__/graphics/intermediates/tech/{name}.png",
+
+        -- Unlocks the recipe with the exact name of the 'intermediate'
+        effects = { 
+            ["{__next__}"] = { 
+                type = "unlock-recipe",
+                recipe = "{inter_name}" 
+            }
+        }
     }
 }
 
