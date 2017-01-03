@@ -48,7 +48,6 @@ dytech:itemplate
     { 
         -- Doesnt change anythig, so can be used to alter existing technology recipes
         tname = "tech-add",
-        name = "{inter_name}",
         type = "technology",
 
         -- Unlocks the recipe with the exact name of the 'intermediate'

@@ -28,7 +28,7 @@ dytech:intermediate
         templates = 
         {
             { "item" },
-         { "tech-add" },
+            { "tech-add" },
             { 
                 template = "recipe",
 
