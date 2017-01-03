@@ -11,6 +11,7 @@ require("prototypes.intermediates.new.heaters")
 require("prototypes.intermediates.new.frames")
 require("prototypes.intermediates.new.blades")
 require("prototypes.intermediates.new.miningheads")
+require("prototypes.intermediates.new.assemblebots")
 require("prototypes.intermediates.new.gearboxes")
 require("prototypes.intermediates.new.turrets")
 
