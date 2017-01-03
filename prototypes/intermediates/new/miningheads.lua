@@ -1,3 +1,11 @@
+dytech:load
+{   -- load the given technology to add recipes to it
+    {
+        name = "steel-processing",
+        type = "technology"
+    }
+}
+
 dytech:intermediate
 {
     {

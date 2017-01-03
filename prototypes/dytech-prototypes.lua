@@ -166,7 +166,7 @@ end
 function dytech.load(dytech, values)
     for _, prototype in pairs(values) do
         assert(data.raw[prototype.type][prototype.name], "Tried to load unknown prototype: '" .. prototype.type .. "', '" .. prototype.name .. "'")
-        dytech.raw[prototype.type][prototype.name] = data.raw[prototype.type][prototype.name]
+        initialize_table(dytech.raw[prototype.type][prototype.name] or { }, data.raw[prototype.type][prototype.name])
     end
 end
 

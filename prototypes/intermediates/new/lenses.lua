@@ -1,3 +1,11 @@
+dytech:load
+{
+    {
+        name = "optics",
+        type = "technology",
+    }    
+}
+
 dytech:resolved_template
 {
     {
