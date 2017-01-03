@@ -45,61 +45,61 @@ dytech:intermediate
             }
         }
     },
-    {
-        name = "blade-2",
-        subgroup = "rotor",
+    -- {   -- DyTech - machine
+    --     name = "blade-2",
+    --     subgroup = "rotor",
 
-        templates =
-        {
-            { "item" },
-            {
-                template = "recipe",
-                productivity = true,
-                energy_required = 4,
+    --     templates =
+    --     {
+    --         { "item" },
+    --         {
+    --             template = "recipe",
+    --             productivity = true,
+    --             energy_required = 4,
 
-                ingredients = 
-                {
-                    { "iron-plate", 6 },
-                    { "stone-brick", 6 } -- { "brick", 6 } -- metallurgy
-                }
-            },
-            {
-                template = "tech-and-add",
-                templates = { "science-red", "science-green" },
+    --             ingredients = 
+    --             {
+    --                 { "iron-plate", 6 },
+    --                 { "stone-brick", 6 } -- { "brick", 6 } -- metallurgy
+    --             }
+    --         },
+    --         {
+    --             template = "tech-and-add",
+    --             templates = { "science-red", "science-green" },
 
-                name = "rotor-2",
-                prerequisites = { "steel-processing" }, -- + { "lead-processing", "zinc-processing" }
-                unit = {
-                    time = 50,
-                    count = 75,
-                }
-            }
-        }
-    },
-    {
-        name = "rotor-2",
-        subgroup = "rotor",
+    --             name = "rotor-2",
+    --             prerequisites = { "steel-processing" }, -- + { "lead-processing", "zinc-processing" }
+    --             unit = {
+    --                 time = 50,
+    --                 count = 75,
+    --             }
+    --         }
+    --     }
+    -- },
+    -- {
+    --     name = "rotor-2",
+    --     subgroup = "rotor",
 
-        templates =
-        {
-            { "item" },
-            { "tech-add" },
-            {
-                template = "recipe",
-                productivity = true,
-                energy_required = 10,
+    --     templates =
+    --     {
+    --         { "item" },
+    --         { "tech-add" },
+    --         {
+    --             template = "recipe",
+    --             productivity = true,
+    --             energy_required = 10,
 
-                ingredients = 
-                {
-                    { "rotor-1", 1 },
-                    { "blade-2", 3 },
-                    { "steel-plate", 6 },
-                    { "iron-gear-wheel", 4 } -- { "zinc-gear-wheel", 4 } -- metallurgy
-                }
-            },
-        }
-    },
-    -- { -- DyTech - machine
+    --             ingredients = 
+    --             {
+    --                 { "rotor-1", 1 },
+    --                 { "blade-2", 3 },
+    --                 { "steel-plate", 6 },
+    --                 { "iron-gear-wheel", 4 } -- { "zinc-gear-wheel", 4 } -- metallurgy
+    --             }
+    --         },
+    --     }
+    -- },
+    -- {
     --     name = "blade-3",
     --     subgroup = "rotor",
 
