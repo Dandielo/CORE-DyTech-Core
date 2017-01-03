@@ -146,9 +146,6 @@ end
 -- provides a easy way to add more items to the productivity module limitation 
 function dytech.productivity(dytech, item)
     table.insert(dytech.temp.productivity, item)
-    -- for _, item in pairs(items) do
-    --     table.insert(dytech.temp.productivity, item)
-    -- end
 end
 
 function dytech.update_modules(dytech)
