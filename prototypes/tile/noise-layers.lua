@@ -8,8 +8,8 @@ data:extend
         type = "noise-layer",
         name = "random"
     },
-    {
-        type = "noise-layer",
-        name = "gems"
-    },
+    -- {
+    --     type = "noise-layer",
+    --     name = "gems"
+    -- },
 }

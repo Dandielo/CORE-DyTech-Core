@@ -55,7 +55,7 @@ require("prototypes.categories.resource-category")
 require("prototypes.damage-type")
 
 -- Autoplace Control
-require("prototypes.autoplace-controls")
+-- require("prototypes.autoplace-controls")
 
 if Config.BaseOverride then
 require "prototypes.update-base"
