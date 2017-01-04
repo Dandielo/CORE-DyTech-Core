@@ -40,7 +40,7 @@ Credits for changes in this fork
 
 License
 ======
-Changed the license from CC-NA-ND 4.0 to CC-NA-SA 4.0 basing on the post from MagicLegend on <a rel="DyTech Forums" href="https://forums.factorio.com/viewtopic.php?f=43&t=25654">
+Changed the license from **CC-BY-NC-ND 4.0** to **CC-BY-NC-SA 4.0** basing on the post from MagicLegend on <a rel="DyTech Forums" href="https://forums.factorio.com/viewtopic.php?f=43&t=25654">DyTech Forums [Dytech Licensing]</a>, and my decision to go with his proposition to open the work up to others. If the original author want's me to take this repository down please contact me.
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work, created by dandielo, based on the work of Frits de Vreugd, is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
