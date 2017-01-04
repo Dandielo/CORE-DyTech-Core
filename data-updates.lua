@@ -16,6 +16,7 @@ require("prototypes.intermediates.new.miningheads")
 require("prototypes.intermediates.new.assemblebots")
 require("prototypes.intermediates.new.gearboxes")
 require("prototypes.intermediates.new.turrets")
+require("prototypes.intermediates.new.robot-frames")
 
 dytech:apply()
 

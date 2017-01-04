@@ -1,0 +1,66 @@
+-- dytech:load
+-- {
+--     {
+--         name = "logistic-system-1",
+--         type = "technology"
+--     },
+--     {
+--         name = "logistic-system-2",
+--         type = "technology"
+--     }
+-- }
+
+-- dytech:intermediate
+-- {
+--     {
+--         name = "advanced-flying-robot-frame",
+--         subgroup = "all",
+--         order = "a[flying-robot-frame]-b[advanced]",
+
+--         templates = 
+--         {
+--             { "item" },
+--             {
+--                 template = "recipe",
+--                 -- category = "crafting-with-fluid", -- metallurgy
+--                 energy_required = 5,
+
+--                 ingredients = 
+--                 {
+--                     { "flying-robot-frame", 1 },
+--                     { "steel-plate", 2 } -- { "motlen-titanium", 5 } -- metallurgy
+--                 },
+--                 { 
+--                     template = "tech-add",
+--                     name = "logistic-system-1" 
+--                 }
+--             }
+--         }
+--     },
+--     {
+--         name = "ultimate-flying-robot-frame",
+--         subgroup = "all",
+--         order = "a[flying-robot-frame]-c[ultimate]",
+
+--         templates = 
+--         {
+--             { "item" },
+--             {
+--                 template = "recipe",
+--                 -- category = "crafting-with-fluid", -- metallurgy
+--                 energy_required = 5,
+
+--                 ingredients = 
+--                 {
+--                     { "flying-robot-frame", 1 },
+--                     { "steel-plate", 2 } -- { "molten-titanium-aluminide", 5 } -- metallurgy
+--                 },
+--                 { 
+--                     template = "tech-add",
+--                     name = "logistic-system-2" 
+--                 }
+--             }
+--         }
+--     }
+-- }
+
