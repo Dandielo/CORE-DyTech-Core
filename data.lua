@@ -3,18 +3,14 @@ require "config"
 require "prototypes.machines.functions"
 require "prototypes.dytech-prototypes"
 
--- Mandatory Stuff!
 
-require("prototypes.resources.gems-resources")
 require("prototypes.override-functions")
 require("prototypes.prototype-creation")
--- require("prototypes.recipes.coal")
--- require("prototypes.recipes.crystals")
--- require("prototypes.resources.gems-item")
--- 
+
 
 require("prototypes.resources.water-fluid")
 require("prototypes.resources.water-recipe")
+
 require("prototypes.trees.rubber-tree-entity")
 require("prototypes.trees.rubber-tree-item")
 require("prototypes.trees.rubber-tree-recipe")
