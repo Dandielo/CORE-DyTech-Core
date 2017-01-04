@@ -40,11 +40,16 @@ Credits for changes in this fork
 
 License
 ======
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work, created by dandielo, based on the work of Frits de Vreugd, is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+Changed the license from CC-NA-ND 4.0 to CC-NA-SA 4.0 basing on the post from MagicLegend on <a rel="DyTech Forums" href="https://forums.factorio.com/viewtopic.php?f=43&t=25654">
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work, created by dandielo, based on the work of Frits de Vreugd, is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
 You are free to:
 
    * Share -- copy and redistribute the material in any medium or format
+   
+   * Adapt — remix, transform, and build upon the material
 
    * The licensor cannot revoke these freedoms as long as you follow the
      license terms.
@@ -55,6 +60,9 @@ Under the following terms:
      license, and indicate if changes were made. You may do so in any
      reasonable manner, but not in any way that suggests the licensor
      endorses you or your use.
+     
+   * ShareAlike -- If you remix, transform, or build upon the material, you must 
+     distribute your contributions under the same license as the original.
 
    * No additional restrictions -- You may not apply legal terms or
      technological measures that legally restrict others from doing
