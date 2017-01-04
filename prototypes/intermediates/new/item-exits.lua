@@ -1,0 +1,152 @@
+dytech:intermediate
+{
+    -- {   -- DyTech - Machine
+    --     name = "item-exit-1",
+    --     subgroup = "exits",
+    --     order = "a[exits]-a",
+
+    --     templates = 
+    --     {
+    --         { "item" },
+    --         {
+    --             template = "recipe",
+    --             productivity = true,
+    --             energy_required = 5,
+    --             enabled = true,
+
+    --             ingredients = 
+    --             {
+    --                 { "rubber", 5 },
+    --                 { "wooden-chest", 1 },
+    --                 { "iron-plate", 12 }
+    --             }
+    --         }
+    --     }
+    -- },
+    -- {
+    --     name = "item-exit-2",
+    --     subgroup = "exits",
+    --     order = "a[exits]-b",
+
+    --     templates = 
+    --     {
+    --         { "item" },
+    --         {
+    --             template = "recipe",
+    --             productivity = true,
+    --             energy_required = 10,
+
+    --             ingredients = 
+    --             {
+    --                 { "item-exit-1", 1 },
+    --                 { "iron-chest", 1 },
+    --                 { "steel-plate", 12 },
+    --                 { "rubber", 25 }
+    --             }
+    --         },
+    --         {
+    --             template = "tech-and-add",
+    --             templates = { "science-red", "science-green" },
+    --             prerequisites = { "steel-processing" },
+    --             unit = {
+    --                 time = 100,
+    --                 count = 75,
+    --             }
+    --         }
+    --     }
+    -- },
+    -- {
+    --     name = "item-exit-3",
+    --     subgroup = "exits",
+    --     order = "a[exits]-c",
+
+    --     templates = 
+    --     {
+    --         { "item" },
+    --         {
+    --             template = "recipe",
+    --             productivity = true,
+    --             energy_required = 15,
+
+    --             ingredients = 
+    --             {
+    --                 { "item-exit-2", 1 },
+    --                 { "steel-chest", 1 },
+    --                 { "steel-plate", 15 },
+    --                 { "bundled-wire", 10 }
+    --             }
+    --         },
+    --         {
+    --             template = "tech-and-add",
+    --             templates = { "science-red", "science-green", "science-blue" },
+    --             prerequisites = { "item-exit-2" },
+    --             unit = {
+    --                 time = 100,
+    --                 count = 125,
+    --             }
+    --         }
+    --     }
+    -- },
+    -- {
+    --     name = "item-exit-4",
+    --     subgroup = "exits",
+    --     order = "a[exits]-d",
+
+    --     templates = 
+    --     {
+    --         { "item" },
+    --         {
+    --             template = "recipe",
+    --             productivity = true,
+    --             energy_required = 20,
+
+    --             ingredients = 
+    --             {
+    --                 { "item-exit-3", 1 },
+    --                 { "logistic-chest-passive-provider", 1 },
+    --                 { "advanced-processing-unit", 5 },
+    --                 { "filter-inserter", 1 }
+    --             }
+    --         },
+    --         {
+    --             template = "tech-and-add",
+    --             templates = { "science-red", "science-green", "science-blue" },
+    --             prerequisites = { "item-exit-3" },
+    --             unit = {
+    --                 time = 150,
+    --                 count = 250,
+    --             }
+    --         }
+    --     }
+    -- },
+    -- {
+    --     name = "item-exit-5",
+    --     subgroup = "exits",
+    --     order = "a[exits]-e",
+
+    --     templates = 
+    --     {
+    --         { "item" },
+    --         {
+    --             template = "recipe",
+    --             productivity = true,
+    --             energy_required = 25,
+
+    --             ingredients = 
+    --             {
+    --                 { "item-exit-4", 1 },
+    --                 { "logic-diamond-processor", 5 }
+    --             }
+    --         },
+    --         {
+    --             template = "tech-and-add",
+    --             templates = { "science-red", "science-green", "science-blue" },
+    --             prerequisites = { "item-exit-4" },
+    --             unit = {
+    --                 time = 150,
+    --                 count = 375,
+    --             }
+    --         }
+    --     }
+    -- }
+}
