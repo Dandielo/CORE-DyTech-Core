@@ -38,7 +38,7 @@ dytech:extend
     {
         type = "item",
         name = "liquid-handler",
-        icon = "__CORE-DyTech-Core__/graphics/machines/liquid-handler.png",
+        icon = "__dytech-core__/graphics/machines/liquid-handler.png",
         flags = { "goes-to-quickbar" },
         subgroup = "dytech-machines-cleaning",
         order = "liquid-handler",
@@ -69,7 +69,7 @@ dytech:extend
         type = "technology",
         name = "water-cleaning",
         prerequisites = { "automation" },
-        icon = "__CORE-DyTech-Core__/graphics/machines/water-cleaning.png",
+        icon = "__dytech-core__/graphics/machines/water-cleaning.png",
 
         -- Recipes to unlock
         effects = 

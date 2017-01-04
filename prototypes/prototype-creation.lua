@@ -111,7 +111,7 @@ data:extend(
   {
     type = "technology",
     name = Data.Name,
-    icon = "__CORE-DyTech-Core__/graphics/"..Data.Icon,
+    icon = "__dytech-core__/graphics/"..Data.Icon,
     effects =
     {
     },

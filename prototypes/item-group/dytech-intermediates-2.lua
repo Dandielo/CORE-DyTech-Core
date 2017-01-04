@@ -5,7 +5,7 @@ data:extend
         name = "dytech-intermediates-2",
         order = "2",
         inventory_order = "z-3-dytech-intermediates",
-        icon = "__CORE-DyTech-Core__/graphics/item-group/intermediate-products.png",
+        icon = "__dytech-core__/graphics/item-group/intermediate-products.png",
     },
     {
         type = "item-subgroup",

@@ -5,7 +5,7 @@ data:extend
         name = "dytech-defense",
         order = "z-9-dytech-defense",
         inventory_order = "z-9-dytech-defense",
-        icon = "__CORE-DyTech-Core__/graphics/item-group/defense.png",
+        icon = "__dytech-core__/graphics/item-group/defense.png",
     },
     {
         type = "item-subgroup",

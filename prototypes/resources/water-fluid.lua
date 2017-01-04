@@ -6,7 +6,7 @@ dytech:extend
         max_temperature = 80,
         pressure_to_speed_ratio = 0.6,
         flow_to_energy_ratio = 0.885,
-        icon = "__CORE-DyTech-Core__/graphics/fluid/dirty-water.png"
+        icon = "__dytech-core__/graphics/fluid/dirty-water.png"
     }
 }
 

@@ -5,7 +5,7 @@ data:extend
         name = "dytech-inserter",
         order = "z-2-dytech-inserter",
         inventory_order = "z-2-dytech-inserter",
-        icon = "__CORE-DyTech-Core__/graphics/item-group/inserter.png",
+        icon = "__dytech-core__/graphics/item-group/inserter.png",
     },
     {
         type = "item-subgroup",

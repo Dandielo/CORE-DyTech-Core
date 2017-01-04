@@ -5,7 +5,7 @@ data:extend
         name = "dytech-logistic",
         order = "z-9-dytech-logistic",
         inventory_order = "z-9-dytech-train",
-        icon = "__CORE-DyTech-Core__/graphics/item-group/logistic.png",
+        icon = "__dytech-core__/graphics/item-group/logistic.png",
     },
     {
         type = "item-subgroup",

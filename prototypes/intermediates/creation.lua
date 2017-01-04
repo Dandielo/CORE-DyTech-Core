@@ -15,10 +15,10 @@ local function DyTech_Core_Create_Intermediates_Item(NAME, CATEGORY, FUEL, GEM, 
 	end
 	if GEM then
 		result.subgroup = "dytech-gem-"..CATEGORY
-		result.icon = "__CORE-DyTech-Core__/graphics/gems/"..NAME..".png"
+		result.icon = "__dytech-core__/graphics/gems/"..NAME..".png"
 	else
 		result.subgroup = "dytech-intermediates-"..CATEGORY
-		result.icon = "__CORE-DyTech-Core__/graphics/intermediates/"..NAME..".png"
+		result.icon = "__dytech-core__/graphics/intermediates/"..NAME..".png"
 	end
 	result.fuel_value = FUEL
 	data.raw["item"][result.name] = result
@@ -32,10 +32,10 @@ local function DyTech_Core_Create_Intermediates_Recipe(NAME, CATEGORY, ENABLED, 
 	result.ingredients = {}
 	if GEM then
 		result.subgroup = "dytech-gem-"..CATEGORY
-		result.icon = "__CORE-DyTech-Core__/graphics/gems/"..NAME..".png"
+		result.icon = "__dytech-core__/graphics/gems/"..NAME..".png"
 	else
 		result.subgroup = "dytech-intermediates-"..CATEGORY
-		result.icon = "__CORE-DyTech-Core__/graphics/intermediates/"..NAME..".png"
+		result.icon = "__dytech-core__/graphics/intermediates/"..NAME..".png"
 	end
 	result.category = TYPE 
 	result.energy_required = TIME
@@ -51,7 +51,7 @@ local function DyTech_Core_Create_Intermediates_Tech(DATA)
 	result.unit.time = DATA.Time
 	result.unit.ingredients = {}
 	result.effects = {}
-	result.icon = "__CORE-DyTech-Core__/graphics/intermediates/tech/"..DATA.Name..".png"
+	result.icon = "__dytech-core__/graphics/intermediates/tech/"..DATA.Name..".png"
 	result.prerequisites = {DATA.Prerequisites}
 	data.raw["technology"][result.name] = result
 end

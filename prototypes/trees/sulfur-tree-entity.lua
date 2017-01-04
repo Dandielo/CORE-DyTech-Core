@@ -3,7 +3,7 @@ data:extend
     {
         type = "tree",
         name = "sulfur-seed",
-        icon = "__CORE-DyTech-Core__/graphics/sulfur-tree/stage-1.png",
+        icon = "__dytech-core__/graphics/sulfur-tree/stage-1.png",
         order = "b-b-g",
         flags = {"placeable-neutral", "breaths-air"},
         emissions_per_tick = -0.0001,
@@ -36,7 +36,7 @@ data:extend
         pictures =
         {
             {
-                filename = "__CORE-DyTech-Core__/graphics/sulfur-tree/stage-1.png",
+                filename = "__dytech-core__/graphics/sulfur-tree/stage-1.png",
                 priority = "extra-high",
                 width = 32,
                 height = 32,
@@ -47,7 +47,7 @@ data:extend
     {
         type = "tree",
         name = "small-sulfur-tree",
-        icon = "__CORE-DyTech-Core__/graphics/sulfur-tree/icon.png",
+        icon = "__dytech-core__/graphics/sulfur-tree/icon.png",
         order = "b-b-g",
         flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
         emissions_per_tick = -0.01, -- werid values just like for the rubber-tree entity
@@ -80,7 +80,7 @@ data:extend
         pictures =
         {
             {
-                filename = "__CORE-DyTech-Core__/graphics/sulfur-tree/stage-2.png",
+                filename = "__dytech-core__/graphics/sulfur-tree/stage-2.png",
                 priority = "extra-high",
                 width = math.floor(155 / 4),
                 height = math.floor(118 / 4),
@@ -91,7 +91,7 @@ data:extend
     {
         type = "tree",
         name = "medium-sulfur-tree",
-        icon = "__CORE-DyTech-Core__/graphics/sulfur-tree/icon.png",
+        icon = "__dytech-core__/graphics/sulfur-tree/icon.png",
         order = "b-b-g",
         flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
         emissions_per_tick = -0.005,
@@ -124,7 +124,7 @@ data:extend
         pictures =
         {
             {
-                filename = "__CORE-DyTech-Core__/graphics/sulfur-tree/stage-3.png",
+                filename = "__dytech-core__/graphics/sulfur-tree/stage-3.png",
                 priority = "extra-high",
                 width = math.floor(155 * 0.75),
                 height = math.floor(118 * 0.75),
@@ -135,7 +135,7 @@ data:extend
     {
         type = "tree",
         name = "mature-sulfur-tree",
-        icon = "__CORE-DyTech-Core__/graphics/sulfur-tree/icon.png",
+        icon = "__dytech-core__/graphics/sulfur-tree/icon.png",
         order = "b-b-h",
         flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
         emissions_per_tick = -0.002,
@@ -168,7 +168,7 @@ data:extend
         pictures =
         {
             {
-                filename = "__CORE-DyTech-Core__/graphics/sulfur-tree/stage-4.png",
+                filename = "__dytech-core__/graphics/sulfur-tree/stage-4.png",
                 priority = "extra-high",
                 width = 155,
                 height = 118,

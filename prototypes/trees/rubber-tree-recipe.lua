@@ -3,7 +3,7 @@ data:extend
     {
         type = "recipe",
         name = "rubber-seed",
-        icon = "__CORE-DyTech-Core__/graphics/rubber-tree/stage-1.png",
+        icon = "__dytech-core__/graphics/rubber-tree/stage-1.png",
 
         result = "rubber-seed",
         energy_required = 1,

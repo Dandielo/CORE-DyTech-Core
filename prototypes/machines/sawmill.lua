@@ -31,7 +31,7 @@ dytech:extend
     {
         type = "item",
         name = "sawmill", 
-        icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png", 
+        icon = "__dytech-core__/graphics/machines/centrifuge-icon.png", 
         flags = { "goes-to-quickbar" },
         order = "seed-rubber",
         subgroup = "dytech-machines-assembling",
@@ -44,7 +44,7 @@ dytech:extend
     {
         type = "recipe",
         name = "sawmill", 
-        icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png", 
+        icon = "__dytech-core__/graphics/machines/centrifuge-icon.png", 
         subgroup = "dytech-machines-assembling",
         enabled = false,
         energy_required = 7.5,
@@ -64,7 +64,7 @@ dytech:extend
         
         type = "technology",
         name = "sawmill",
-        icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png",
+        icon = "__dytech-core__/graphics/machines/centrifuge-icon.png",
         order = "c-k-f-e",
         prerequisites = { "automation" },
 

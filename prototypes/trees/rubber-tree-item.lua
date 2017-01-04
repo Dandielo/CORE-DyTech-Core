@@ -3,7 +3,7 @@ data:extend
     {
         type = "item",
         name = "rubber-seed",
-        icon = "__CORE-DyTech-Core__/graphics/rubber-tree/stage-1.png",
+        icon = "__dytech-core__/graphics/rubber-tree/stage-1.png",
         flags = { "goes-to-main-inventory" },
         subgroup = "dytech-intermediates-raw",
         order = "seed-rubber",

@@ -11,17 +11,17 @@ dytech:resolved_template
     {
         tname = "lens-1",
         name = "{inter_name}-lens-1",
-        icon = "__CORE-DyTech-Core__/graphics/intermediates/{inter_name}-lens-1.png",
+        icon = "__dytech-core__/graphics/intermediates/{inter_name}-lens-1.png",
     },
     {
         tname = "lens-2",
         name = "{inter_name}-lens-2",
-        icon = "__CORE-DyTech-Core__/graphics/intermediates/{inter_name}-lens-2.png",
+        icon = "__dytech-core__/graphics/intermediates/{inter_name}-lens-2.png",
     },
     {
         tname = "lens-3",
         name = "{inter_name}-lens-3",
-        icon = "__CORE-DyTech-Core__/graphics/intermediates/{inter_name}-lens-3.png",
+        icon = "__dytech-core__/graphics/intermediates/{inter_name}-lens-3.png",
     },
 
     -- Lens items

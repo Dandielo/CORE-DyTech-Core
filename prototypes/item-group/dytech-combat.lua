@@ -5,7 +5,7 @@ data:extend
         name = "dytech-combat",
         order = "z-5-dytech-combat",
         inventory_order = "z-5-dytech-combat",
-        icon = "__CORE-DyTech-Core__/graphics/item-group/combat.png",
+        icon = "__dytech-core__/graphics/item-group/combat.png",
     },
     {
         type = "item-subgroup",

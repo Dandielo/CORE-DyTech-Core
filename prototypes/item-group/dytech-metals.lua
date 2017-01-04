@@ -5,7 +5,7 @@ data:extend
         name = "dytech-metals",
         order = "z-9-dytech-metals",
         inventory_order = "z-9-dytech-metals",
-        icon = "__CORE-DyTech-Core__/graphics/item-group/metals.png",
+        icon = "__dytech-core__/graphics/item-group/metals.png",
     },
     {
         type = "item-subgroup",

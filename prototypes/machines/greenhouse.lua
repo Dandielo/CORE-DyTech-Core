@@ -32,7 +32,7 @@ dytech:extend
     {
         type = "item",
         name = "DT-greenhouse",
-        icon = "__CORE-DyTech-Core__/graphics/machines/greenhouse.png",
+        icon = "__dytech-core__/graphics/machines/greenhouse.png",
         flags = { "goes-to-quickbar" },
         subgroup = "dytech-machines-cleaning",
         order = "greenhouse",

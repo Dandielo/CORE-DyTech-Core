@@ -47,18 +47,18 @@ data:extend
             main =
             {
                 {
-                    picture = "__CORE-DyTech-Core__/graphics/terrain/sandbag/1.png",
+                    picture = "__dytech-core__/graphics/terrain/sandbag/1.png",
                     count = 16,
                     size = 1
                 },
                 {
-                    picture = "__CORE-DyTech-Core__/graphics/terrain/sandbag/2.png",
+                    picture = "__dytech-core__/graphics/terrain/sandbag/2.png",
                     count = 4,
                     size = 2,
                     probability = 0.39,
                 },
                 {
-                    picture = "__CORE-DyTech-Core__/graphics/terrain/sandbag/4.png",
+                    picture = "__dytech-core__/graphics/terrain/sandbag/4.png",
                     count = 4,
                     size = 4,
                     probability = 1,
@@ -66,27 +66,27 @@ data:extend
             },
             inner_corner =
             {
-                picture = "__CORE-DyTech-Core__/graphics/terrain/sandbag/inner-corner.png",
+                picture = "__dytech-core__/graphics/terrain/sandbag/inner-corner.png",
                 count = 8
             },
             outer_corner =
             {
-                picture = "__CORE-DyTech-Core__/graphics/terrain/sandbag/outer-corner.png",
+                picture = "__dytech-core__/graphics/terrain/sandbag/outer-corner.png",
                 count = 8
             },
             side =
             {
-                picture = "__CORE-DyTech-Core__/graphics/terrain/sandbag/side.png",
+                picture = "__dytech-core__/graphics/terrain/sandbag/side.png",
                 count = 8
             },
             u_transition =
             {
-                picture = "__CORE-DyTech-Core__/graphics/terrain/sandbag/u.png",
+                picture = "__dytech-core__/graphics/terrain/sandbag/u.png",
                 count = 8
             },
             o_transition =
             {
-                picture = "__CORE-DyTech-Core__/graphics/terrain/sandbag/o.png",
+                picture = "__dytech-core__/graphics/terrain/sandbag/o.png",
                 count = 1
             }
         },
@@ -148,18 +148,18 @@ data:extend
             main =
             {
                 {
-                    picture = "__CORE-DyTech-Core__/graphics/terrain/quick-sand/1.png",
+                    picture = "__dytech-core__/graphics/terrain/quick-sand/1.png",
                     count = 16,
                     size = 1
                 },
                 {
-                    picture = "__CORE-DyTech-Core__/graphics/terrain/quick-sand/2.png",
+                    picture = "__dytech-core__/graphics/terrain/quick-sand/2.png",
                     count = 16,
                     size = 2,
                     probability = 0.39,
                 },
                 {
-                    picture = "__CORE-DyTech-Core__/graphics/terrain/quick-sand/4.png",
+                    picture = "__dytech-core__/graphics/terrain/quick-sand/4.png",
                     count = 4,
                     size = 4,
                     probability = 1,
@@ -167,27 +167,27 @@ data:extend
             },
             inner_corner =
             {
-                picture = "__CORE-DyTech-Core__/graphics/terrain/quick-sand/inner-corner.png",
+                picture = "__dytech-core__/graphics/terrain/quick-sand/inner-corner.png",
                 count = 8
             },
             outer_corner =
             {
-                picture = "__CORE-DyTech-Core__/graphics/terrain/quick-sand/outer-corner.png",
+                picture = "__dytech-core__/graphics/terrain/quick-sand/outer-corner.png",
                 count = 8
             },
             side =
             {
-                picture = "__CORE-DyTech-Core__/graphics/terrain/quick-sand/side.png",
+                picture = "__dytech-core__/graphics/terrain/quick-sand/side.png",
                 count = 8
             },
             u_transition =
             {
-                picture = "__CORE-DyTech-Core__/graphics/terrain/quick-sand/u.png",
+                picture = "__dytech-core__/graphics/terrain/quick-sand/u.png",
                 count = 8
             },
             o_transition =
             {
-                picture = "__CORE-DyTech-Core__/graphics/terrain/quick-sand/o.png",
+                picture = "__dytech-core__/graphics/terrain/quick-sand/o.png",
                 count = 1
             }
         },

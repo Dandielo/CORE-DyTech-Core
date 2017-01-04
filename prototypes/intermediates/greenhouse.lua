@@ -3,7 +3,7 @@ data:extend
     {
         type = "item",
         name = "DT-germling",
-        icon = "__CORE-DyTech-Core__/graphics/regular-tree/germling.png",
+        icon = "__dytech-core__/graphics/regular-tree/germling.png",
         flags = { "goes-to-main-inventory" },
         subgroup = "dytech-intermediates-raw",
         order = "7",

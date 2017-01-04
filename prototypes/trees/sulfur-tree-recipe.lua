@@ -3,7 +3,7 @@ data:extend
     {
         type = "recipe",
         name = "sulfur-seed",
-        icon = "__CORE-DyTech-Core__/graphics/sulfur-tree/stage-1.png",
+        icon = "__dytech-core__/graphics/sulfur-tree/stage-1.png",
 
         result = "sulfur-seed",
         energy_required = 1,

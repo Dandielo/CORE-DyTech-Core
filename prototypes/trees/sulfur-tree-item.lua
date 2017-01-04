@@ -3,7 +3,7 @@ data:extend
     {
         type = "item",
         name = "sulfur-seed",
-        icon = "__CORE-DyTech-Core__/graphics/sulfur-tree/stage-1.png",
+        icon = "__dytech-core__/graphics/sulfur-tree/stage-1.png",
         flags = { "goes-to-main-inventory" },
         subgroup = "dytech-intermediates-raw",
         order = "seed-sulfur",
@@ -14,7 +14,7 @@ data:extend
     {
         type = "item",
         name = "sulfur-wood",
-        icon = "__CORE-DyTech-Core__/graphics/sulfur-tree/wood.png",
+        icon = "__dytech-core__/graphics/sulfur-tree/wood.png",
         flags = { "goes-to-main-inventory" },
         subgroup = "dytech-intermediates-raw",
         order = "sulfur-wood",

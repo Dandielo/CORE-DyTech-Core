@@ -1,10 +1,10 @@
 {
-	"name":"CORE-DyTech-Core",
-	"author":"Dysoch",
-	"version":"3.0.5",
+	"name": "dytech-core",
+	"author": "Dysoch",
+	"version": "4.0.0", 
 	"factorio_version": "0.14",
-	"title":"CORE-DyTech-Core",
-	"homepage":"http://www.factorioforums.com/forum/viewforum.php?f=43",
-	"description":"1 Core to rule them all!",
+	"title": "DyTech - Core",
+	"homepage": "http://www.factorioforums.com/forum/viewforum.php?f=43",
+	"description": "1 Core to rule them all!",
 	"dependencies": ["base >= 0.14", "? Treefarm-Lite >= 0.1.2"]
 }

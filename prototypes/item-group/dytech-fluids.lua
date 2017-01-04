@@ -5,7 +5,7 @@ data:extend
         name = "dytech-fluids",
         order = "z-9-dytech-fluids",
         inventory_order = "z-9-dytech-fluids",
-        icon = "__CORE-DyTech-Core__/graphics/item-group/fluid-processing.png",
+        icon = "__dytech-core__/graphics/item-group/fluid-processing.png",
     },
     {
         type = "item-subgroup",

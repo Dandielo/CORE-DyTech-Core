@@ -7,7 +7,7 @@ dytech:itemplate
         name = "{inter_name}",
         order = "{name}",
 
-        icon = "__CORE-DyTech-Core__/graphics/intermediates/{inter_name}.png",
+        icon = "__dytech-core__/graphics/intermediates/{inter_name}.png",
         subgroup = "dytech-intermediates-{subgroup}",
         flags = { "goes-to-main-inventory" },
 
@@ -23,7 +23,7 @@ dytech:itemplate
         name = "{inter_name}",
         enabled = false,
 
-        icon = "__CORE-DyTech-Core__/graphics/intermediates/{inter_name}.png",
+        icon = "__dytech-core__/graphics/intermediates/{inter_name}.png",
         subgroup = "dytech-intermediates-{subgroup}",
 
         -- Ingredients and time
@@ -43,7 +43,7 @@ dytech:itemplate
         tname = "tech",
         type = "technology",
 
-        icon = "__CORE-DyTech-Core__/graphics/intermediates/tech/{name}.png",
+        icon = "__dytech-core__/graphics/intermediates/tech/{name}.png",
     },
     { 
         -- Doesnt change anythig, so can be used to alter existing technology recipes
@@ -63,7 +63,7 @@ dytech:itemplate
         tname = "tech-and-add",
         type = "technology",
 
-        icon = "__CORE-DyTech-Core__/graphics/intermediates/tech/{name}.png",
+        icon = "__dytech-core__/graphics/intermediates/tech/{name}.png",
 
         -- Unlocks the recipe with the exact name of the 'intermediate'
         effects = { 
@@ -83,21 +83,21 @@ dytech:itemplate
         tname = "raw-gem",
 
         name = "raw-{inter_name}",
-        icon = "__CORE-DyTech-Core__/graphics/gems/raw-{inter_name}.png",
+        icon = "__dytech-core__/graphics/gems/raw-{inter_name}.png",
         subgroup = "dytech-gem-crystal",
     },
     {
         tname = "cut-gem",
 
         name = "cut-{inter_name}",
-        icon = "__CORE-DyTech-Core__/graphics/gems/cut-{inter_name}.png",
+        icon = "__dytech-core__/graphics/gems/cut-{inter_name}.png",
         subgroup = "dytech-gem-cut",
     },
     {
         tname = "compressed-gem",
 
         name = "compressed-{inter_name}",
-        icon = "__CORE-DyTech-Core__/graphics/gems/compressed-{inter_name}.png",
+        icon = "__dytech-core__/graphics/gems/compressed-{inter_name}.png",
         subgroup = "dytech-gem-compressed",
     },
 

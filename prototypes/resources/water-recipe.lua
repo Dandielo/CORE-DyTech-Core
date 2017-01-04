@@ -3,7 +3,7 @@ data:extend
     {
         type = "recipe",
         name = "dirty-water-sand",
-        icon = "__CORE-DyTech-Core__/graphics/fluid/dirty-water.png",
+        icon = "__dytech-core__/graphics/fluid/dirty-water.png",
         category = "liquid-handler",
         subgroup = "metallurgy-intermediates",
         enabled = false,
@@ -32,7 +32,7 @@ data:extend
     {
         type = "recipe",
         name = "dirty-water-stone",
-        icon = "__CORE-DyTech-Core__/graphics/fluid/dirty-water.png",
+        icon = "__dytech-core__/graphics/fluid/dirty-water.png",
         category = "liquid-handler",
         subgroup = "metallurgy-intermediates",
         enabled = false,
@@ -61,7 +61,7 @@ data:extend
     {
         type = "recipe",
         name = "dirty-water-stone-sand-random",
-        icon = "__CORE-DyTech-Core__/graphics/fluid/dirty-water.png",
+        icon = "__dytech-core__/graphics/fluid/dirty-water.png",
         category = "liquid-handler",
         subgroup = "metallurgy-intermediates",
         enabled = false,
@@ -99,7 +99,7 @@ data:extend
     {
         type = "recipe",
         name = "dirty-water-to-water",
-        icon = "__CORE-DyTech-Core__/graphics/fluid/dirty-water.png",
+        icon = "__dytech-core__/graphics/fluid/dirty-water.png",
         category = "liquid-handler",
         subgroup = "metallurgy-intermediates",
         enabled = false,
@@ -123,7 +123,7 @@ data:extend
     {
         type = "recipe",
         name = "dirty-water-to-water-2",
-        icon = "__CORE-DyTech-Core__/graphics/fluid/dirty-water.png",
+        icon = "__dytech-core__/graphics/fluid/dirty-water.png",
         category = "liquid-handler",
         subgroup = "metallurgy-intermediates",
         enabled = false,

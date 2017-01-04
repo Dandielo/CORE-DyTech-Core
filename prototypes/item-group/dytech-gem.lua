@@ -5,7 +5,7 @@ data:extend
         name = "dytech-gem",
         order = "z-7-dytech-gem",
         inventory_order = "z-7-dytech-gem",
-        icon = "__CORE-DyTech-Core__/graphics/item-group/gem.png",
+        icon = "__dytech-core__/graphics/item-group/gem.png",
     },
     {
         type = "item-subgroup",

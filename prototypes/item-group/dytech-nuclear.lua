@@ -5,7 +5,7 @@ data:extend
         name = "dytech-nuclear",
         order = "z-9-dytech-nuclear",
         inventory_order = "z-9-dytech-nuclear",
-        icon = "__CORE-DyTech-Core__/graphics/item-group/nuclear.png",
+        icon = "__dytech-core__/graphics/item-group/nuclear.png",
     },
     {
         type = "item-subgroup",

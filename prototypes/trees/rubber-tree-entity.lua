@@ -3,7 +3,7 @@ data:extend
     {
         type = "tree",
         name = "rubber-seed",
-        icon = "__CORE-DyTech-Core__/graphics/rubber-tree/stage-1.png",
+        icon = "__dytech-core__/graphics/rubber-tree/stage-1.png",
         order = "b-b-g",
         flags = { "placeable-neutral", "breaths-air" },
         emissions_per_tick = -0.0001,
@@ -35,7 +35,7 @@ data:extend
         pictures =
         {
             {
-                filename = "__CORE-DyTech-Core__/graphics/rubber-tree/stage-1.png",
+                filename = "__dytech-core__/graphics/rubber-tree/stage-1.png",
                 priority = "extra-high",
                 width = 32,
                 height = 32,
@@ -46,7 +46,7 @@ data:extend
     {
         type = "tree",
         name = "small-rubber-tree",
-        icon = "__CORE-DyTech-Core__/graphics/rubber-tree/icon.png",
+        icon = "__dytech-core__/graphics/rubber-tree/icon.png",
         order = "b-b-g",
         flags = { "placeable-neutral", "placeable-off-grid", "breaths-air" },
         emissions_per_tick = -0.01, -- 100 times greater than the first tier
@@ -79,7 +79,7 @@ data:extend
         pictures =
         {
             {
-                filename = "__CORE-DyTech-Core__/graphics/rubber-tree/stage-2.png",
+                filename = "__dytech-core__/graphics/rubber-tree/stage-2.png",
                 priority = "extra-high",
                 -- TODO: This math comes from? (needs investigation)
                 width = math.floor(155 / 4),
@@ -91,7 +91,7 @@ data:extend
     {
         type = "tree",
         name = "medium-rubber-tree",
-        icon = "__CORE-DyTech-Core__/graphics/rubber-tree/icon.png",
+        icon = "__dytech-core__/graphics/rubber-tree/icon.png",
         order = "b-b-g",
         flags = { "placeable-neutral", "placeable-off-grid", "breaths-air" },
         emissions_per_tick = -0.005, -- How the yuck is this lower than the smaller version of this tree? (2 times lower than tier 2)
@@ -124,7 +124,7 @@ data:extend
         pictures =
         {
             {
-                filename = "__CORE-DyTech-Core__/graphics/rubber-tree/stage-3.png",
+                filename = "__dytech-core__/graphics/rubber-tree/stage-3.png",
                 priority = "extra-high",
                 -- Are we dividing or multiplying? sticking to the method would help to understand this...
                 width = math.floor(155 * 0.75),
@@ -136,7 +136,7 @@ data:extend
     {
         type = "tree",
         name = "mature-rubber-tree",
-        icon = "__CORE-DyTech-Core__/graphics/rubber-tree/icon.png",
+        icon = "__dytech-core__/graphics/rubber-tree/icon.png",
         order = "b-b-h",
         flags = { "placeable-neutral", "placeable-off-grid", "breaths-air" },
         emissions_per_tick = -0.002, -- This is still smaller than the second stage and third stage of this tree (5 times lower than tier 2)
@@ -169,7 +169,7 @@ data:extend
         pictures =
         {
             {
-                filename = "__CORE-DyTech-Core__/graphics/rubber-tree/stage-4.png",
+                filename = "__dytech-core__/graphics/rubber-tree/stage-4.png",
                 priority = "extra-high",
                 -- Math dissapeared again, YAY!?
                 width = 155,

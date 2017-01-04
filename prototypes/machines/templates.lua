@@ -3,7 +3,7 @@ dytech:template
     -- Compressor template 
 	{
 		name = "compressor",
-        icon = "__CORE-DyTech-Core__/graphics/machines/dytech-compressor-icon.png",
+        icon = "__dytech-core__/graphics/machines/dytech-compressor-icon.png",
 
         -- A Compressor may have only 2 ingredients
         ingredient_count = 2,
@@ -45,7 +45,7 @@ dytech:template
         -- Animations 
         animation =
         {
-            filename = "__CORE-DyTech-Core__/graphics/machines/dytech-compressor-animation.png",
+            filename = "__dytech-core__/graphics/machines/dytech-compressor-animation.png",
             priority = "high",
             width = 100,
             height = 120,
@@ -58,7 +58,7 @@ dytech:template
     -- Sawmill template 
     {
         name = "sawmill",
-        icon = "__CORE-DyTech-Core__/graphics/machines/centrifuge-icon.png",
+        icon = "__dytech-core__/graphics/machines/centrifuge-icon.png",
         
         -- A sawmill may have up to 15 ingredients!?
         -- ingredient_count = 15, -- lets scrap this value!
@@ -66,7 +66,7 @@ dytech:template
         -- Animations 
         animation =
         {
-            filename = "__CORE-DyTech-Core__/graphics/machines/centrifuge.png",
+            filename = "__dytech-core__/graphics/machines/centrifuge.png",
             priority = "high",
             width = 119,
             height = 99,
@@ -80,7 +80,7 @@ dytech:template
     -- Greenhouse template 
     {
         name = "greenhouse",
-        icon = "__CORE-DyTech-Core__/graphics/machines/greenhouse.png",
+        icon = "__dytech-core__/graphics/machines/greenhouse.png",
 
         -- A greenhouse may have up to 15 ingredients!?
         -- ingredient_count = 15, -- lets scrap this value!
@@ -123,7 +123,7 @@ dytech:template
         -- Animations
         animation =
         {
-            filename = "__CORE-DyTech-Core__/graphics/machines/greenhouse.png",
+            filename = "__dytech-core__/graphics/machines/greenhouse.png",
             priority = "high",
             width = 113,
             height = 91,
@@ -136,34 +136,34 @@ dytech:template
     -- Liquid-handler template
     {
         name = "liquid-handler",
-        icon = "__CORE-DyTech-Core__/graphics/machines/liquid-handler.png",
+        icon = "__dytech-core__/graphics/machines/liquid-handler.png",
 
         -- Animations 
         animation =
         {
             north = {
-                filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-up.png",
+                filename = "__dytech-core__/graphics/machines/liquid-handler-up.png",
                 width = 46,
                 height = 56,
                 frame_count = 1,
                 shift = { 0.09375, 0.03125 }
             },
             west = {
-                filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-left.png",
+                filename = "__dytech-core__/graphics/machines/liquid-handler-left.png",
                 width = 56,
                 height = 44,
                 frame_count = 1,
                 shift = { 0.3125, 0.0625 }
             },
             south = {
-                filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-down.png",
+                filename = "__dytech-core__/graphics/machines/liquid-handler-down.png",
                 width = 61,
                 height = 58,
                 frame_count = 1,
                 shift = { 0.421875, -0.125 },
             },
             east = {
-                filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-right.png",
+                filename = "__dytech-core__/graphics/machines/liquid-handler-right.png",
                 width = 51,
                 height = 56,
                 frame_count = 1,
@@ -180,7 +180,7 @@ dytech:template
                 south_position = { 0, 0 },
                 west_position = { 0, 0 },
                 north_animation = {
-                    filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-up.png",
+                    filename = "__dytech-core__/graphics/machines/liquid-handler-up.png",
                     width = 46,
                     height = 56,
                     frame_count = 8,
@@ -189,7 +189,7 @@ dytech:template
                     run_mode = "backward"
                 },
                 west_animation = {
-                    filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-left.png",
+                    filename = "__dytech-core__/graphics/machines/liquid-handler-left.png",
                     width = 56,
                     height = 44,
                     frame_count = 8,
@@ -198,7 +198,7 @@ dytech:template
                     run_mode = "backward"
                 },
                 south_animation = {
-                    filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-down.png",
+                    filename = "__dytech-core__/graphics/machines/liquid-handler-down.png",
                     width = 61,
                     height = 58,
                     frame_count = 8,
@@ -207,7 +207,7 @@ dytech:template
                     run_mode = "backward"
                 },
                 east_animation = {
-                    filename = "__CORE-DyTech-Core__/graphics/machines/liquid-handler-right.png",
+                    filename = "__dytech-core__/graphics/machines/liquid-handler-right.png",
                     width = 51,
                     height = 56,
                     frame_count = 8,

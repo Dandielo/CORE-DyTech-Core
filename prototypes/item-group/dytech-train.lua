@@ -5,7 +5,7 @@ data:extend
         name = "dytech-train",
         order = "z-9-dytech-train",
         inventory_order = "z-9-dytech-train",
-        icon = "__CORE-DyTech-Core__/graphics/item-group/train.png",
+        icon = "__dytech-core__/graphics/item-group/train.png",
     },
     {
         type = "item-subgroup",

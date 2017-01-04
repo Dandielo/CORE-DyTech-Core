@@ -5,7 +5,7 @@ data:extend
         name = "dytech-machines",
         order = "z-1-dytech-machines",
         inventory_order = "z-1-dytech-machines",
-        icon = "__CORE-DyTech-Core__/graphics/item-group/machines.png",
+        icon = "__dytech-core__/graphics/item-group/machines.png",
     },
     {
         type = "item-subgroup",
