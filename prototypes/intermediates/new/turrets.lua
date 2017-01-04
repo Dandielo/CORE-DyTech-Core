@@ -144,7 +144,7 @@ dytech:intermediate
 
                 ingredients = 
                 {
-                     { "storage-tank", 5 },
+                     { "portable-tank", 5 },
                      { "engine-unit", 5 }, 
                      { "frame-2", 1 }, 
                 }

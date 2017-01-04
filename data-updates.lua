@@ -2,6 +2,7 @@ require "config"
 
 dytech:resolve_templates()
 
+require("prototypes.intermediates.new.miscellaneous")
 require("prototypes.intermediates.new.gems")
 require("prototypes.intermediates.new.lenses")
 require("prototypes.intermediates.new.battery-packs")
