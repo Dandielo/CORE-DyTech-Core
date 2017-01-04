@@ -20,9 +20,8 @@ require("prototypes.intermediates.new.robot-frames")
 
 dytech:apply()
 
-require("prototypes.intermediates.creation")
+-- require("prototypes.intermediates.creation")
 require("prototypes.resources.gems-recipe")
-require("prototypes.intermediates.inter")
 
 -- Creating machine prototypes
 require("prototypes.machines.sawmill")

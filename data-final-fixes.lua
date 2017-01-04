@@ -1,9 +1,18 @@
 require "config"
-require "prototypes.intermediates.intermediates"
+
 require "prototypes.override-functions"
 require "prototypes.item-group-fix"
 
-ReplaceAllIngredientFluidWithFluid("water","clean-water")
+-- ReplaceAllIngredientFluidWithFluid("water","clean-water")
+for _, recipe in pairs(data.raw.recipe) do
+	for _, ingredient in pairs(recipe.ingredients) do
+		if ingredient.name == "water" then 
+			ingredient.name = "clean-water" 
+		end
+	end
+end
+
+
 data.raw["recipe"]["dirty-water-sand"].ingredients = { {type="fluid", name="water", amount=10}, }
 data.raw["recipe"]["dirty-water-stone"].ingredients = { {type="fluid", name="water", amount=50}, }
 data.raw["recipe"]["dirty-water-stone-sand-random"].ingredients = { {type="fluid", name="water", amount=100}, }
@@ -133,18 +142,6 @@ end
 if Config.Tools_Have_Large_Durability then
 	for k, v in pairs(data.raw["mining-tool"]) do
 		v.durability = v.durability*1000
-	end
-end
-
-for k, v in pairs(data.raw.module) do
-	if string.find(v.name, "productivity") then
-		for index,name in pairs(INTERMEDIATES) do
-			if name.Productivity then
-				if data.raw.recipe[name.Name] then
-					table.insert(v.limitation, name.Name)
-				end
-			end
-		end
 	end
 end
 

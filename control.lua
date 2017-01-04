@@ -1,6 +1,6 @@
 require "config"
 require "scripts/functions"
-require "scripts/remote-calls"
+-- require "scripts/remote-calls"
 
 require "scripts/base"
 require "scripts/helpers"
@@ -53,46 +53,7 @@ function core.setup()
             minutes = 0,
             hours = 0,
         },
-
-        -- Mod Loggers
-        Logger = { 
-            -- Item loggers
-            CraftedItems = { },
-            PickedItems = { },
-            MinedItems = { },
-
-            -- Entity loggers
-            EntityDied = { },
-            BuildEntity = { },
-            
-            -- Robot specific loggers 
-            RobotBuildEntity = { },
-            RobotMinedItems = { },
-
-            -- Construction loggers
-            MarkedForDeconstruction = { },
-            CanceledDeconstruction = { },
-        },
-
-        -- Mod Timestamps
-        TimeStamp = {
-            -- Item loggers
-            CraftedItems = { },
-            PickedItems = { },
-            MinedItems = { },
-
-            -- Entity loggers
-            EntityDied = { },
-            BuildEntity = { },
-            
-            -- Robot specific loggers 
-            RobotBuildEntity = { },
-            RobotMinedItems = { },
-
-            -- Construction loggers
-            MarkedForDeconstruction = { },
-            CanceledDeconstruction = { },
-        }
+        
     })
 end
 

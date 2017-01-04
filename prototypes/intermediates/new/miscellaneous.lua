@@ -152,7 +152,14 @@ dytech:intermediate
 
         templates = 
         {
-            { "item" },
+            { 
+                template = "item",
+                place_as_tile = {
+                    result = "sandbag",
+                    condition_size = 4,
+                    condition = { "water-tile" }
+                },
+            },
             {
                 template = "recipe",
                 energy_required = 0.5,
@@ -172,7 +179,15 @@ dytech:intermediate
 
         templates = 
         {
-            { "item" },
+            
+            { 
+                template = "item",
+                place_as_tile = {
+                    result = "quick-sand",
+                    condition_size = 4,
+                    condition = { "water-tile" }
+                },
+            },
             {
                 template = "recipe",
                 category = "crafting-with-fluid",

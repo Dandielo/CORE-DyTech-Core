@@ -1,5 +1,3 @@
-require "scripts/functions"
-
 core.gui.append
 {
     type = "button",
