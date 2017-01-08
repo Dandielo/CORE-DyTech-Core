@@ -1,8 +1,8 @@
-dytech:template
+dytech:resolved_template
 {
     -- Defines a assembling-machine template 
     {
-        name = "machine",
+        tname = "machine",
 
         flags = { "placeable-neutral", "placeable-player", "player-creation" },
         fast_replaceable_group = "assembling-machine",
@@ -48,7 +48,7 @@ dytech:template
 
     -- Defines default machine tier1 values
     {
-        name = "machine-mk1",
+        tname = "machine-mk1",
 
         max_health = Health.Tier2,
         resistances = Resistances.Tier1,
@@ -64,7 +64,7 @@ dytech:template
 
     -- Defines default machine tier2 values
     {
-        name = "machine-mk2",
+        tname = "machine-mk2",
 
         max_health = Health.Tier3,
         resistances = Resistances.Tier2,
@@ -80,7 +80,7 @@ dytech:template
 
     -- Defines default machine tier3 values
     {
-        name = "machine-mk3",
+        tname = "machine-mk3",
 
         max_health = Health.Tier4,
         resistances = Resistances.Tier3,
@@ -96,7 +96,7 @@ dytech:template
 
     -- Defines big machines
     {
-        name = "machine-big",
+        tname = "machine-big",
         corpse = "big-remnants",
 
         -- AABB
@@ -114,7 +114,7 @@ dytech:template
 
     -- Defines small machines
     {
-        name = "machine-small",
+        tname = "machine-small",
         corpse = "small-remnants",
 
         -- AABB

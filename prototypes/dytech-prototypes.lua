@@ -8,6 +8,12 @@ dytech.templates = { }
 dytech.templates.raw = { }
 dytech.templates.resolved = { }
 
+-- dytech patches
+dytech.patches = { }
+dytech.patches["dytech-war"] = { }
+dytech.patches["dytech-machine"] = { }
+dytech.patches["dytech-metallurgy"] = { }
+
 -- dytech helper values
 dytech.temp = { }
 dytech.temp.productivity = { }
@@ -211,6 +217,46 @@ function dytech.apply(dytech)
 
         -- Reset dytech prototypes
         dytech.raw[type] = { }
+    end
+end
+
+function dytech.new_extend(dytech, values)
+    for _, proto in pairs(values) do
+
+        local type_values = data.raw[proto.type]
+        assert(type_values ~= nil, "Unknown data type: '" .. proto.type .. "'")
+
+        -- Save a new prototype based on the 'registered' prototype 
+        type_values[proto.name] = initialize_table(proto, type_values[proto.name] or { }) -- allow merging the same prototype with the last saved value
+
+        -- in the end check if we got the 'productivity' flag and remove it afterwards
+        if type_values[proto.name].productivity then
+            type_values[proto.name].productivity = nil
+            dytech:productivity(proto.name)
+        end
+    end
+end
+
+function dytech.patch(dytech, values)
+    for _, patch in ipairs(values) do
+        dytech.patches[patch.condition] = patch
+        patch.condition = nil
+    end
+end
+
+function dytech.apply_patches(dytech, mod_name)
+    for _, patch in pairs(dytech.patches[mod_name]) do
+        data.raw[patch.type][patch.name] = initialize_table(patch, data.raw[patch.type][patch.name])
+    end
+end
+
+function dytech.reorder_items(dytech, values)
+    for _, entry in ipairs(values) do
+        local name = entry[1]
+        if data.raw.item[name] then
+            data.raw.item[name].subgroup = entry[2]
+            data.raw.item[name].order = entry[3]
+        end
     end
 end
 

@@ -1,8 +1,8 @@
-dytech:template
+dytech:resolved_template
 {
 	-- Very fast science research
 	{
-		name = "science-vfast", 
+		tname = "science-vfast", 
 		unit = {
             time = 10,
 		}
@@ -10,7 +10,7 @@ dytech:template
 
 	-- Fast science research
 	{
-		name = "science-fast", 
+		tname = "science-fast", 
 		unit = {
             time = 20,
 		}
@@ -18,7 +18,7 @@ dytech:template
 
 	-- Normal science research
 	{
-		name = "science-normal", 
+		tname = "science-normal", 
 		unit = {
             time = 30,
 		}
@@ -26,7 +26,7 @@ dytech:template
 
 	-- Long science research
 	{
-		name = "science-long", 
+		tname = "science-long", 
 		unit = {
             time = 60,
 		}
@@ -34,17 +34,17 @@ dytech:template
 
 	-- Very long science research
 	{
-		name = "science-vlong", 
+		tname = "science-vlong", 
 		unit = {
             time = 120,
 		}
 	},
 }
 
-dytech:template
+dytech:resolved_template
 {
 	{
-		name = "science-red",
+		tname = "science-red",
 		unit = {
             ingredients = 
             {
@@ -53,7 +53,7 @@ dytech:template
 		}
 	},
 	{
-		name = "science-green",
+		tname = "science-green",
 		unit = {
             ingredients = 
             {
@@ -62,7 +62,7 @@ dytech:template
 		}
 	},
 	{
-		name = "science-blue",
+		tname = "science-blue",
 		unit = {
             ingredients = 
             {
@@ -71,7 +71,7 @@ dytech:template
 		}
 	},
 	{
-		name = "science-alien",
+		tname = "science-alien",
 		unit = {
             ingredients = 
             {
