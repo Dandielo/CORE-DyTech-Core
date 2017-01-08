@@ -12,7 +12,6 @@ require("prototypes.intermediates.new.blades")
 require("prototypes.intermediates.new.item-exits")
 require("prototypes.intermediates.new.miningheads")
 require("prototypes.intermediates.new.assemblebots")
-require("prototypes.intermediates.new.gems")
 require("prototypes.intermediates.new.gearboxes")
 require("prototypes.intermediates.new.turrets")
 
@@ -26,9 +25,9 @@ require("prototypes.machines.sawmill")
 require("prototypes.machines.liquid-handler")
 
 if Config.Greenhouse then
-	require("prototypes.machines.greenhouse")
-	require("prototypes.intermediates.greenhouse")
-	require("prototypes.recipes.greenhouse")
+    require("prototypes.machines.greenhouse")
+    require("prototypes.intermediates.greenhouse")
+    require("prototypes.recipes.greenhouse")
 end
 
 -- Tiles

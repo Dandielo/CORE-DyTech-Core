@@ -3,7 +3,7 @@ dytech:new_extend
     {
         type = "technology",
         name = "gems-processing", 
-        icon = "__dytech-core__/graphics/intermediates/tech/gems.png",
+        icon = "__dytech-core__/graphics/intermediates/tech/gems.png", 
 
         templates = { "science-red", "science-green" },
         prerequisites = { "water-cleaning" },
