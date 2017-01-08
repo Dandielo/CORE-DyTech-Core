@@ -226,8 +226,27 @@ function dytech.new_extend(dytech, values)
         local type_values = data.raw[proto.type]
         assert(type_values ~= nil, "Unknown data type: '" .. proto.type .. "'")
 
-        -- Save a new prototype based on the 'registered' prototype 
-        type_values[proto.name] = initialize_table(proto, type_values[proto.name] or { }) -- allow merging the same prototype with the last saved value
+
+        -- Apply all listed templates
+        if proto.templates then
+            local merged = { }
+
+            -- for each template used
+            for i = #proto.templates, 1, -1 do -- We are applying from right to left (to make sure that the most specific values are taken first)
+                local template_name = proto.templates[i]
+                assert(dytech.templates.resolved[template_name] ~= nil, "Unknown dytech prototype template: '" .. template_name .. "'")
+
+                -- Apply each template
+                initialize_table(merged, dytech.templates.resolved[template_name])
+            end
+
+            -- Merge templates later try to merge the last version of the prototype (if any exists)
+            type_values[proto.name] = initialize_table(initialize_table(proto, merged), type_values[proto.name] or { })
+        else 
+
+            -- Save a new prototype based on the 'registered' prototype 
+            type_values[proto.name] = initialize_table(proto, type_values[proto.name] or { }) -- allow merging the same prototype with the last saved value
+        end
 
         -- in the end check if we got the 'productivity' flag and remove it afterwards
         if type_values[proto.name].productivity then
