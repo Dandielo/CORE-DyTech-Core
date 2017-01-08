@@ -3,6 +3,15 @@ require "config"
 require "prototypes.machines.functions"
 require "prototypes.dytech-prototypes"
 
+require "prototypes.gems.tech"
+require "prototypes.gems.recipe"
+require "prototypes.gems.resource"
+
+require "prototypes.gems.raw-gem-item"
+require "prototypes.gems.cut-gem-item"
+require "prototypes.gems.cut-gem-recipe"
+require "prototypes.gems.compressed-gem-item"
+require "prototypes.gems.compressed-gem-recipe"
 
 require("prototypes.override-functions")
 require("prototypes.prototype-creation")

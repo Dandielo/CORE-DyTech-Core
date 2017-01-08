@@ -98,132 +98,133 @@ dytech:intermediate
             }
         }
     },
-    -- {   -- Dytech - machine
-    --     name = "assemblebot-4",
-    --     subgroup = "assemble",
-    --     order = "a[assemblebot]-d",
+    {   -- Dytech - machine
+        name = "assemblebot-4",
+        subgroup = "assemble",
+        order = "a[assemblebot]-d",
 
-    --     templates =
-    --     {
-    --         { "item" },
-    --         {
-    --             template = "recipe",
-    --             energy_required = 8,
+        templates =
+        {
+            { "item" },
+            {
+                template = "recipe",
+                energy_required = 8,
 
-    --             ingredients =
-    --             {
-    --                 { "assemblebot-3", 1 },
-    --                 { "fast-inserter", 5 },
-    --                 { "steel-gear-wheel", 15 }, -- { "brass-gear-wheel", 15 } -- metallurgy
-    --                 { "advanced-circuit", 5 }
-    --             }
-    --         },
-    --         { 
-    --             template = "tech-and-add",
-    --             templates = { "science-red", "science-green", "science-blue" },
-    --             prerequisites = { "assemblebot-3" },
-                
-    --             unit = { 
-    --                 time = 150,
-    --                 count = 250
-    --             }
-    --         }
-    --     }
-    -- },
-    -- {
-    --     name = "assemblebot-5",
-    --     subgroup = "assemble",
-    --     order = "a[assemblebot]-e",
+                ingredients =
+                {
+                    { "assemblebot-3", 1 },
+                    { "fast-inserter", 5 },
+                    { "steel-gear-wheel", 15 }, -- { "brass-gear-wheel", 15 } -- metallurgy
+                    { "advanced-circuit", 5 }
+                }
+            },
+            { 
+                template = "tech-and-add",
+                templates = { "science-red", "science-green", "science-blue" },
+                prerequisites = { "assemblebot-3" },
 
-    --     templates =
-    --     {
-    --         { "item" },
-    --         {
-    --             template = "recipe",
-    --             energy_required = 10,
+                unit = { 
+                    time = 150,
+                    count = 250
+                }
+            }
+        }
+    },
+    {
+        name = "assemblebot-5",
+        subgroup = "assemble",
+        order = "a[assemblebot]-e",
 
-    --             ingredients =
-    --             {
-    --                 { "assemblebot-4", 1 },
-    --                 { "fast-inserter", 5 },
-    --                 { "steel-gear-wheel", 15 }, -- { "copper-tungsten-gear-wheel", 15 } -- metallurgy
-    --                 { "processing-unit", 5 }
-    --             }
-    --         },
-    --         { 
-    --             template = "tech-and-add",
-    --             templates = { "science-red", "science-green", "science-blue" },
-    --             prerequisites = { "assemblebot-4" },
-                
-    --             unit = { 
-    --                 time = 150,
-    --                 count = 375
-    --             }
-    --         }
-    --     }
-    -- },
-    -- { 
-    --     name = "assemblebot-6",
-    --     subgroup = "assemble",
-    --     order = "a[assemblebot]-f",
+        templates =
+        {
+            { "item" },
+            {
+                template = "recipe",
+                energy_required = 10,
 
-    --     templates =
-    --     {
-    --         { "item" },
-    --         {
-    --             template = "recipe",
-    --             energy_required = 12,
+                ingredients =
+                {
+                    { "assemblebot-4", 1 },
+                    { "fast-inserter", 5 },
+                    { "steel-gear-wheel", 15 }, -- { "copper-tungsten-gear-wheel", 15 } -- metallurgy
+                    { "processing-unit", 5 }
+                }
+            },
+            { 
+                template = "tech-and-add",
+                templates = { "science-red", "science-green", "science-blue" },
+                prerequisites = { "assemblebot-4" },
 
-    --             ingredients =
-    --             {
-    --                 { "assemblebot-5", 1 },
-    --                 { "fast-inserter", 5 },
-    --                 { "steel-gear-wheel", 15 }, -- { "stainless-steel-gear-wheel", 15 } -- metallurgy
-    --                 { "advanced-processing-unit", 5 }
-    --             }
-    --         },
-    --         { 
-    --             template = "tech-and-add",
-    --             templates = { "science-red", "science-green", "science-blue" },
-    --             prerequisites = { "assemblebot-5" },
-                
-    --             unit = { 
-    --                 time = 150,
-    --                 count = 450
-    --             }
-    --         }
-    --     }
-    -- },
-    -- { 
-    --     name = "assemblebot-7",
-    --     subgroup = "assemble",
-    --     order = "a[assemblebot]-g",
+                unit = { 
+                    time = 150,
+                    count = 375
+                }
+            }
+        }
+    },
+    { 
+        name = "assemblebot-6",
+        subgroup = "assemble",
+        order = "a[assemblebot]-f",
 
-    --     templates =
-    --     {
-    --         { "item" },
-    --         {
-    --             template = "recipe",
-    --             energy_required = 15,
+        templates =
+        {
+            { "item" },
+            {
+                template = "recipe",
+                energy_required = 12,
 
-    --             ingredients =
-    --             {
-    --                 { "assemblebot-6", 1 },
-    --                 { "fast-inserter", 5 },
-    --                 { "steel-gear-wheel", 15 }, -- { "stellite-gear-wheel", 15 } -- metallurgy
-    --                 { "logic-diamond-processor", 5 }
-    --             }
-    --         },
-    --         { 
-    --             template = "tech-and-add",
-    --             templates = { "science-red", "science-green", "science-blue" },
-    --             prerequisites = { "assemblebot-6" },
-                
-    --             unit = { 
-    --                 time = 150,
-    --                 count = 650
-    --             }
-    --         }
-    --     }
-    -- }
+                ingredients =
+                {
+                    { "assemblebot-5", 1 },
+                    { "fast-inserter", 5 },
+                    { "steel-gear-wheel", 15 }, -- { "stainless-steel-gear-wheel", 15 } -- metallurgy
+                    { "advanced-processing-unit", 5 }
+                }
+            },
+            { 
+                template = "tech-and-add",
+                templates = { "science-red", "science-green", "science-blue" },
+                prerequisites = { "assemblebot-5" },
+
+                unit = { 
+                    time = 150,
+                    count = 450
+                }
+            }
+        }
+    },
+    { 
+        name = "assemblebot-7",
+        subgroup = "assemble",
+        order = "a[assemblebot]-g",
+
+        templates =
+        {
+            { "item" },
+            {
+                template = "recipe",
+                energy_required = 15,
+
+                ingredients =
+                {
+                    { "assemblebot-6", 1 },
+                    { "fast-inserter", 5 },
+                    { "steel-gear-wheel", 15 }, -- { "stellite-gear-wheel", 15 } -- metallurgy
+                    { "logic-diamond-processor", 5 }
+                }
+            },
+            { 
+                template = "tech-and-add",
+                templates = { "science-red", "science-green", "science-blue" },
+                prerequisites = { "assemblebot-6" },
+
+                unit = { 
+                    time = 150,
+                    count = 650
+                }
+            }
+        }
+    }
 }
+ 

@@ -7,6 +7,7 @@ dytech.config_values = { }
 dytech.templates = { }
 dytech.templates.raw = { }
 dytech.templates.resolved = { }
+dytech.packs = { }
 
 -- dytech patches
 dytech.patches = { }

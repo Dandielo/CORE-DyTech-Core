@@ -84,66 +84,67 @@ dytech:intermediate
             }
         }
     },
-    -- { -- DyTech - Machine
-    --  name = "frame-4",
-    --  subgroup = "machine",
+    { -- DyTech - Machine
+        name = "frame-4",
+        subgroup = "machine",
 
-    --  templates = 
-    --  {
-    --      { "item" },
-    --      { 
-    --          template = "recipe",
+        templates = 
+        {
+            { "item" },
+            { 
+                template = "recipe",
 
-    --          productivity = true,
-    --          energy_required = 20,
+                productivity = true,
+                energy_required = 20,
 
-    --          ingredients = {
-    --              { "frame-3", 2 },
-    --              { "processing-unit", 10 }, -- { "processing-unit", 15 } -- metallurgy
-    --              { "steel-plate", 25 }, -- { "cobalt-plate", 10 } -- metallurgy
-    --              { "bundled-wire", 25 } -- removed -- metallurgy
-    --          }
-    --      },
-    --      {
-    --          template = "tech",
-    --          templates = { "science-red", "science-green", "science-blue" },
-    --          prerequisites = { "frame-3" }, -- + { "cobalt-processing", "lava-smelting-05" } -- metallurgy
-    --          unit = {
-    --              time = 150,
-    --              count = 250,
-    --          }
-    --      }
-    --  }
-    -- },
-    -- {
-    --  name = "frame-5",
-    --  subgroup = "machine",
+                ingredients = {
+                    { "frame-3", 2 },
+                    { "processing-unit", 10 }, -- { "processing-unit", 15 } -- metallurgy
+                    { "steel-plate", 25 }, -- { "cobalt-plate", 10 } -- metallurgy
+                    { "bundled-wire", 25 } -- removed -- metallurgy
+                }
+            },
+            {
+                template = "tech",
+                templates = { "science-red", "science-green", "science-blue" },
+                prerequisites = { "frame-3" }, -- + { "cobalt-processing", "lava-smelting-05" } -- metallurgy
+                unit = {
+                    time = 150,
+                    count = 250,
+                }
+            }
+        }
+    },
+    {
+        name = "frame-5",
+        subgroup = "machine",
 
-    --  templates = 
-    --  {
-    --      { "item" },
-    --      { 
-    --          template = "recipe",
+        templates = 
+        {
+            { "item" },
+            { 
+                template = "recipe",
 
-    --          productivity = true,
-    --          energy_required = 25,
+                productivity = true,
+                energy_required = 25,
 
-    --          ingredients = {
-    --              { "frame-4", 2 },
-    --              { "advanced-processing-unit", 10 }, -- { "advanced-processing-unit", 15 } -- metallurgy
-    --              { "steel-plate", 25 }, -- { "stellite-alloy", 10 } -- metallurgy
-    --              { "bundled-wire", 50 } -- removed -- metallurgy
-    --          }
-    --      },
-    --      {
-    --          template = "tech",
-    --          templates = { "science-red", "science-green", "science-blue" },
-    --          prerequisites = { "frame-4" }, -- + { "lava-smelting-06" } -- metallurgy
-    --          unit = {
-    --              time = 150,
-    --              count = 375,
-    --          }
-    --      }
-    --  }
-    -- }
+                ingredients = 
+                {
+                    { "frame-4", 2 },
+                    { "advanced-processing-unit", 10 }, -- { "advanced-processing-unit", 15 } -- metallurgy
+                    { "steel-plate", 25 }, -- { "stellite-alloy", 10 } -- metallurgy
+                    { "bundled-wire", 50 } -- removed -- metallurgy
+                }
+            },
+            {
+                template = "tech",
+                templates = { "science-red", "science-green", "science-blue" },
+                prerequisites = { "frame-4" }, -- + { "lava-smelting-06" } -- metallurgy
+                unit = {
+                    time = 150,
+                    count = 375,
+                }
+            }
+        }
+    }
 }
