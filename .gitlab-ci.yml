@@ -1,4 +1,4 @@
-pack_and_copy: 
+simple_test: 
     script:
     - 'MOD_VER=`modver info.json`'
     - 'MOD_NAME=`echo "dytech-core_$MOD_VER"`'
