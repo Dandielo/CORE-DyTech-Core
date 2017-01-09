@@ -7,6 +7,12 @@ You can look into the code here, and if you see something unbalanced, or a bug (
 
 
 
+Status 
+=
+[![build status](http://git.dandielo.net/ci/projects/3/status.png?ref=master)](http://git.dandielo.net/ci/projects/3?ref=master)
+
+
+
 Disclaimer from Dandielo
 =
 The following repository was created from [Valerates/CORE-DyTech-Core](https://github.com/Valerate/CORE-DyTech-Core) instead of [Dysoch/DyTech](https://github.com/Dysoch/DyTech), because the first repository was used to create the lastes 'zip' file on the mod portal. 
