@@ -6,7 +6,7 @@ pack_and_copy:
     - 'mv $MOD_FILE /var/factorio/factorio/mods'
     - 'cd /var/factorio/factorio'
     - 'echo "Removing old factorio save..."'
-    - 'rm saves/dytech-core.zip'
+    - 'rm -f saves/dytech-core.zip'
     - 'echo "Creating new factorio save..."'
     - './bin/x64/factorio --create saves/dytech-core.zip'
     - 'echo "Running factorio..."'
