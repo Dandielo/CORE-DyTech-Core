@@ -1,4 +1,3 @@
-assert(nil, "This should fail the tests!")
 require "config"
 
 require "prototypes.machines.functions"
