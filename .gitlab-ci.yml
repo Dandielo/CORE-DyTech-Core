@@ -4,4 +4,10 @@ pack_and_copy:
     - 'MOD_FILE=`echo "dytech-core_$MOD_VER.zip"`'
     - 'zip -r $MOD_FILE graphics locale prototypes script-locale scripts data.lua data-updates.lua data-final-fixes.lua control.lua config.lua info.json'
     - 'mv $MOD_FILE /var/factorio/factorio/mods'
-    
+    - 'cd /var/factorio/factorio'
+    - 'echo "Removing old factorio save..."'
+    - 'rm ./bin/x64/factorio/saves/dytech-core.zip'
+    - 'echo "Creating new factorio save..."'
+    - './bin/x64/factorio --create saves/dytech-core.zip'
+    - 'echo "Running factorio..."'
+    - './bin/x64/factorio --start-server saves/dytech-core.zip --until-tick 300'
