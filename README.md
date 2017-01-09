@@ -1,4 +1,4 @@
-DyTech
+DyTech [![build status](http://git.dandielo.net/ci/projects/3/status.png?ref=master)](http://git.dandielo.net/ci/projects/3?ref=master)
 ======
 
 DyTech is a mod for factorio, and a total conversion
