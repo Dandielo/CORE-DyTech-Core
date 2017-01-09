@@ -9,7 +9,7 @@ You can look into the code here, and if you see something unbalanced, or a bug (
 
 Status 
 =
-[![build status](http://git.dandielo.net/ci/projects/3/status.png?ref=master)](http://git.dandielo.net/ci/projects/3?ref=master)
+Dytech - Core [![build status](http://git.dandielo.net/ci/projects/3/status.png?ref=master)](http://git.dandielo.net/ci/projects/3?ref=master)
 
 
 
