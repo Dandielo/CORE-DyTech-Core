@@ -1,5 +1,5 @@
 tests.describe("Prototypes", function()
-    it("'dytech' global exists...", function()
-        assert.is_truthy(_G.dytech)
+    it("'dytech' any test", function()
+        assert.is_truthy "Hello DyTech!"
     end)
 end)
