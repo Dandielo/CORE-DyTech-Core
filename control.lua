@@ -6,7 +6,7 @@ require "scripts/base"
 require "scripts/helpers"
 
 local tests = require "scripts/tests"
-require "tests/prototypes.lua"
+require "tests/prototypes"
 
 -- Dytech and external mods
 local dytech = { }
