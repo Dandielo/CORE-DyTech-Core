@@ -344,6 +344,10 @@ function iface.is_debug()
     return core.__debug
 end
 
+function iface.run_tests()
+    dytech.run_tests()
+end
+
 iface.register()
 ---------------------------------------- Looting Enemy Corpse ----------------------------------
 -- function writeDebug(message)
