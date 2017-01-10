@@ -5,7 +5,7 @@ require "scripts/functions"
 require "scripts/base"
 require "scripts/helpers"
 
-local tests = require "scripts/tests"
+tests = require "scripts/tests"
 require "tests/prototypes"
 
 -- Dytech and external mods
