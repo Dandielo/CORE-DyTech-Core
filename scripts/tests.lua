@@ -51,16 +51,11 @@ m.describe = function(group, group_func)
     local it_func = function(name, test_func)
         table.insert(m.tests, function()
             log("Running test [" .. group .. ": " .. name .. "]")
-
-            local ENV = setmetatable({ 
-                assert = m.assert,
-            }, { 
-                __index = _G,
-            })
-            setfenv(test_func, ENV)
-
-
+            
+            local old_assert = assert
+            assert = m.assert
             local success = pcall(test_func)
+            assert = old_assert
 
             if success then
                 log("__SUCCESS__")
@@ -72,15 +67,10 @@ m.describe = function(group, group_func)
         end)
     end
 
-
-    local ENV = setmetatable({ 
-        it = it_func,
-    }, { 
-        __index = _G,
-    })
-    setfenv(group_func, ENV)
-
+    it = it_func
     group_func()
+    it = nil
+    
 end
 
 function m.run_tests()
