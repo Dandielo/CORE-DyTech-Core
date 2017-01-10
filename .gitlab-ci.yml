@@ -12,5 +12,5 @@ simple_test:
     - 'rm -f saves/dytech-core.zip'
     - 'echo "Creating new factorio save..."'
     - './bin/x64/factorio --create saves/dytech-core.zip'
-#    - 'echo "Running factorio..."'
-#    - './bin/x64/factorio --start-server saves/dytech-core.zip --server-settings dev-server-settings.json --until-tick 300'
+    - 'echo "Running factorio..."'
+    - './test-runner.moon'
