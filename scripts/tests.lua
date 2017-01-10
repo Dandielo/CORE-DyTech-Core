@@ -1,9 +1,10 @@
-dytech.tests = { }
-dytech.assert = (function()
+local m = { }
+m.tests = { }
+m.assert = (function()
     local object = { }
 
     local function err(msg, val)
-        dytech.message = msg .. " (" .. tostring(val) .. ")"
+        m.message = msg .. " (" .. tostring(val) .. ")"
         error(val)
     end
 
@@ -46,13 +47,13 @@ dytech.assert = (function()
     return object
 end)()
 
-dytech.describe = function(group, group_func)
+m.describe = function(group, group_func)
     local it_func = function(name, test_func)
-        table.insert(dytech.tests, function()
+        table.insert(m.tests, function()
             log("Running test [" .. group .. ": " .. name .. "]")
 
             local ENV = setmetatable({ 
-                assert = dytech.assert,
+                assert = m.assert,
             }, { 
                 __index = _G,
             })
@@ -66,7 +67,7 @@ dytech.describe = function(group, group_func)
                 log("Success!")
             else 
                 log("__FAIL__")
-                log("Assert: " .. dytech.message)
+                log("Assert: " .. m.message)
             end
         end)
     end
@@ -82,8 +83,10 @@ dytech.describe = function(group, group_func)
     group_func()
 end
 
-function dytech.run_tests()
-    for _, test in ipairs(dytech.tests) do
+function m.run_tests()
+    for _, test in ipairs(m.tests) do
         test()
     end
 end
+
+return m
