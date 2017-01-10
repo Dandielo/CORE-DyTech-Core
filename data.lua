@@ -66,16 +66,6 @@ if Config.BaseOverride then
 require "prototypes.update-base"
 end
 
-local success = pcall(function()
-    assert(nil, "Failed!")
-end)
-
-if not success then 
-    log("__FAIL__")
-else 
-    log("__SUCCESS__")
-end
-
 if Config.Technologies then
 require("prototypes.researches.player")
 --require("prototypes.researches.bots")
