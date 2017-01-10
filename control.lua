@@ -5,9 +5,6 @@ require "scripts/functions"
 require "scripts/base"
 require "scripts/helpers"
 
-tests = require "scripts/tests"
-require "tests/prototypes"
-
 -- Dytech and external mods
 local dytech = { }
 local external = { }
@@ -348,7 +345,9 @@ function iface.is_debug()
 end
 
 function iface.run_tests()
-    tests.run_tests()
+    if tests then
+        tests.run_tests()
+    end
 end
 
 iface.register()
