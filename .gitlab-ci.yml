@@ -1,4 +1,5 @@
 release_build: 
+    stage: deploy
     script:
     - 'MOD_VER=`modver info.json`'
     - 'MOD_NAME=`echo "dytech-core_$MOD_VER"`'
@@ -11,10 +12,9 @@ release_build:
 
     # Only the master branch will be use for this build
     only: 
-    - master
-
-    # Only a manual rebuild is possible
-    when: manual
+    - tags
+    
+    when: on_success
 
     # Artifacts to be saved
     artifacts:
@@ -24,6 +24,7 @@ release_build:
         - artifacts/*
 
 tests_build: 
+    stage: test
     script:
     - 'MOD_VER=`modver info.json`'
     - 'MOD_NAME=`echo "dytech-core_$MOD_VER"`'
