@@ -13,6 +13,13 @@ require "prototypes.gems.cut-gem-recipe"
 require "prototypes.gems.compressed-gem-item"
 require "prototypes.gems.compressed-gem-recipe"
 
+
+require "prototypes.compressor.entity"
+require "prototypes.compressor.item"
+require "prototypes.compressor.recipe"
+require "prototypes.compressor.tech"
+
+
 require("prototypes.override-functions")
 require("prototypes.prototype-creation")
 

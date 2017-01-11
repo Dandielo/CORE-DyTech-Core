@@ -13,6 +13,10 @@ dytech:new_extend
                 type = "unlock-recipe",
                 recipe = "sort-gem-ore",
             },
+            {
+                type = "unlock-recipe",
+                recipe = "compressor"
+            },
 
             -- Cut gems 
             {
