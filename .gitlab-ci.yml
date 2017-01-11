@@ -50,7 +50,7 @@ release_build:
     artifacts: 
         name: "${CI_PROJECT_NAME}_$($MOD_VER_CMD)"
         paths: 
-        - '$MOD_NAME/info.json'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/info.json'
         - '$MOD_NAME/config.lua'
         - '$MOD_NAME/data.lua'
         - '$MOD_NAME/data-updates.lua'
