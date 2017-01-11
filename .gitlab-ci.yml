@@ -49,6 +49,7 @@ release_build:
     - 'echo "Creating mod package..."'
     artifacts: 
         name: "${CI_PROJECT_NAME}_$($MOD_VER_CMD)"
+        expire_in: '3 mos'
         paths: 
         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/info.json'
         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/config.lua'
