@@ -10,5 +10,5 @@ data:extend
         place_result = "rubber-seed",
         fuel_value = "1MJ",
         stack_size = 50
-    },
+    }
 }
