@@ -45,6 +45,7 @@ release_build:
     when: on_success
     only: 
     - tags
+    - master
     script:
     - 'echo "Creating mod package..."'
     artifacts: 
