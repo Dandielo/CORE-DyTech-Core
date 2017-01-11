@@ -12,11 +12,6 @@ before_script:
 - 'ln -s . $MOD_NAME'
 
 
-# Cleanup 
-after_script:
-- 'rm $MOD_NAME'
-
-
 # Make a test mod package and run tests on factorio headless 
 tests_build:
     stage: test
