@@ -1,4 +1,4 @@
-``# Global variables
+# Global variables
 variables:
     MOD_VER_CMD: "modver info.json"
 
