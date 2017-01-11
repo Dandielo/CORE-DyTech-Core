@@ -7,6 +7,7 @@ variables:
 before_script:
 - 'export MOD_VER=$($MOD_VER_CMD)'
 - 'export MOD_NAME=${CI_PROJECT_NAME}_${MOD_VER}'
+- 'export MOD_FILE=${MOD_NAME}.zip'
 # We also need a symbolic link to the current dir so we can create valid factorio mod packs
 - 'ln -s . $MOD_NAME'
 
