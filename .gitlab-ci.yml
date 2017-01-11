@@ -30,7 +30,7 @@ build_mod:
 
 test_mod:
     stage: test
-    exept: 
+    except: 
     - triggers
     
     script:
@@ -52,7 +52,7 @@ deploy_mod:
     when: on_success
     only: 
     - tags
-    exept: 
+    except: 
     - triggers
     
     script:
