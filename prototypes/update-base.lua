@@ -86,6 +86,11 @@ require "prototypes.update-base-items"
 require "prototypes.update-base-recipe-ingredients"
 
 
+-- Base item recipe updates
+data.raw.recipe["electric-mining-drill"].enabled = false
+tech.add_recipe("steel-processing",                 "electric-mining-drill")
+
+
 -------------- Factorio technology updates
 tech.set_requirements("fluid-handling",             { "steel-processing" })
 tech.set_requirements("steel-processing",           { "automation" })
