@@ -113,7 +113,10 @@ dytech:intermediate
                     count = 250,
                 }
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-frames"
     },
     {
         name = "frame-5",
@@ -145,6 +148,9 @@ dytech:intermediate
                     count = 375,
                 }
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-frames"
     }
 }

@@ -7,7 +7,11 @@ dytech.config_values = { }
 dytech.templates = { }
 dytech.templates.raw = { }
 dytech.templates.resolved = { }
-dytech.packs = { }
+
+dytech.packs = { 
+    available = { },
+    loaded = { }
+}
 
 -- dytech patches
 dytech.patches = { }
@@ -96,6 +100,10 @@ function dytech.intermediate(dytech, values)
             -- Set values from the inter table
             base_table.order = base_table.order or inter.order
 
+            base_table.optional = inter.optional
+            base_table.packname = inter.packname
+            base_table.requires = inter.requires
+
             -- Create a prototype from a given template
             local result = initialize_table_with_replacements(base_table, dytech.templates.resolved[template_name], {
                 name = base_table.name or inter.name,
@@ -113,7 +121,7 @@ function dytech.intermediate(dytech, values)
     end
 
     -- Apply all results
-    dytech:extend(results)
+    dytech:new_extend(results)
 end
 
 -- resolves all templates 
@@ -227,32 +235,61 @@ function dytech.new_extend(dytech, values)
         local type_values = data.raw[proto.type]
         assert(type_values ~= nil, "Unknown data type: '" .. proto.type .. "'")
 
-
-        -- Apply all listed templates
-        if proto.templates then
-            local merged = { }
-
-            -- for each template used
-            for i = #proto.templates, 1, -1 do -- We are applying from right to left (to make sure that the most specific values are taken first)
-                local template_name = proto.templates[i]
-                assert(dytech.templates.resolved[template_name] ~= nil, "Unknown dytech prototype template: '" .. template_name .. "'")
-
-                -- Apply each template
-                initialize_table(merged, dytech.templates.resolved[template_name])
+        -- Add this proto to available packs
+        if proto.optional and not dytech.packs.loaded[proto.packname] then
+            dytech.packs.available[proto.packname] = dytech.packs.available[proto.packname] or { } 
+            table.insert(dytech.packs.available[proto.packname], proto)
+            proto.optional = nil
+            proto.packname = nil
+        else 
+            -- Load required optional prototypes
+            if proto.requires then
+                for _, name in pairs(proto.requires) do
+                    if not dytech.packs.loaded[name] then
+                        dytech:new_extend(dytech.packs.available[name])
+                        dytech.packs.loaded[name] = true
+                    end
+                end
+                proto.requires = nil
             end
 
-            -- Merge templates later try to merge the last version of the prototype (if any exists)
-            type_values[proto.name] = initialize_table(initialize_table(proto, merged), type_values[proto.name] or { })
-        else 
+            -- Apply all listed templates
+            if proto.templates then
+                local merged = { }
 
-            -- Save a new prototype based on the 'registered' prototype 
-            type_values[proto.name] = initialize_table(proto, type_values[proto.name] or { }) -- allow merging the same prototype with the last saved value
+                -- for each template used
+                for i = #proto.templates, 1, -1 do -- We are applying from right to left (to make sure that the most specific values are taken first)
+                    local template_name = proto.templates[i]
+                    assert(dytech.templates.resolved[template_name] ~= nil, "Unknown dytech prototype template: '" .. template_name .. "'")
+
+                    -- Apply each template
+                    initialize_table(merged, dytech.templates.resolved[template_name])
+                end
+
+                -- Merge templates later try to merge the last version of the prototype (if any exists)
+                type_values[proto.name] = initialize_table(initialize_table(proto, merged), type_values[proto.name] or { })
+            else 
+
+                -- Save a new prototype based on the 'registered' prototype 
+                type_values[proto.name] = initialize_table(proto, type_values[proto.name] or { }) -- allow merging the same prototype with the last saved value
+            end
+
+            -- in the end check if we got the 'productivity' flag and remove it afterwards
+            if type_values[proto.name].productivity then
+                type_values[proto.name].productivity = nil
+                dytech:productivity(proto.name)
+            end
+
         end
+    end
+end
 
-        -- in the end check if we got the 'productivity' flag and remove it afterwards
-        if type_values[proto.name].productivity then
-            type_values[proto.name].productivity = nil
-            dytech:productivity(proto.name)
+function dytech.require(dytech, names)
+    for _, name in ipairs(names) do 
+        log(name .. " " .. type(dytech.packs.available[name]))
+        if not dytech.packs.loaded[name] then
+            dytech:new_extend(dytech.packs.available[name])
+            dytech.packs.loaded[name] = true
         end
     end
 end

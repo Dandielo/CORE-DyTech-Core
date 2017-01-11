@@ -7,7 +7,11 @@ dytech:new_extend
         flags = { "goes-to-main-inventory" },
         subgroup = "dytech-gem-crystal",
         order = "1",
-        stack_size = 200
+        stack_size = 200,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     
     {
@@ -17,7 +21,11 @@ dytech:new_extend
         flags = { "goes-to-main-inventory" },
         subgroup = "dytech-gem-raw",
         order = "1",
-        stack_size = 200
+        stack_size = 200,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "item",
@@ -26,7 +34,11 @@ dytech:new_extend
         flags = { "goes-to-main-inventory" },
         subgroup = "dytech-gem-raw",
         order = "2",
-        stack_size = 200
+        stack_size = 200,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "item",
@@ -35,7 +47,11 @@ dytech:new_extend
         flags = { "goes-to-main-inventory" },
         subgroup = "dytech-gem-raw",
         order = "3",
-        stack_size = 200
+        stack_size = 200,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "item",
@@ -44,7 +60,11 @@ dytech:new_extend
         flags = { "goes-to-main-inventory" },
         subgroup = "dytech-gem-raw",
         order = "4",
-        stack_size = 200
+        stack_size = 200,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "item",
@@ -53,6 +73,10 @@ dytech:new_extend
         flags = { "goes-to-main-inventory" },
         subgroup = "dytech-gem-raw",
         order = "5",
-        stack_size = 200
+        stack_size = 200,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
 }

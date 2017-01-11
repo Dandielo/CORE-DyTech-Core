@@ -7,7 +7,11 @@ dytech:new_extend
         flags = { "goes-to-main-inventory" },
         subgroup = "dytech-gem-crystal",
         order = "1",
-        stack_size = 200
+        stack_size = 200,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "particle",
@@ -74,17 +78,29 @@ dytech:new_extend
                 height = 8,
                 frame_count = 1
             }
-        }
+        },
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "noise-layer",
-        name = "gems"
+        name = "gems",
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "autoplace-control",
         name = "gemstones",
         richness = true,
-        order = "g-s"
+        order = "g-s",
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "resource",
@@ -207,7 +223,11 @@ dytech:new_extend
 
         -- Map values?
         map_color = { r = 1, g = 1, b = 1 },
-        map_grid = false
+        map_grid = false,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
 }
 

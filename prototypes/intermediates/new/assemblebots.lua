@@ -128,7 +128,10 @@ dytech:intermediate
                     count = 250
                 }
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-assemblebots"
     },
     {
         name = "assemblebot-5",
@@ -160,7 +163,10 @@ dytech:intermediate
                     count = 375
                 }
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-assemblebots"
     },
     { 
         name = "assemblebot-6",
@@ -192,7 +198,10 @@ dytech:intermediate
                     count = 450
                 }
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-assemblebots"
     },
     { 
         name = "assemblebot-7",
@@ -224,7 +233,10 @@ dytech:intermediate
                     count = 650
                 }
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-assemblebots"
     }
 }
  

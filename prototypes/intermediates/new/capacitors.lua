@@ -75,7 +75,10 @@ dytech:intermediate
                     count = 75
                 }
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-capacitors"
     },
     {   -- Dytech - Power
         name = "capacitor-3",
@@ -106,7 +109,10 @@ dytech:intermediate
                     count = 125
                 }
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-capacitors"
     },
     {   -- Dytech - Power
         name = "capacitor-4",
@@ -137,7 +143,10 @@ dytech:intermediate
                     count = 250
                 }
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-capacitors"
     },
     {   -- Dytech - Power
         name = "capacitor-5",
@@ -168,7 +177,10 @@ dytech:intermediate
                     count = 375
                 }
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-capacitors"
     },
     {
         name = "flux-capacitor-2",
@@ -195,7 +207,10 @@ dytech:intermediate
                 template = "tech-add",
                 name = "capacitor-2"
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-capacitors"
     },
     {
         name = "flux-capacitor-3",
@@ -222,7 +237,10 @@ dytech:intermediate
                 template = "tech-add",
                 name = "capacitor-3"
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-capacitors"
     },
     {
         name = "flux-capacitor-4",
@@ -249,7 +267,10 @@ dytech:intermediate
                 template = "tech-add",
                 name = "capacitor-4"
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-capacitors"
     },
     {
         name = "flux-capacitor-5",
@@ -276,6 +297,9 @@ dytech:intermediate
                 template = "tech-add",
                 name = "capacitor-5"
             }
-        }
+        },
+
+        optional = true,
+        packname = "extended-capacitors"
     },
 }

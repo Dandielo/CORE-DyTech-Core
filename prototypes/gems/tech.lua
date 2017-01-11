@@ -40,7 +40,11 @@ dytech:new_extend
         unit = {
             count = 75,
             time = 100,
-        }
+        },
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "technology",
@@ -77,6 +81,10 @@ dytech:new_extend
         unit = {
             count = 150,
             time = 100,
-        }
+        },
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     }
 }

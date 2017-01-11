@@ -10,7 +10,12 @@ dytech:extend
         unit = {
             time = 100,
             count = 150,
-        }
+        },
+
+        -- dytech fields
+        optional = true,
+        packname = "extended-electronics",
+        requires = { "gems" }
     },
     {
         templates = { "science-red", "science-green", "science-blue" },
@@ -22,7 +27,12 @@ dytech:extend
         unit = {
             time = 100,
             count = 475,
-        }
+        },
+
+        -- dytech fields
+        optional = true,
+        packname = "extended-electronics",
+        requires = { "gems" }
     },
     {
         templates = { "science-red", "science-green", "science-blue" },
@@ -34,7 +44,12 @@ dytech:extend
         unit = {
             time = 150,
             count = 600,
-        }
+        },
+
+        -- dytech fields
+        optional = true,
+        packname = "extended-electronics",
+        requires = { "gems" }
     }
 }
 
@@ -63,7 +78,12 @@ dytech:intermediate
                 template = "tech-add",
                 name = "advanced-cables"
             }
-        }
+        },
+
+        -- dytech fields
+        optional = true,
+        packname = "extended-electronics",
+        requires = { "gems" }
     },
     {
         name = "bundled-wire",
@@ -89,7 +109,12 @@ dytech:intermediate
                 template = "tech-add",
                 name = "advanced-cables"
             }
-        }
+        },
+
+        -- dytech fields
+        optional = true,
+        packname = "extended-electronics",
+        requires = { "gems" }
     },
     {
         name = "advanced-processing-unit",
@@ -114,7 +139,12 @@ dytech:intermediate
                 template = "tech-add",
                 name = "advanced-processing-unit"
             }
-        }
+        },
+
+        -- dytech fields
+        optional = true,
+        packname = "extended-electronics",
+        requires = { "gems" }
     },
     {
         name = "logic-diamond",
@@ -148,7 +178,12 @@ dytech:intermediate
                 template = "tech-add",
                 name = "logic-diamond-processor"
             }
-        }
+        },
+
+        -- dytech fields
+        optional = true,
+        packname = "extended-electronics",
+        requires = { "gems" }
     },
     {
         name = "logic-diamond-processor",
@@ -187,6 +222,11 @@ dytech:intermediate
                 template = "tech-add",
                 name = "logic-diamond-processor"
             }
-        }
+        },
+
+        -- dytech fields
+        optional = true,
+        packname = "extended-electronics",
+        requires = { "gems" }
     }
 }

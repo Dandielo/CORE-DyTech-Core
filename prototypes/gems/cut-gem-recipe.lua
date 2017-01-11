@@ -26,7 +26,11 @@ dytech:new_extend
         result_count = 1,
         
         -- Logistic network
-        requester_paste_multiplier = 10
+        requester_paste_multiplier = 10,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "recipe",
@@ -54,7 +58,11 @@ dytech:new_extend
         result_count = 1,
         
         -- Logistic network
-        requester_paste_multiplier = 10
+        requester_paste_multiplier = 10,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "recipe",
@@ -82,7 +90,11 @@ dytech:new_extend
         result_count = 1,
         
         -- Logistic network
-        requester_paste_multiplier = 10
+        requester_paste_multiplier = 10,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "recipe",
@@ -110,7 +122,11 @@ dytech:new_extend
         result_count = 1,
         
         -- Logistic network
-        requester_paste_multiplier = 10
+        requester_paste_multiplier = 10,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
     {
         type = "recipe",
@@ -138,6 +154,10 @@ dytech:new_extend
         result_count = 1,
         
         -- Logistic network
-        requester_paste_multiplier = 10
+        requester_paste_multiplier = 10,
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     },
 }

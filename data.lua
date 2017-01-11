@@ -72,3 +72,10 @@ require("prototypes.researches.player")
 end
 
 dytech:apply()
+
+dytech:resolve_templates()
+
+require("prototypes.intermediates.new.frames")
+require("prototypes.intermediates.new.capacitors")
+require("prototypes.intermediates.new.electronics")
+require("prototypes.intermediates.new.assemblebots")

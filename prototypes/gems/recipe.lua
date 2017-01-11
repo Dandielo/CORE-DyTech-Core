@@ -48,5 +48,9 @@ dytech:new_extend
         subgroup = "dytech-gem-crystal",
         icon = "__dytech-core__/graphics/gems/crystal.png",
         order = "a-0",
+
+        -- dytech fields
+        optional = true,
+        packname = "gems"
     }, 
 }
