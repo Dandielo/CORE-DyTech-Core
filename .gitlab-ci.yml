@@ -11,8 +11,28 @@ before_script:
 
 
 # Make a test mod package and run tests on factorio headless 
-build_mod:
+build_mod_trigger:
     stage: build
+    only: 
+    - triggers
+    
+    script: 
+    # We also need a symbolic link to the current dir so we can create valid factorio mod packs
+    - 'ln -s . $MOD_NAME'
+    
+    - '# Creating mod package...'
+    - 'zip -r $MOD_FILE $MOD_NAME/graphics $MOD_NAME/locale $MOD_NAME/prototypes $MOD_NAME/script-locale $MOD_NAME/scripts $MOD_NAME/data.lua $MOD_NAME/data-updates.lua $MOD_NAME/data-final-fixes.lua $MOD_NAME/control.lua $MOD_NAME/config.lua $MOD_NAME/info.json'
+    
+    - '# Copying mod package to factorio mods location'
+    - 'mv $MOD_FILE /var/factorio/factorio/mods'
+
+
+# Make a test mod package and run tests on factorio headless 
+build_mod_tests:
+    stage: build
+    except: 
+    - triggers
+    
     script: 
     - '# Applying patches...'
     - 'git checkout -- control.lua'
@@ -27,6 +47,7 @@ build_mod:
     
     - '# Copying mod package to factorio mods location'
     - 'mv $MOD_FILE /var/factorio/factorio/mods'
+
 
 test_mod:
     stage: test
