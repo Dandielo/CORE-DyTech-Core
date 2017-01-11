@@ -46,7 +46,7 @@ release_build:
     only: 
     - tags
     script:
-    - 'Creating mod package...'
+    - 'echo "Creating mod package..."'
     artifacts: 
         name: "${CI_PROJECT_NAME}_$($MOD_VER_CMD)"
         paths: 
