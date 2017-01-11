@@ -50,10 +50,10 @@ test_mod:
 deploy_mod: 
     stage: deploy
     when: on_success
-    only: 
-    - tags
     except: 
     - triggers
+    only: 
+    - tags
     
     script:
     - 'echo "Creating mod package..."'
