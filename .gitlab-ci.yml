@@ -8,25 +8,32 @@ before_script:
 - 'export MOD_VER=$($MOD_VER_CMD)'
 - 'export MOD_NAME=${CI_PROJECT_NAME}_${MOD_VER}'
 - 'export MOD_FILE=${MOD_NAME}.zip'
-# We also need a symbolic link to the current dir so we can create valid factorio mod packs
-- 'ln -s . $MOD_NAME'
 
 
 # Make a test mod package and run tests on factorio headless 
-tests_build:
-    stage: test
+build_mod:
+    stage: build
     script: 
     - '# Applying patches...'
     - 'git checkout -- control.lua'
     - 'echo "require \"tests.module\"" >> control.lua'
     - 'echo "require \"tests.prototypes\"" >> control.lua'
     
+    # We also need a symbolic link to the current dir so we can create valid factorio mod packs
+    - 'ln -s . $MOD_NAME'
+    
     - '# Creating mod package...'
     - 'zip -r $MOD_FILE $MOD_NAME/tests $MOD_NAME/graphics $MOD_NAME/locale $MOD_NAME/prototypes $MOD_NAME/script-locale $MOD_NAME/scripts $MOD_NAME/data.lua $MOD_NAME/data-updates.lua $MOD_NAME/data-final-fixes.lua $MOD_NAME/control.lua $MOD_NAME/config.lua $MOD_NAME/info.json'
     
     - '# Copying mod package to factorio mods location'
     - 'mv $MOD_FILE /var/factorio/factorio/mods'
+
+test_mod:
+    stage: test
+    exept: 
+    - triggers
     
+    script:
     - '# Testing save creation...'
     - 'cd /var/factorio/factorio'
     - 'echo "Removing old factorio save..."'
@@ -40,13 +47,19 @@ tests_build:
 
 
 # Make a release mod package
-release_build: 
+deploy_mod: 
     stage: deploy
     when: on_success
     only: 
     - tags
+    exept: 
+    - triggers
+    
     script:
     - 'echo "Creating mod package..."'
+    # We also need a symbolic link to the current dir so we can create valid factorio mod packs
+    - 'ln -s . $MOD_NAME'
+    
     artifacts: 
         name: "${CI_PROJECT_NAME}_$($MOD_VER_CMD)"
         expire_in: '3 mos'
