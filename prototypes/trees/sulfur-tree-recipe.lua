@@ -4,6 +4,7 @@ data:extend
         type = "recipe",
         name = "sulfur-seed",
         icon = "__dytech-core__/graphics/sulfur-tree/stage-1.png",
+        enabled = false,
 
         result = "sulfur-seed",
         energy_required = 1,
@@ -17,6 +18,7 @@ data:extend
         type = "recipe",
         name = "sulfur-from-wood",
         icon = "__base__/graphics/icons/sulfur.png",
+        enabled = false,
 
         result = "sulfur",
         result_count = 2,

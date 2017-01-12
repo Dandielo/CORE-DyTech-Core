@@ -39,7 +39,8 @@ data:extend
         category = "greenhouse",
         icon = "__dytech-core__/graphics/sulfur-tree/wood.png",
         energy_required = 240,
-        enabled = true,
+        enabled = false,
+        
         subgroup = "dytech-intermediates-raw",
         order = "82",
         ingredients =

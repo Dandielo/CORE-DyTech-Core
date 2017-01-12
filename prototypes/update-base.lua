@@ -97,7 +97,9 @@ data.raw.recipe["repair-pack"].enabled = false
 tech.add_recipe("automation",                       "repair-pack")
 
 data.raw.recipe["sulfur"].enabled = false
-tech.add_recipe("sulfur-processing",                "sulfur")
+tech.add_recipe("sulfur-processing",                "sulfur-seed")
+tech.add_recipe("sulfur-processing",                "sulfur-from-wood")
+tech.add_recipe("sulfur-processing",                "greenhouse-sulfur")
 
 
 -------------- Factorio technology updates
