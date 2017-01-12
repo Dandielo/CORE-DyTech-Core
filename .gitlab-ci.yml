@@ -1,6 +1,7 @@
 # The build stages 
-stages: 
-- build 
+stages:
+- prepare
+- build
 - test
 - deploy
 
@@ -13,6 +14,14 @@ before_script:
 - 'export MOD_VER=$($MOD_VER_CMD)'
 - 'export MOD_NAME=${CI_PROJECT_NAME}_${MOD_VER}'
 - 'export MOD_FILE=${MOD_NAME}.zip'
+
+
+prepare_test_dirs:
+    stage: prepare
+    script: 
+    - 'echo "Clearing the mods folder for a clean test run'
+    - 'rm -f /var/factorio/factorio/mods/*'
+
 
 # Make a test mod package and run tests on factorio headless 
 build_mod_release:
