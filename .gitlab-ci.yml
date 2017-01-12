@@ -19,7 +19,7 @@ before_script:
 prepare_test_dirs:
     stage: prepare
     script: 
-    - 'echo "Clearing the mods folder for a clean test run'
+    - 'echo "Clearing the mods folder for a clean test run"'
     - 'rm -f /var/factorio/factorio/mods/*'
 
 
