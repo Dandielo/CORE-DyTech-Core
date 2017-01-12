@@ -174,3 +174,32 @@ deploy_mod_cron:
         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/graphics/'
         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/locale/'
 
+
+# Make a release mod package
+deploy_mod_manual: 
+    <<: *job_tags
+    stage: deploy
+    when: manual
+    only:
+    - master
+
+    script:
+    - echo "Create 'proxy' directory"
+    - 'ln -s . $MOD_NAME'
+    - 'echo "Creating mod package..."'
+
+    artifacts: 
+        name: "${CI_PROJECT_NAME}_$($MOD_VER_CMD)"
+        expire_in: '30 min'
+        paths: 
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/info.json'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/config.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data-updates.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data-final-fixes.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/scripts/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/script-locale/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/prototypes/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/graphics/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/locale/'
+
