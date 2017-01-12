@@ -184,6 +184,8 @@ deploy_mod_manual:
     - master
 
     script:
+    - echo "Create 'proxy' directory"
+    - 'ln -s . $MOD_NAME'
     - 'echo "Creating mod package..."'
 
     artifacts: 
