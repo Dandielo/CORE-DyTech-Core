@@ -90,6 +90,15 @@ require "prototypes.update-base-recipe-ingredients"
 data.raw.recipe["electric-mining-drill"].enabled = false
 tech.add_recipe("steel-processing",                 "electric-mining-drill")
 
+data.raw.radar["radar"].enabled = false
+tech.add_recipe("automation",                       "radar")
+
+data.raw.recipe["repair-pack"].enabled = false
+tech.add_recipe("automation",                       "repair-pack")
+
+data.raw.recipe["sulfur"].enabled = false
+tech.add_recipe("sulfur-processing",                "sulfur")
+
 
 -------------- Factorio technology updates
 tech.set_requirements("fluid-handling",             { "steel-processing" })

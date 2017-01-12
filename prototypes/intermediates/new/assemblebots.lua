@@ -19,7 +19,6 @@ dytech:intermediate
             {
                 template = "recipe",
                 energy_required = 2,
-                enabled = true,
 
                 ingredients =
                 {
