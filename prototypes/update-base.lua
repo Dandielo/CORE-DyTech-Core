@@ -90,7 +90,7 @@ require "prototypes.update-base-recipe-ingredients"
 data.raw.recipe["electric-mining-drill"].enabled = false
 tech.add_recipe("steel-processing",                 "electric-mining-drill")
 
-data.raw.radar["radar"].enabled = false
+data.raw.recipe["radar"].enabled = false
 tech.add_recipe("automation",                       "radar")
 
 data.raw.recipe["repair-pack"].enabled = false

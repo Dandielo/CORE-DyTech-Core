@@ -44,7 +44,8 @@ dytech:extend
     {
         type = "recipe",
         name = "DT-greenhouse",
-        enabled = true,
+        enabled = false,
+
         energy_required = 10,
         ingredients =
         {
@@ -54,4 +55,25 @@ dytech:extend
         },
         result = "DT-greenhouse"
     },
+
+    -- Greenhouse technology
+    {
+        type = "technology",
+        name = "DT-greenhouse",
+        templates = { "science-red" },
+        icon = "__dytech-core__/graphics/machines/greenhouse.png",
+        prerequisites = { "water-cleaning" },
+
+        effects = 
+        { 
+            {
+                type = "unlock-recipe",
+                recipe = "DT-greenhouse",
+            }
+        },
+        unit = {
+            time = 10,
+            count = 30,
+        }
+    }
 }
