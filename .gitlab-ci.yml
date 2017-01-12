@@ -87,41 +87,6 @@ test_mod:
     - './test-runner.moon'
 
 
-# # Make a release mod package
-# deploy_mod_cron: 
-#     <<: *job_tags
-#     stage: deploy
-#     when: on_success
-#     allow_failure: true
-#     only:
-#     - triggers
-
-#     script:
-#     - echo "Create 'proxy' directory"
-#     - 'ln -s . $MOD_NAME'
-
-#     - 'if [ -n $NIGHTLY_BUILD ]; then'
-#     - 'echo "Creating mod package..."'
-#     - 'exit 0'
-#     - 'fi'
-#     - 'exit -1'
-
-#     artifacts: 
-#         name: "${CI_PROJECT_NAME}_$($MOD_VER_CMD)"
-#         expire_in: '1 day'
-#         paths: 
-#         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/info.json'
-#         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/config.lua'
-#         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data.lua'
-#         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data-updates.lua'
-#         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data-final-fixes.lua'
-#         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/scripts/'
-#         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/script-locale/'
-#         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/prototypes/'
-#         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/graphics/'
-#         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/locale/'
-
-
 deploy_mod: 
     <<: *job_tags
     stage: deploy
@@ -151,3 +116,61 @@ deploy_mod:
         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/prototypes/'
         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/graphics/'
         - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/locale/'
+
+
+    
+test_mod_cron:
+    <<: *job_tags
+    stage: test
+    only: 
+    - triggers
+
+    script:
+    - 'if [ -n $BUILD_ONLY ]; then'
+    - '# Testing save creation...'
+    - 'cd /var/factorio/factorio'
+    - 'echo "Removing old factorio save..."'
+    - 'rm -f saves/dytech-core.zip'
+    - 'echo "Creating new factorio save..."'
+    - './bin/x64/factorio --create saves/dytech-core.zip'
+
+    - '# Running unit tests...'
+    - 'echo "Running factorio..."'
+    - './test-runner.moon'
+    - 'fi'
+
+
+# Make a release mod package
+deploy_mod_cron: 
+    <<: *job_tags
+    stage: deploy
+    when: on_success
+    allow_failure: true
+    only:
+    - triggers
+
+    script:
+    - echo "Create 'proxy' directory"
+    - 'ln -s . $MOD_NAME'
+
+    - 'if [ -n $NIGHTLY_BUILD ]; then'
+    - 'echo "Creating mod package..."'
+    - 'exit 0'
+    - 'fi'
+    - 'exit -1'
+
+    artifacts: 
+        name: "${CI_PROJECT_NAME}_$($MOD_VER_CMD)"
+        expire_in: '1 day'
+        paths: 
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/info.json'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/config.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data-updates.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data-final-fixes.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/scripts/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/script-locale/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/prototypes/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/graphics/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/locale/'
+
