@@ -1,6 +1,5 @@
 # The build stages 
 stages: 
-- prepare
 - build 
 - test
 - deploy
@@ -12,18 +11,6 @@ before_script:
 - 'export MOD_NAME=${CI_PROJECT_NAME}_${MOD_VER}'
 - 'export MOD_FILE=${MOD_NAME}.zip'
 
-
-prepare_workspace:
-    stage: prepare
-    script: 
-    # Create a symbolic link to the current working directory
-    - 'rm -f $MOD_NAME'
-    - 'ln -s . $MOD_NAME'
-
-    # Checkout the control.lua file
-    - 'git checkout -- control.lua'
-
-
 # Make a test mod package and run tests on factorio headless 
 build_mod_release:
     stage: build
@@ -31,6 +18,9 @@ build_mod_release:
     - triggers
 
     script: 
+    - echo "Create 'proxy' directory"
+    - 'ln -s . $MOD_NAME'
+
     - echo "Creating mod package..."
     - 'zip -r $MOD_FILE $MOD_NAME/graphics $MOD_NAME/locale $MOD_NAME/prototypes $MOD_NAME/script-locale $MOD_NAME/scripts $MOD_NAME/data.lua $MOD_NAME/data-updates.lua $MOD_NAME/data-final-fixes.lua $MOD_NAME/control.lua $MOD_NAME/config.lua $MOD_NAME/info.json'
     - echo "Copying mod package to factorio mods location"
@@ -42,7 +32,11 @@ build_mod_tests:
     stage: build
 
     script: 
+    - echo "Create 'proxy' directory"
+    - 'ln -s . $MOD_NAME'
+
     - echo "Applying patches..."
+    - 'git checkout -- control.lua'
     - 'echo "require \"tests.module\"" >> control.lua'
     - 'echo "require \"tests.prototypes\"" >> control.lua'
 
@@ -79,9 +73,14 @@ deploy_mod:
     - triggers
 
     script:
+    - echo "Create 'proxy' directory"
+    - 'ln -s . $MOD_NAME'
+
     - 'if [ -n $NIGHTLY_BUILD ]; then'
     - 'echo "Creating mod package..."'
+    - 'exit 0'
     - 'fi'
+    - 'exit -1'
 
     artifacts: 
         name: "${CI_PROJECT_NAME}_$($MOD_VER_CMD)"
@@ -108,6 +107,9 @@ deploy_mod:
     - tags
 
     script:
+    - echo "Create 'proxy' directory"
+    - 'ln -s . $MOD_NAME'
+
     - 'echo "Creating mod package..."'
 
     artifacts: 
