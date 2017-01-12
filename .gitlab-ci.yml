@@ -19,8 +19,10 @@ before_script:
 prepare_test_dirs:
     stage: prepare
     script: 
+    - 'if [ -n $BUILD_ONLY ]; then'
     - 'echo "Clearing the mods folder for a clean test run"'
     - 'rm -f /var/factorio/factorio/mods/*'
+    - 'fi'
 
 
 # Make a test mod package and run tests on factorio headless 
