@@ -126,7 +126,7 @@ test_mod_cron:
     - triggers
 
     script:
-    - 'if [ -n $BUILD_ONLY ]; then'
+    - 'if [ -z "$BUILD_ONLY" ]; then'
     - '# Testing save creation...'
     - 'cd /var/factorio/factorio'
     - 'echo "Removing old factorio save..."'
@@ -153,7 +153,7 @@ deploy_mod_cron:
     - echo "Create 'proxy' directory"
     - 'ln -s . $MOD_NAME'
 
-    - 'if [ -n $NIGHTLY_BUILD ]; then'
+    - 'if [ -n "$NIGHTLY_BUILD" ]; then'
     - 'echo "Creating mod package..."'
     - 'exit 0'
     - 'fi'
