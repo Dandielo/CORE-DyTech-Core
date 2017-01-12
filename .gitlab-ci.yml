@@ -1,6 +1,9 @@
-# Global variables
-variables:
-    MOD_VER_CMD: "modver info.json"
+# The build stages 
+stages: 
+- prepare
+- build 
+- test
+- deploy
 
 
 # Make sure we have these variables set before each script
@@ -10,41 +13,43 @@ before_script:
 - 'export MOD_FILE=${MOD_NAME}.zip'
 
 
+prepare_workspace:
+    stage: prepare
+    script: 
+    # Create a symbolic link to the current working directory
+    - 'rm -f $MOD_NAME'
+    - 'ln -s . $MOD_NAME'
+
+    # Checkout the control.lua file
+    - 'git checkout -- control.lua'
+
+
 # Make a test mod package and run tests on factorio headless 
-build_mod_trigger:
+build_mod_release:
     stage: build
     only: 
     - triggers
 
     script: 
-    - 'git checkout -- control.lua'
-    # We also need a symbolic link to the current dir so we can create valid factorio mod packs
-    - 'ln -s . $MOD_NAME'
-
-    - '# Creating mod package...'
+    - echo "Creating mod package..."
     - 'zip -r $MOD_FILE $MOD_NAME/graphics $MOD_NAME/locale $MOD_NAME/prototypes $MOD_NAME/script-locale $MOD_NAME/scripts $MOD_NAME/data.lua $MOD_NAME/data-updates.lua $MOD_NAME/data-final-fixes.lua $MOD_NAME/control.lua $MOD_NAME/config.lua $MOD_NAME/info.json'
-
-    - '# Copying mod package to factorio mods location'
+    - echo "Copying mod package to factorio mods location"
     - 'mv $MOD_FILE /var/factorio/factorio/mods_release'
 
 
 # Make a test mod package and run tests on factorio headless 
 build_mod_tests:
     stage: build
-    
+
     script: 
-    - '# Applying patches...'
-    - 'git checkout -- control.lua'
+    - echo "Applying patches..."
     - 'echo "require \"tests.module\"" >> control.lua'
     - 'echo "require \"tests.prototypes\"" >> control.lua'
-    
-    # We also need a symbolic link to the current dir so we can create valid factorio mod packs
-    - 'ln -s . $MOD_NAME'
-    
-    - '# Creating mod package...'
+
+    - echo "Creating mod package..."
     - 'zip -r $MOD_FILE $MOD_NAME/tests $MOD_NAME/graphics $MOD_NAME/locale $MOD_NAME/prototypes $MOD_NAME/script-locale $MOD_NAME/scripts $MOD_NAME/data.lua $MOD_NAME/data-updates.lua $MOD_NAME/data-final-fixes.lua $MOD_NAME/control.lua $MOD_NAME/config.lua $MOD_NAME/info.json'
-    
-    - '# Copying mod package to factorio mods location'
+
+    - echo "Copying mod package to factorio mods location"
     - 'mv $MOD_FILE /var/factorio/factorio/mods'
 
 
@@ -52,7 +57,7 @@ test_mod:
     stage: test
     except: 
     - triggers
-    
+
     script:
     - '# Testing save creation...'
     - 'cd /var/factorio/factorio'
@@ -60,7 +65,7 @@ test_mod:
     - 'rm -f saves/dytech-core.zip'
     - 'echo "Creating new factorio save..."'
     - './bin/x64/factorio --create saves/dytech-core.zip'
-    
+
     - '# Running unit tests...'
     - 'echo "Running factorio..."'
     - './test-runner.moon'
@@ -70,16 +75,41 @@ test_mod:
 deploy_mod: 
     stage: deploy
     when: on_success
+    only:
+    - triggers
+
+    script:
+    - 'if [ -n $NIGHTLY_BUILD ]; then'
+    - 'echo "Creating mod package..."'
+    - 'fi'
+
+    artifacts: 
+        name: "${CI_PROJECT_NAME}_$($MOD_VER_CMD)"
+        expire_in: '1 day'
+        paths: 
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/info.json'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/config.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data-updates.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/data-final-fixes.lua'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/scripts/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/script-locale/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/prototypes/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/graphics/'
+        - '${CI_PROJECT_NAME}_$($MOD_VER_CMD)/locale/'
+
+
+deploy_mod: 
+    stage: deploy
+    when: on_success
     except: 
     - triggers
     only: 
     - tags
-    
+
     script:
     - 'echo "Creating mod package..."'
-    # We also need a symbolic link to the current dir so we can create valid factorio mod packs
-    - 'ln -s . $MOD_NAME'
-    
+
     artifacts: 
         name: "${CI_PROJECT_NAME}_$($MOD_VER_CMD)"
         expire_in: '3 mos'
