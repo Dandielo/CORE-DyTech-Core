@@ -4,6 +4,9 @@ stages:
 - test
 - deploy
 
+# Global variables
+variables:
+    MOD_VER_CMD: "modver info.json"
 
 # Make sure we have these variables set before each script
 before_script:
