@@ -1,3 +1,7 @@
+.job_template: &job_tags
+    tags: 
+    - factorio
+
 # The build stages 
 stages:
 - prepare
@@ -17,6 +21,7 @@ before_script:
 
 
 prepare_test_dirs:
+    <<: *job_tags
     stage: prepare
     script: 
     - 'if [ -n $BUILD_ONLY ]; then'
@@ -27,6 +32,7 @@ prepare_test_dirs:
 
 # Make a test mod package and run tests on factorio headless 
 build_mod_release:
+    <<: *job_tags
     stage: build
     only: 
     - triggers
@@ -43,6 +49,7 @@ build_mod_release:
 
 # Make a test mod package and run tests on factorio headless 
 build_mod_tests:
+    <<: *job_tags
     stage: build
 
     script: 
@@ -62,6 +69,7 @@ build_mod_tests:
 
 
 test_mod:
+    <<: *job_tags
     stage: test
     except: 
     - triggers
@@ -81,6 +89,7 @@ test_mod:
 
 # Make a release mod package
 deploy_mod_cron: 
+    <<: *job_tags
     stage: deploy
     when: on_success
     allow_failure: true
@@ -114,6 +123,7 @@ deploy_mod_cron:
 
 
 deploy_mod: 
+    <<: *job_tags
     stage: deploy
     when: on_success
     except: 
