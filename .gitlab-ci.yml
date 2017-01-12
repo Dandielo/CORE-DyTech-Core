@@ -78,7 +78,7 @@ test_mod:
 
 
 # Make a release mod package
-deploy_mod: 
+deploy_mod_cron: 
     stage: deploy
     when: on_success
     allow_failure: true
